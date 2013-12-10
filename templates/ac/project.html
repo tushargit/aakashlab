@@ -5,20 +5,28 @@
 <div class="container" style="padding-top:3cm;" align="">
   <div class="well">
     <div class="container" align="center">
+	<table >
+	<tr align="center">
+	<td width="200" align="center">
       {% if project.logo %}
-      <img src="media/{{project.logo}}" height="60" width="60"
+      <img src="media/{{project.logo}}" height="100" width="150"
 	   class="img-thumbnail" align="">
       {% else %}
       <img src="{% static 'images/no_image_available.png' %}" height="60" width="60" class="img-thumbnail">
       {% endif %}
+	</td>
+	<td width="400" align="left">
       <h1 class="text-default">{{project.name}}</h1>
       <p class="text-muted">By <strong><a href="/ac/{{project.ac.id}}">{{project.ac}}</a></strong> (RC_ID: {{project.ac.ac_id}})</p>
-      <p class="text-muted"><strong>{{project.ac.city}}, {{project.ac.state}}</strong></p>      
+      <p class="text-muted"><strong>{{project.ac.city}}, {{project.ac.state}}</strong></p> 
+	</td>
+	</tr>
+	</table>     
     </div>
     <div class="well">
-      <div class="row">
+      <div class="row"  >
 
-	<div class="col-md-3 well" align="left">
+	<div  class="col-md-3 well">
 	  {% if project.member.all %}
 	  <h3>Team Member{{project.member.all|length|pluralize}}</h3>
 	  {% for member in project.member.all %}
@@ -38,14 +46,14 @@
 	  {% endif %}
 	</div> <!-- col-md-3 -->
 	
-	<div class="col-md-9 well">
+	<div  class="col-md-9 well" >
 	  
 	  
 	  <strong class="text-info">Summary:</strong>
-	  <p align="justify">{{project.summary}}</p>
+	  <p >{{project.summary}}</p>
 
 	  <strong class="text-info">Documentation:</strong>
-	  <p align="justify"><a href={{project.doc_url}}>{{project.doc_url}}</a></p>
+	  <p ><a href={{project.doc_url}}>{{project.doc_url}}</a></p>
 	  
 	  <strong class="text-info">Source code:</strong>
 	  <p align="justify"><a href={{project.src_url}}>{{project.src_url}}</a></p>
@@ -54,13 +62,13 @@
 	</div> <!-- col-md-9 -->
 
       </div> <!-- row -->
-      <form id="download_project_form" method="post" align="center">
+     <div align="center">
 	{% csrf_token %}
-	<button name="download" value={{project.id}} class="btn btn-primary btn-mini">
+	<button name="download" value={{project.id}} class="btn btn-primary btn-mini" align="center">
 	  <i class="glyphicon glyphicon-download"></i>
 	  {{project.download_count}} download{{project.download_count|pluralize}}
 	</button>
-      </form>
+     </div>
     </div>  
 
 
