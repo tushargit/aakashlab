@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from ac.models import AakashCenter, Coordinator
 from ac.models import Project, Mentor, TeamMember
 
+
 def index(request):
     """Index page.
 
@@ -21,14 +22,23 @@ def about(request):
     Arguments:
     - `Request`:
     """
-    return render_to_response('about.html')    
+    return render_to_response('about.html')
+
+
+def contact(request):
+    """Contact us page.
+
+    Arguments:
+    - `Request`:
+    """
+    return render_to_response('contact.html')
 
 
 def all_ac(request):
     context = RequestContext(request)
     aakashcenters = AakashCenter.objects.all()
     coordinators = Coordinator.objects.all()
-    
+
     context_dict = {'aakashcenters': aakashcenters,
                     'coordinators': coordinators}
 

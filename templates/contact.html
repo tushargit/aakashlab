@@ -2,75 +2,59 @@
 {% load static %}
 
 {% block body_block %}
-  
-<div class="container">
+<div class="container" style="padding-top:2.5cm;">
+  <div class="row">
 
-<div id="page-wrapper">
+    <div class="col-lg-6 well">
+      <h2 >Contact us <br><small> We’re here to help with any questions or comments.</small></h2>
+	<form role="form">
 
-        <div class="row">
-          <div class="col-lg-12">
-           
-           </div>
-        </div><!-- /.row -->
-<hr>
-   <div class="well">
- <h2>Contact us  <br><small> We’re here to help with any questions or comments.</small></h2>
-       <div class="row">
-          <div class="col-lg-6">
-
-            <form role="form">
-
-              <div class="form-group">
-                <label>Name *</label>
-                <input class="form-control" placeholder="Enter Name">
-               </div>
-
-		
-              <div class="form-group">
-                <label>Email *</label>
-                <input class="form-control" placeholder="Enter Email">
-              </div>
-                         
-              <div class="form-group">
-                <label>Message</label>
-                <textarea class="form-control" rows="3" placeholder="Please Write your Message"></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary ">Submit </button>
-              <button type="reset" class="btn btn-info">Reset</button>  
-
-            </form>
-
+          <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" placeholder="Enter Name">
           </div>
-  
-	<div class="row text-center">
-          <div class="col-lg-4">
-            <h2>Address</h2>
-            <address>
-              <strong>Aakash Lab</strong><br>
-              Second Floor,Old CSE Building<br>
-              Indian Institute Of Technology-Bombay<br>
-	      Powai-Maharashtra-400076<br>
-              
-            </address>
-	    <address>
-              <strong>Give us a call at</strong><br>
-             <abbr title="Phone">Phone:</abbr> (+91) (022) 25764708
-            </address>    
 
-            <address>
-              <strong>Write to us @</strong><br>
-              <p>labaakash@gmail.com</p>
-            </address>      
-
-	
+	  
+          <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" placeholder="Enter Email">
           </div>
-       </div>
+          
+          <div class="form-group">
+            <label>Message</label>
+            <textarea class="form-control" rows="3" placeholder="Please Write your Message"></textarea>
+          </div>
 
-  </div>
-    </div><!-- /.container -->
+          <button type="submit" class="btn btn-primary ">Submit </button>
+          <button type="reset" class="btn btn-info">Reset</button>
 
-    <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
+	</form>
+      </div>
+      
+    
+    <div class="col-lg-6" align="center">
+      <br><br><br><br><br><br>
+      <span class="glyphicon glyphicon-home"></span>
+      <address>
+        <strong>Aakash Lab</strong><br>
+        Second Floor, Old CSE Building,<br>
+        Indian Institute Of Technology Bombay<br>
+	Powai, Mumbai 400076,<br>
+	Maharashtra, India.<br>
+      </address>
+
+      <address>
+	<span class="glyphicon glyphicon-earphone"></span>
+        (+91) (022) 25764708
+      </address>    
+
+      <address>
+	<span class="glyphicon glyphicon-globe"></span>
+        <a href="mailto:labaakash@gmail.com">labaakash@gmail.com</a>
+      </address>      
+    </div>
+      
+</div> <!-- row -->
+</div><!-- /.container -->
 {% endblock body_block %}
+
