@@ -4,7 +4,7 @@
 
 *.tex
 *.sty
-
+*.pyc
 
 store.py
 cl.py
