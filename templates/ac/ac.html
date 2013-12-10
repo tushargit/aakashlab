@@ -5,13 +5,14 @@
 <div class="container" style="padding-top:3cm;">
   <div class="well">
     <div class="row">
-      <div class="container" align="center">
+      <div class="well" align="center">
 	<h2>{{aakashcenter.name}}</h2>
 	<p class="text-muted">RC_ID: <strong>{{aakashcenter.ac_id}}</strong></p>
 	<p class="text-muted"><strong>{{aakashcenter.city}}, {{aakashcenter.state}}</strong></p>
       </div>
       {% for c in coordinator %}
-      <div class="col-md-8 well">
+      <div class="col-md-8">
+	<div class="">
 	  <p><strong>Coordinator details:</strong></p>
 	  <table border=0>
 	  <!-- {{c.id}} -->
@@ -26,18 +27,19 @@
 	  <td>E-mail:</td>
 	  <td>{{c.user.email}}</td>
 	  </table>
+	  </div>
       </div> <!-- col-md-8 -->
       <div class="col-md-4" align="center">
 	  {% if c.picture %}
 	  <a id="image_link" rel="imagezoom" href="media/{{c.picture}}" >	
-	    <img src="media/{{c.picture}}" height="140" width="240" class="img-thumbnail">
+	    <img class="img-thumbnail" src="media/{{c.picture}}" height="140" width="240" class="img-thumbnail">
 	  </a>
 	  {% else %}
 	  <img src="{% static 'images/no_image_available.png' %}" height="140" width="240" class="img-thumbnail">
 	  {% endif %}
       </div>   <!-- col-md-4 -->
       {% endfor %}
-      <div class="container" align="center">
+      <div class="" align="center">
 	  {% if projects %}
 	  <h3>List of project{{projects|pluralize}} <span class="badge">{{projects|length}}</span></h3>
 	  <table border=1 cellpadding="10">
