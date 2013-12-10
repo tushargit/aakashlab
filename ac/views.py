@@ -2,9 +2,14 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.models import User
+from django.contrib import messages
 
+# Models
 from ac.models import AakashCenter, Coordinator
 from ac.models import Project, Mentor, TeamMember
+
+# Forms
+from ac.forms import ContactForm
 
 
 def index(request):
@@ -31,7 +36,21 @@ def contact(request):
     Arguments:
     - `Request`:
     """
-    return render_to_response('contact.html')
+    context = RequestContext(request)
+
+    if request.POST:
+        contactform = ContactForm(data=request.POST)
+        if contactform.is_valid():
+            contactform = contactform.save(commit=True)
+            messages.success(request, "Thank you for your reply. We\
+            will get back to you soon.")
+        else:
+            messages.success(request, "One or more fields are required.")
+    else:
+        contactform = ContactForm()
+
+    context_dict = {'contactform': contactform}
+    return render_to_response('contact.html', context_dict, context)
 
 
 def all_ac(request):
