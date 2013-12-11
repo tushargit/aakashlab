@@ -220,13 +220,18 @@ def projects(request):
     return render_to_response('ac/projects.html', context_dict, context)
 
 def iitb(request):
-    """List all projects at iitb"""
+    """List all projects at iitb.
+    IITB has RC_ID=0."""
     context = RequestContext(request)
-    iitb = AakashCenter.objects.get(ac_id=0)
-    coordinator = iitb.coordinator
-    coordinator = Coordinator.objects.filter(id=coordinator.id)
-
-    projects = Project.objects.filter(ac=iitb.id)
+    try:
+        iitb = AakashCenter.objects.get(ac_id=0)
+        coordinator = iitb.coordinator
+        coordinator = Coordinator.objects.filter(id=coordinator.id)
+        projects = Project.objects.filter(ac=iitb.id)
+    except:
+        iitb = None
+        coordinator = None
+        projects = None
     
     context_dict = {'iitb': iitb,
                     'coordinator': coordinator,
