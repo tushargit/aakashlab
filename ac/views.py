@@ -45,7 +45,8 @@ def contact(request):
             messages.success(request, "Thank you for your reply. We\
             will get back to you soon.")
         else:
-            messages.success(request, "One or more fields are required.")
+            print contactform.errors
+            messages.error(request, "One or more fields are required or not valid.")
     else:
         contactform = ContactForm()
 
