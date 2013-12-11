@@ -1,0 +1,202 @@
+.navbar {
+top:2%;
+margin-left:0%;
+border: 1px solid transparent;
+min-height: 60px;
+opacity:0.9;
+position:fixed;
+}
+
+
+.navbar-brand {
+  float: left;
+  padding: 8px 12px 8px 2px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.navbar-right-logo {
+	position:absolute;
+	top:0;
+	right:0;
+ /* float: right;*/
+  padding-right: 12px;
+  font-size: 18px;
+  padding-top:2px;
+  line-height: 20px;
+  
+}
+
+.navbar-static-top {
+  z-index: 1000;
+  border-width: 0 0 1px;
+}
+
+.navbar-collapse {
+  max-height: 200px;   /*Old max height was 340px. This was increased to remove a scrollbar inside navbar*/
+  padding-right: 15px;
+  padding-left: 15px;
+  width:100%;
+  overflow-x: visible;
+  position:relative;
+margin-left:0px;
+margin-right:0px;
+  -webkit-overflow-scrolling: touch;
+
+}
+
+
+
+
+#back_to_top {
+	position:fixed;
+
+	bottom:2%;
+	right:2%;
+	z-index:3;
+	opacity:0.5;	
+}
+
+#back_to_top:hover {
+	opacity:0.9;	
+}
+
+.navbar-toggle {
+  position: absolute;
+/*  float: right;*/
+	right:1px;
+        top:60px;
+        padding: 9px 10px;
+ /* margin-top: 28px;
+  margin-right: 15px;
+  margin-bottom: 8px;*/
+
+  background-color: #333;
+  border: 1px solid black;
+  border-radius: 4px;
+  z-index:3;
+  opacity:0.6;
+}
+
+
+
+@media (max-width: 768px){
+
+#back_to_top{
+width:8%;
+}
+	
+.featurette-image{
+margin-left: auto;
+    margin-right: auto; 
+}
+
+.navbar-collapse{
+margin-right:0px;
+width:120%;
+}
+
+	.navbar {
+		  margin-left:0%;
+		  width:100%;
+		}
+	
+  .navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px){
+
+.featurette-image{
+margin-left: auto;
+    margin-right: auto; 
+}
+
+ .featurette-heading {
+    font-size: 25px;
+  }
+
+.lead{
+font-size: 18px;	
+}
+#back_to_top{
+width:6%;
+}
+
+.navbar{
+width:96%;
+left:2%;
+
+}
+
+.navbar ul{
+font-size:11px;
+margin-left:-13px;
+}
+
+
+
+	.container{
+		width:100%;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1200px){
+
+.featurette-image{
+margin-left: auto;
+    margin-right: auto; 
+}
+
+#back_to_top{
+width:5%;
+}
+
+ .featurette-heading {
+    font-size: 35px;
+  }
+	
+.navbar{
+width:90%;
+left:5%;
+}
+
+.navbar-nav{
+		margin-left:2%;
+	}
+}
+
+@media (min-width: 1200px) {
+
+.featurette-image{
+margin-left: auto;
+    margin-right: auto; 
+}
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+
+.navbar{
+width:82%;
+left:9%;
+}
+
+#back_to_top{
+width:4%;
+}
+
+.navbar-nav{
+		margin-left:10%;
+	}
+}
+
+
+
