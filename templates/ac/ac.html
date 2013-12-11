@@ -12,9 +12,8 @@
       </div>
       {% for c in coordinator %}
       <div class="col-md-8">
-	<div class="">
 	  <p><strong>Coordinator details:</strong></p>
-	  <table border=0>
+	  <table class="table table-responsive">
 	  <!-- {{c.id}} -->
 	  <tr>
 	  <td>Name:</td>
@@ -27,36 +26,50 @@
 	  <td>E-mail:</td>
 	  <td>{{c.user.email}}</td>
 	  </table>
-	  </div>
       </div> <!-- col-md-8 -->
       <div class="col-md-4" align="center">
 	  {% if c.picture %}
 	  <a id="image_link" rel="imagezoom" href="media/{{c.picture}}" >	
-	    <img class="img-thumbnail" src="media/{{c.picture}}" height="140" width="240" class="img-thumbnail">
+	    <img class="img-rounded img-responsive"
+		 src="media/{{c.picture}}" height="140" width="240">
 	  </a>
 	  {% else %}
-	  <img src="{% static 'images/no_image_available.png' %}" height="140" width="240" class="img-thumbnail">
+	  <img src="{% static 'images/no_image_available.png' %}"
+	       height="140" width="240"
+	       class="img-rounded img-responsive">
 	  {% endif %}
       </div>   <!-- col-md-4 -->
       {% endfor %}
       <div class="" align="center">
 	  {% if projects %}
-	  <h3>List of project{{projects|pluralize}} <span class="badge">{{projects|length}}</span></h3>
-	  <table border=1 cellpadding="10">
+	  <p>&nbsp</p>
+
+	  
+	  <h3>
+	    <strong class="text-muted">List of project{{projects|pluralize}}
+	    </strong>
+	    <span class="badge badge-default">{{projects|length}}</span>
+	  </h3>
+	  <table class="table table-responsive table-striped">
+	    <tr>
+	      <td align="center"><strong>Serial number</strong></td>
+	      <td align="center"><strong>Project name</strong></td>
+	      <td align="center"><strong>Download</strong></td>	      
+	    </tr>
 	    <form id="download_project_form" method="post">
 	      {% csrf_token %}
 	  {% for project in projects %}
 	  <tr>
-	    <td>
+	    <td align="center">
 	      {{forloop.counter}}. 
 	    </td>
-	    <td>
+	    <td align="center">
 	      <a href="/ac/project/{{project.id}}">{{project.name}}</a><br>
 	    </td>
-	    <td>
+	    <td align="center">
 	      <!-- {{project.id}} -->
-	      <button name="download" value={{project.id}} class="btn btn-primary btn-mini">
-		<i class="glyphicon glyphicon-download"></i>
+	      <button name="download" value={{project.id}} class="btn btn-primary btn-sm">
+		<i class="glyphicon glyphicon-download-alt"></i>
 		{{project.download_count}} download{{project.download_count|pluralize}}
 	      </button>
 	    </td>
@@ -65,7 +78,7 @@
 	  </form>
 	  </table>
 	  {% else %}
-	  No projects.
+	  No projects submitted by <strong>{{aakashcenter.name}}</strong>.
 	  {% endif %}
       </div>
     </div> <!-- row -->

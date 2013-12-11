@@ -4,75 +4,71 @@
 {% block body_block %}
 <div class="container" style="padding-top:2.5cm;">
   <div class="well">
-    <div class="container" align="center">
-	<table >
-	<tr align="center">
-	<td width="200" align="center">
-      {% if project.logo %}
-      <img src="media/{{project.logo}}" height="100" width="150"
-	   class="img-rounded">
-      {% else %}
-      <img src="{% static 'images/no_image_available.png' %}" height="60" width="60" class="img-thumbnail">
-      {% endif %}
-	</td>
-	<td width="400" align="left">
-      <h1 class="text-default">{{project.name}}</h1>
-      <p class="text-muted">By <strong><a href="/ac/{{project.ac.id}}">{{project.ac}}</a></strong> (RC_ID: {{project.ac.ac_id}})</p>
-      <p class="text-muted"><strong>{{project.ac.city}}, {{project.ac.state}}</strong></p> 
-	</td>
-	</tr>
-	</table>     
-    </div>
-    <div class="well">
-      <div class="row"  >
-
-	<div  class="col-md-3 well">
-	  {% if project.member.all %}
-	  <h3>Team Member{{project.member.all|length|pluralize}}</h3>
-	  {% for member in project.member.all %}
-	  {{forloop.counter}}. {{member}}<br/>
-	  {% endfor %}
-	  {% else %}
-	  No team members.
-	  {% endif %}
-
-	  {% if project.mentor.all %}
-	  <h3>Mentor{{project.mentor.all|length|pluralize}}</h3>
-	  {% for mentor in project.mentor.all %}
-	  {{forloop.counter}}. {{mentor}}<br/>
-	  {% endfor %}
-	  {% else %}
-	  No mentors.
-	  {% endif %}
-	</div> <!-- col-md-3 -->
-	
-	<div  class="col-md-9 well" >
-	  
-	  
-	  <strong class="text-info">Summary:</strong>
-	  <p >{{project.summary}}</p>
-
-	  <strong class="text-info">Documentation:</strong>
-	  <p ><a href={{project.doc_url}}>{{project.doc_url}}</a></p>
-	  
-	  <strong class="text-info">Source code:</strong>
-	  <p align="justify"><a href={{project.src_url}}>{{project.src_url}}</a></p>
-
-	  
-	</div> <!-- col-md-9 -->
+    <div class="row well">
+      
+      <div class="col-md-3 col-md-offset-2">
+	{% if project.logo %}
+	<img src="media/{{project.logo}}" height="100" width="150"
+	     class="img-rounded img-responsive">
+	{% else %}
+	<img src="{% static 'images/no_image_available.png' %}"
+	     height="60" width="60" class="img-rounded img-responsive ">
+	{% endif %}
+      </div>
+      
+      <div class="col-md-6">	 
+	<h1 class="text-default">{{project.name}}</h1>
+	<p class="text-muted">By <strong><a href="/ac/{{project.ac.id}}">{{project.ac}}</a></strong> (RC_ID: {{project.ac.ac_id}})</p>
+	<p class="text-muted"><strong>{{project.ac.city}}, {{project.ac.state}}</strong></p> 
+      </div>
 
       </div> <!-- row -->
-     <div align="center">
-	{% csrf_token %}
-	<button name="download" value={{project.id}} class="btn btn-primary btn-mini" align="center">
-	  <i class="glyphicon glyphicon-download"></i>
-	  {{project.download_count}} download{{project.download_count|pluralize}}
-	</button>
-     </div>
-    </div>  
+      <div class="well">
+	<div class="row"  >
+	  <div class="col-md-3">
+	    {% if project.member.all %}
+	    <h3>Team Member{{project.member.all|length|pluralize}}</h3>
+	    {% for member in project.member.all %}
+	    {{forloop.counter}}. {{member}}<br/>
+	    {% endfor %}
+	    {% else %}
+	    No team members.
+	    {% endif %}
 
+	    {% if project.mentor.all %}
+	    <h3>Mentor{{project.mentor.all|length|pluralize}}</h3>
+	    {% for mentor in project.mentor.all %}
+	    {{forloop.counter}}. {{mentor}}<br/>
+	    {% endfor %}
+	    {% else %}
+	    No mentors.
+	    {% endif %}
+	  </div> <!-- col-md-3 -->
+	  
+	  <div  class="col-md-9 well" >
+	    <strong class="text-info">Summary:</strong>
+	    <p align="justify">{{project.summary}}</p>
 
-    <p class="text-muted" align="center">Date uploaded : {{project.date_uploaded}}</p>      
-  </div> <!-- well -->
-</div> <!-- container ->
+	    <strong class="text-info">Documentation:</strong>
+	    <p ><a href={{project.doc_url}}>{{project.doc_url}}</a></p>
+	    
+	    <strong class="text-info">Source code:</strong>
+	    <p align="justify"><a href={{project.src_url}}>{{project.src_url}}</a></p>
+	  </div> <!-- col-md-9 -->
+	</div> <!-- row -->
+
+	<div align="center">
+	  {% csrf_token %}
+	  <button name="download" value={{project.id}}
+		  class="btn btn-primary btn-mini"
+		  align="center">
+	    <i class="glyphicon glyphicon-download"></i>
+	    {{project.download_count}} download{{project.download_count|pluralize}}
+	  </button>
+	</div>
+      </div> <!-- well -->
+
+      <p class="text-muted" align="center">Date uploaded : {{project.date_uploaded}}</p>      
+    </div> <!-- well -->
+  </div> <!-- container ->
 {% endblock body_block %}

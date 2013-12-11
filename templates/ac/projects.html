@@ -2,74 +2,81 @@
 {% load static %}
 
 {% block body_block %}
+
 <link href="{% static 'css/project_list.css' %}" rel="stylesheet">
+<link href="{% static 'font-awesome-4.0.3/css/font-awesome.min.css' %}"
+      rel="stylesheet">
+
 <div class="container" style="padding-top:2.5cm;" align="center">
   <div class="well">
-   
-    <br>
-    <table align="center">
-    <tr>
-    <td align="center"><strong class="text-muted">Project</strong>
-      <form>
-      	<input type="text" class="form-control" placeholder="Search by Project name..."
-      	       value="" name="suggest_ac_id" id="suggest_ac_id">
-      </form>
-    </td>
-    <td align="center"><strong class="text-muted">Center name</strong>
-      <form>
-      	  <input type="text" class="form-control" placeholder="Search by center name..."
-      	     value="" name="suggest_ac_name" id="suggest_ac_name">
-      </form>
-    </td>
-    <!-- <td>Coordinator</td> -->
-    </tr>
+    <div class="page-header">
+      <h1>All Projects<small> by Aakash Centers.</small></h1>
+    </div>
+
+    <table class="table-responsive">
+      <tr>
+	<td align="center"><strong class="text-muted">Project</strong>
+	  <form>
+      	    <input type="text" class="form-control" placeholder="Search by Project name..."
+      		   value="" name="suggest_ac_id" id="suggest_ac_id">
+	  </form>
+	</td>
+	<td align="center"><strong class="text-muted">Center name</strong>
+	  <form>
+      	    <input type="text" class="form-control" placeholder="Search by Center name..."
+      		   value="" name="suggest_ac_name" id="suggest_ac_name">
+	  </form>
+	</td>
+	<!-- <td>Coordinator</td> -->
+      </tr>
     </table>
     <br>
     {% if projects %}
     <div class="downloads_div">
-    <table class="bordered" align="center">
-  
+      <table class="bordered table-responsive" align="center">
+	<tr>
+	  <td align="center"><strong>Icon</strong></td>
+	  <td align="center"><strong>Project name</strong></td>
+	  <td align="center"><strong>Docs</strong></td>
+	  <td align="center"><strong>Source code</strong></td>
+	  <td align="center"><strong>Download</strong></td>
+	</tr>
+	{% for i in projects %}
+	<tr>
+          <td>
+            {% if i.logo %}
+	    <img src="media/{{i.logo}}" height="60" width="60"
+		 class="img-rounded img-responsive">
+	    {% else %}
+	    <img src="{% static 'images/no_image_available.png' %}" height="60" width="60" class="img-thumbnail">
+	    {% endif %}
+	  </td>
+	  <td><a href="/ac/project/{{i.id}}"><strong>{{i.name}}</strong></a>
+	    <p class="text-muted"><a class="text-muted" href="/ac/{{i.ac.id}}">{{i.ac.name}}</a></p>
+	  </td>
+          
+	  <!--   <td>{{i.download_count}}</td>   -->
+	  <td><a href={{i.doc_url}}>
+	      <i class="fa fa-files-o fa-4x"></i>
+	    </a>
+	  </td>
+	  <td><a href={{i.src_url}} target= "_blank"><i class="fa fa-github-alt fa-4x"></i></a></td>
+          <td><a href="/media/{{i.apk}}"><i class="fa fa-download fa-4x"></i></a></td>         
+	</tr>  
+	{% endfor %}
 
-  {% for i in projects %}
-      <tr>
-        <td>
-          {% if i.logo %}
-      <img src="media/{{i.logo}}" height="60" width="60"
-	   class="img-thumbnail" align="">
-      {% else %}
-      <img src="{% static 'images/no_image_available.png' %}" height="60" width="60" class="img-thumbnail">
-      {% endif %}
-</td>
-       <td><a href="/ac/project/{{i.id}}"><strong>{{i.name}}</strong></a>
-	  <p class="text-muted"><a class="text-muted" href="/ac/{{i.ac.id}}">{{i.ac.name}}</a></p>
-      </td>
-        
-   <!--   <td>{{i.download_count}}</td>   -->
-	<td><a href={{i.doc_url}} target= "_blank">Docs</a></td>
-	<td><a href={{i.src_url}} target= "_blank">Source</a></td>
-        <td><a href="/media/{{i.apk}}">apk download</a></td>         
-    </tr>  
-      {% endfor %}
-
-    </table>
-      </div>
+      </table>
+    </div>
     {% else %}
-    No projects.
+    <p>No projects.</p>
     {% endif %}
   </div>
-    <!-- <div id="cats"> -->
-    <!--   {% include 'ac/ac_list.html' with aakashcenters=aakashcenters %} -->
-    <!-- </div> <\!-- cats -\-> -->
-  </div>
+  <!-- <div id="cats"> -->
+  <!--   {% include 'ac/ac_list.html' with aakashcenters=aakashcenters %} -->
+  <!-- </div> <\!-- cats -\-> -->
+</div>
 </div>
 
 <script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
 <script src="{% static 'js/suggest.js' %}"></script>
 {% endblock body_block %}
-
-
-
-
-
-
-
