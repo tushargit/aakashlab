@@ -70,3 +70,12 @@ class Contact(models.Model):
 
     def __unicode__(self):
         return self.email
+
+
+class Faq(models.Model):
+    """FAQs"""
+    question = models.TextField(max_length=500)
+    answer = models.TextField(max_length=1000)
+
+    def __unicode__(self):
+        return self.question

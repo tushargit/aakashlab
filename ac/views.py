@@ -7,6 +7,7 @@ from django.contrib import messages
 # Models
 from ac.models import AakashCenter, Coordinator
 from ac.models import Project, Mentor, TeamMember
+from ac.models import Faq
 
 # Forms
 from ac.forms import ContactForm
@@ -52,6 +53,19 @@ def contact(request):
 
     context_dict = {'contactform': contactform}
     return render_to_response('contact.html', context_dict, context)
+
+
+def faq(request):
+    """Display FAQs.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)
+
+    faqs = Faq.objects.all()
+    context_dict = {'faqs': faqs}
+    return render_to_response('faqs.html', context_dict, context)
 
 
 def all_ac(request):

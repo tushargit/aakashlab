@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+<div class="container" style="padding-top:2.5cm;">
+  <h1><span class="glyphicon glyphicon-info-sign">
+    </span>
+    FAQs
+    <span class="text-muted">({{faqs|length}})
+    </span>
+  </h1>
+  <hr>
+  {% if faqs %}
+  {% for faq in faqs %}
+  <h4><p class="lead text-info">
+      <strong>{{forloop.counter}}.</strong>
+      {{faq.question}}</p></h4>
+  <span class="glyphicon glyphicon-hand-right">
+  </span>
+  <pre class="pre-scrollable">
+    {{faq.answer}}
+  </pre>
+  <hr>
+  {% endfor %}
+  {% else %}
+  <p class="text-muted">No FAQs.</p>
+  {% endif %}
+</div>
+{% endblock body_block %}
