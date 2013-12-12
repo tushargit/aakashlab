@@ -30,3 +30,10 @@ $('#suggest_ac_state').keyup(function(){
     });
 });
 
+$('#suggest_project_name').keyup(function(){
+    var query;
+    query = $(this).val();
+    $.get('/ac/suggest_project/', {suggest_project_name: query}, function(data){
+	$('#cats').html(data);
+    });
+});

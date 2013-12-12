@@ -15,7 +15,7 @@ from ac.forms import ContactForm
 # Local libs
 from get_list import get_ac_id_list, get_ac_city_list
 from get_list import get_ac_name_list, get_ac_state_list
-
+from get_list import get_project_list
 
 def index(request):
     """Index page.
@@ -74,7 +74,7 @@ def faq(request):
 
 def all_ac(request):
     context = RequestContext(request)
-    aakashcenters = AakashCenter.objects.all()
+    aakashcenters = AakashCenter.objects.order_by('ac_id')
     coordinators = Coordinator.objects.all()
 
     context_dict = {'aakashcenters': aakashcenters,
@@ -154,6 +154,30 @@ def suggest_ac_state(request):
     context_dict = {'aakashcenters': ac_state_list}
 
     return render_to_response('ac/ac_list.html',
+                              context_dict, context)
+
+
+def suggest_project_name(request):
+    """Suggest project name on '/ac/projects/' | project_list.html page.
+    
+    Arguments:
+    - `request`:
+
+    """
+    context = RequestContext(request)
+    
+    if request.method == 'GET':
+        starts_with = request.GET['suggest_project_name']
+        print "GET: suggestion"
+        print starts_with
+    else:
+        print "POST: suggestion"
+        starts_with = request.POST['suggest_project_name']
+
+    project_list = get_project_list(10, starts_with)
+    
+    context_dict = {'projects': project_list}
+    return render_to_response('ac/project_list.html',
                               context_dict, context)
 
 

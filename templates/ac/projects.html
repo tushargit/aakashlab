@@ -15,76 +15,22 @@
 
     <table class="table-responsive">
       <tr>
-	<td align="center"><strong class="text-muted">Project</strong>
+	<td align="center">
 	  <form>
-      	    <input type="text" class="form-control" placeholder="Search by Project name..."
-      		   value="" name="suggest_ac_id" id="suggest_ac_id">
-	  </form>
-	</td>
-	<td align="center"><strong class="text-muted">Center name</strong>
-	  <form>
-      	    <input type="text" class="form-control" placeholder="Search by Center name..."
-      		   value="" name="suggest_ac_name" id="suggest_ac_name">
+      	    <input type="text" class="form-control"
+		   placeholder="Search by Project name..."
+      		   value="" name="suggest_project_name"
+		   id="suggest_project_name">
 	  </form>
 	</td>
 	<!-- <td>Coordinator</td> -->
       </tr>
     </table>
-    <br>
-    {% if projects %}
-    <div class="downloads_div">
-      <table class="bordered table-responsive" align="center">
-	<tr>
-	  <td align="center"><strong>Icon</strong></td>
-	  <td align="center"><strong>Project name</strong></td>
-	  <td align="center"><strong>Docs</strong></td>
-	  <td align="center"><strong>Source code</strong></td>
-	  <td align="center"><strong>Download</strong></td>
-	</tr>
-	{% for i in projects %}
-	<tr>
-          <td>
-            {% if i.logo %}
-	    <img src="media/{{i.logo}}" height="60" width="60"
-		 class="img-rounded img-responsive">
-	    {% else %}
-	    <img src="{% static 'images/no_image_available.png' %}" height="60" width="60" class="img-thumbnail">
-	    {% endif %}
-	  </td>
-	  <td><a href="/ac/project/{{i.id}}"><strong>{{i.name}}</strong></a>
-	    <p class="text-muted"><a class="text-muted" href="/ac/{{i.ac.id}}">{{i.ac.name}}</a></p>
-	  </td>
-          
-	  <!--   <td>{{i.download_count}}</td>   -->
-	  <td><a href={{i.doc_url}}>
-	      <i class="fa fa-files-o fa-4x"></i>
-	    </a>
-	  </td>
-	  <td align="center"><a href={{i.src_url}}>
-	      <i class="fa fa-github-alt fa-4x"></i>
-	    </a>
-	  </td>
-	  <td>
-	    <form id="download_project_form" method="post">
-	      {% csrf_token %}
-	    <button name="download" value={{i.id}} class="btn btn-primary btn-sm">
-		<i class="glyphicon glyphicon-download-alt"></i>
-		{{i.download_count}} download{{i.download_count|pluralize}}
-	    </button>
-	    </form>
-	  </td>         
-	</tr>  
-	{% endfor %}
-      </table>
-    </div>
-    {% else %}
-    <p>No projects.</p>
-    {% endif %}
+
+    <div id="cats">
+      {% include 'ac/project_list.html' with projects=projects %}
+    </div> <!-- cats -->
   </div>
-  <!-- <div id="cats"> -->
-  <!--   {% include 'ac/ac_list.html' with aakashcenters=aakashcenters %} -->
-  <!-- </div> <\!-- cats -\-> -->
-</div>
 </div>
 
 <script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
