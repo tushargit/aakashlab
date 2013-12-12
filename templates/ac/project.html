@@ -3,9 +3,10 @@
 
 {% block body_block %}
 <div class="container" style="padding-top:2.5cm;">
+  {% if project %}
   <div class="well">
+    
     <div class="row well">
-      
       <div class="col-md-3 col-md-offset-2">
 	{% if project.logo %}
 	<img src="media/{{project.logo}}" height="100" width="150"
@@ -21,8 +22,8 @@
 	<p class="text-muted">By <strong><a href="/ac/{{project.ac.id}}">{{project.ac}}</a></strong> (RC_ID: {{project.ac.ac_id}})</p>
 	<p class="text-muted"><strong>{{project.ac.city}}, {{project.ac.state}}</strong></p> 
       </div>
-
       </div> <!-- row well-->
+    
       <div class="well">
 	<div class="row"  >
 	  <div class="col-md-3">
@@ -72,5 +73,10 @@
 
       <p class="text-muted" align="center">Date uploaded : {{project.date_uploaded}}</p>      
     </div> <!-- well -->
+  {% else %}
+  <div class="well" align="center">
+  <p class="text-info">No project found.</p>
+  </div>
+  {% endif %}
   </div> <!-- container -->
 {% endblock body_block %}

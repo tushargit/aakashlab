@@ -310,7 +310,10 @@ def project(request, id):
 
         
     # print id
-    project = Project.objects.get(pk=id)
+    try:
+        project = Project.objects.get(pk=id)
+    except:
+        project = None
     
     context_dict = {'project': project}
     return render_to_response('ac/project.html', context_dict, context)

@@ -1,2 +1,4 @@
-* TODO
-  - BUG: Project matching query does not exist.
+** DONE Project matching query does not exist.
+** TODO Login form.
+** TODO Registration form.
+** TODO FAQ form.
