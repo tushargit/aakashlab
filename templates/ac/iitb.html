@@ -3,27 +3,26 @@
 
 {% block body_block %}
 <div class="container" style="padding-top:2.5cm;">
-  <div class="well">
-    <div class="row">
-      <div align="center">
-	<h2>{{iitb.name}}</h2>
-	<p class="text-muted"><strong>{{iitb.city}}, {{iitb.state}}</strong></p>
-      </div>
+  <div class="page-header" align="center">
+    <h1>Indian Institute of Technology <small>Bombay</small>
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col-md-12 well">
       {% for c in coordinator %}
-      <div class="col-md-12">
-      </div> <!-- col-md-12 -->
+      <!-- comment -->
       {% endfor %}
-      <div align="center">
-	  {% if projects %}
-	  <h3>List of project{{projects|pluralize}} <span class="badge">{{projects|length}}</span></h3>
-	  <table class="table table-responsive table-striped">
-	    <tr>
-	      <td align="center"><strong>Serial number</strong></td>
-	      <td align="center"><strong>Project name</strong></td>
-	      <td align="center"><strong>Download</strong></td>	      
-	    </tr>
-	    <form id="download_project_form" method="post">
-	      {% csrf_token %}
+      
+      {% if projects %}
+      <h3 align="center">List of project{{projects|pluralize}} <span class="badge">{{projects|length}}</span></h3>
+      <table class="table table-responsive table-striped">
+	<tr>
+	  <td align="center"><strong>Serial number</strong></td>
+	  <td align="center"><strong>Project name</strong></td>
+	  <td align="center"><strong>Download</strong></td>	      
+	</tr>
+	<form id="download_project_form" method="post">
+	  {% csrf_token %}
 	  {% for project in projects %}
 	  <tr>
 	    <td align="center">
@@ -41,16 +40,14 @@
 	    </td>
 	  </tr>
 	  {% endfor %}
-	  </form>
-	  </table>
-	  {% else %}
-	  <div class="container">
-	    No projects at IITB.
-	  </div>
-	  {% endif %}
+	</form>
+      </table>
+      {% else %}
+      <div>
+	<p>No projects at IITB.</p>
       </div>
+      {% endif %}
     </div> <!-- row -->
-
-  </div> <!-- well -->
-</div>	 <!-- container -->
-{% endblock body_block %}
+  </div>	 <!-- container -->
+  {% endblock body_block %}
+  

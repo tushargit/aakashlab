@@ -3,6 +3,8 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Models
 from ac.models import AakashCenter, Coordinator
@@ -311,3 +313,48 @@ def project(request, id):
     
     context_dict = {'project': project}
     return render_to_response('ac/project.html', context_dict, context)
+
+
+def user_login(request):
+    """Login form.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            # Is the account active? It could have been disabled.
+            if user.is_active:
+                # If the account is valid and active, we can log the user in.
+                # We'll send the user back to the homepage.
+                login(request, user)
+                return HttpResponseRedirect('/admin/')
+            else:
+                # An inactive account was used - no logging in!
+                messages.info(request, "Your account is disabled.")
+        else:
+            # Bad login details were provided. So we can't log the user in.
+            messages.error(request, "Bad login.")
+            return render_to_response('ac/login.html', context)
+    else:
+        return render_to_response('ac/login.html', context)
+
+
+@login_required
+def logout(request):
+    """Logout user.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)
+    logout(request)
+    return HttpResponseRedirect('/')    
+    
+        

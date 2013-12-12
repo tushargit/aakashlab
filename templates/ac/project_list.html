@@ -1,57 +1,55 @@
 {% load static %}
 
-<div class="downloads_div">
-  <p class="text-info">Found {{projects|length}} result{{projects|length|pluralize}}.</p>
-  {% if projects %}
-  <table class="bordered table-responsive" align="center">
-    <tr>
-      <td align="center"><strong>Icon</strong></td>
-      <td align="center"><strong>Project name</strong></td>
-      <td align="center"><strong>Docs</strong></td>
-      <td align="center"><strong>Source code</strong></td>
-      <td align="center"><strong>Download</strong></td>
-    </tr>
-    {% for i in projects %}
-    <tr>
-      <td>
-	{% if i.logo %}
-	<img src="media/{{i.logo}}" height="60" width="60"
-	     class="img-rounded img-responsive">
-	{% else %}
-	<img src="{% static 'images/no_image_available.png' %}"
-	     height="60" width="60" class="img-thumbnail">
-	{% endif %}
-      </td>
-      
-      <td><a href="/ac/project/{{i.id}}"><strong>{{i.name}}</strong></a>
-	<p class="text-muted"><a class="text-muted"
-				 href="/ac/{{i.ac.id}}">{{i.ac.name}}</a></p>
-      </td>
-      
-      <td><a href={{i.doc_url}}>
-	  <i class="fa fa-files-o fa-4x"></i>
-	</a>
-      </td>
-      
-      <td align="center"><a href={{i.src_url}}>
-	  <i class="fa fa-github-alt fa-4x"></i>
-	</a>
-      </td>
-      
-      <td>
-	<form id="download_project_form" method="post">
-	  {% csrf_token %}
-	  <button name="download" value={{i.id}} class="btn btn-primary btn-sm">
-	    <i class="glyphicon glyphicon-download-alt"></i>
-	    {{i.download_count}} download{{i.download_count|pluralize}}
-	  </button>
-	</form>
-      </td>         
-    </tr>
+<br>
+<p class="text-info">Found {{projects|length}} result{{projects|length|pluralize}}.</p>
+{% if projects %}
+<table class="bordered table-responsive" align="center">
+  <tr>
+    <td align="center"><strong>Icon</strong></td>
+    <td align="center"><strong>Project name</strong></td>
+    <td align="center"><strong>Docs</strong></td>
+    <td align="center"><strong>Source code</strong></td>
+    <td align="center"><strong>Download</strong></td>
+  </tr>
+  {% for i in projects %}
+  <tr>
+    <td>
+      {% if i.logo %}
+      <img src="media/{{i.logo}}" height="60" width="60"
+	   class="img-rounded img-responsive">
+      {% else %}
+      <img src="{% static 'images/no_image_available.png' %}"
+	   height="60" width="60" class="img-thumbnail">
+      {% endif %}
+    </td>
+    
+    <td><a href="/ac/project/{{i.id}}"><strong>{{i.name}}</strong></a>
+      <p class="text-muted"><a class="text-muted"
+			       href="/ac/{{i.ac.id}}">{{i.ac.name}}</a></p>
+    </td>
+    
+    <td><a href={{i.doc_url}}>
+	<i class="fa fa-files-o fa-3x"></i>
+      </a>
+    </td>
+    
+    <td align="center"><a href={{i.src_url}}>
+	<i class="fa fa-github-alt fa-3x"></i>
+      </a>
+    </td>
+    
+    <td>
+      <form id="download_project_form" method="post">
+	{% csrf_token %}
+	<button name="download" value={{i.id}} class="btn btn-primary btn-sm">
+	  <i class="glyphicon glyphicon-download-alt"></i>
+	  {{i.download_count}} download{{i.download_count|pluralize}}
+	</button>
+      </form>
+    </td>         
+  </tr>
   {% endfor %}
-  </table>    
-  {% else %}
-  <p>Sorry. No project found.</p>
-  {% endif %}
-</div>
-
+</table>    
+{% else %}
+<p>Sorry. No project found.</p>
+{% endif %}

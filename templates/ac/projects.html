@@ -4,15 +4,12 @@
 {% block body_block %}
 
 <link href="{% static 'css/project_list.css' %}" rel="stylesheet">
-<link href="{% static 'font-awesome-4.0.3/css/font-awesome.min.css' %}"
-      rel="stylesheet">
-
 <div class="container" style="padding-top:2.5cm;" align="center">
-  <div class="well">
     <div class="page-header">
-      <h1>All Projects<small> by Aakash Centers.</small></h1>
+      <h1>Projects<small> @ aakashlabs</small></h1>
     </div>
-
+    <div class="row">
+  <div class="col-md-12 well">
     <table class="table-responsive">
       <tr>
 	<td align="center">
@@ -30,7 +27,8 @@
     <div id="cats">
       {% include 'ac/project_list.html' with projects=projects %}
     </div> <!-- cats -->
-  </div>
+  </div>   <!-- col-md-12 -->
+  </div>   <!-- row -->
 </div>
 
 <script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>

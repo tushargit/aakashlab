@@ -3,13 +3,13 @@
 
 {% block body_block %}
 <div class="container" style="padding-top:2.5cm;">
+  <div class="page-header">
+      <h1><i class="fa fa-phone"></i> Contact us |<small> We’re here to help with any
+      questions or comments. Visit <a href="/faqs/">FAQs</a>.</small>
+      </h1>
+  </div>
   <div class="row">
-
     <div class="col-lg-6 well">
-      <h2><span class="glyphicon glyphicon-pencil"></span> Contact us </h2>
-      <p class="text-muted"> We’re here to help with any
-      questions or comments. Your question may be already answers in
-      our <a href="/faqs/">FAQs</a> section.</p>
       <form role="form" id="contact-us" method="post"
 	    enctype="multipart/form-data">
 	{% csrf_token %}
@@ -52,7 +52,7 @@
     
     
     <div class="col-lg-6" align="center">
-      <br><br><br><br><br><br>
+      <br><br><br><br>
       <span class="glyphicon glyphicon-home"></span>
       <address>
         <strong>Aakash Lab</strong><br>
