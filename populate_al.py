@@ -89,7 +89,7 @@ def add_coordinator(user, contact, picture):
     up.save()
 
 def add_ac(ac_id, name, city, state, coordinator, status):
-    ac = AakashCenter(ac_id=ac_id, name=name, city=city,
+    ac = AakashCentre(ac_id=ac_id, name=name, city=city,
                       state=state, coordinator=coordinator,
                       status=status)
     ac.save()
@@ -102,7 +102,7 @@ def add_faq(question, answer):
 if __name__ == '__main__':
     print "Starting Aakashlabs population script..."
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'aakashlabs.settings')
-    from ac.models import AakashCenter, Coordinator
+    from ac.models import AakashCentre, Coordinator
     from ac.models import Faq
     from django.contrib.auth.models import User
 

@@ -8,11 +8,11 @@
     <div class="row well">
       <div class="col-md-3 col-md-offset-2">
 	{% if project.logo %}
-	<img src="media/{{project.logo}}" height="100" width="150"
+	<img src="media/{{project.logo}}" height="150" width="150"
 	     class="img-rounded img-responsive">
 	{% else %}
 	<img src="{% static 'images/no_image_available.png' %}"
-	     height="60" width="60" class="img-rounded img-responsive ">
+	     height="150" width="150" class="img-rounded img-responsive ">
 	{% endif %}
       </div>
       
@@ -32,7 +32,7 @@
 	    {{forloop.counter}}. {{member}}<br/>
 	    {% endfor %}
 	    {% else %}
-	    No team members.
+	    <p>No team members.</p>
 	    {% endif %}
 
 	    {% if project.mentor.all %}
@@ -41,7 +41,7 @@
 	    {{forloop.counter}}. {{mentor}}<br/>
 	    {% endfor %}
 	    {% else %}
-	    No mentors.
+	    <p>No mentors.</p>
 	    {% endif %}
 	  </div> <!-- col-md-3 -->
 	  
@@ -54,6 +54,11 @@
 	    
 	    <strong class="text-info">Source code:</strong>
 	    <p align="justify"><a href={{project.src_url}}>{{project.src_url}}</a></p>
+
+	    {% if project.additional_url %}
+	    <strong class="text-info">Additional URL:</strong>
+	    <p align="justify"><a href={{project.additional_url}}>{{project.additional_url}}</a></p>
+	    {% endif %}
 	  </div> <!-- col-md-9 -->
 	</div> <!-- row -->
 

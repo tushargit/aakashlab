@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 # Models
-from ac.models import AakashCenter, Coordinator
+from ac.models import AakashCentre, Coordinator
 from ac.models import Project, Mentor, TeamMember
 from ac.models import Faq
 
@@ -76,10 +76,10 @@ def faq(request):
 
 def all_ac(request):
     context = RequestContext(request)
-    aakashcenters = AakashCenter.objects.order_by('ac_id')
+    aakashcentres = AakashCentre.objects.order_by('ac_id')
     coordinators = Coordinator.objects.all()
 
-    context_dict = {'aakashcenters': aakashcenters,
+    context_dict = {'aakashcentres': aakashcentres,
                     'coordinators': coordinators}
 
     return render_to_response('ac/all_ac.html', context_dict, context)
@@ -98,7 +98,7 @@ def suggest_ac_id(request):
 
     ac_id_list = get_ac_id_list(10, starts_with)
     
-    context_dict = {'aakashcenters': ac_id_list}
+    context_dict = {'aakashcentres': ac_id_list}
 
     return render_to_response('ac/ac_list.html',
                               context_dict, context)
@@ -117,7 +117,7 @@ def suggest_ac_name(request):
 
     ac_name_list = get_ac_name_list(10, starts_with)
     
-    context_dict = {'aakashcenters': ac_name_list}
+    context_dict = {'aakashcentres': ac_name_list}
 
     return render_to_response('ac/ac_list.html',
                               context_dict, context)
@@ -153,7 +153,7 @@ def suggest_ac_state(request):
 
     ac_state_list = get_ac_state_list(10, starts_with)
     
-    context_dict = {'aakashcenters': ac_state_list}
+    context_dict = {'aakashcentres': ac_state_list}
 
     return render_to_response('ac/ac_list.html',
                               context_dict, context)
@@ -222,10 +222,10 @@ def ac(request, id):
         # Server apk for download
         return response
         
-    aakashcenter = AakashCenter.objects.get(pk=id)
+    aakashcentre = AakashCentre.objects.get(pk=id)
     # print id
-    # print aakashcenter.ac_id
-    coordinator_name = aakashcenter.coordinator
+    # print aakashcentre.ac_id
+    coordinator_name = aakashcentre.coordinator
     # print coordinator_name.id
     # print coordinator_name.user_id
     coordinator = Coordinator.objects.filter(id=coordinator_name.id)
@@ -234,7 +234,7 @@ def ac(request, id):
 
     projects = Project.objects.filter(ac=id)
     
-    context_dict = {'aakashcenter': aakashcenter,
+    context_dict = {'aakashcentre': aakashcentre,
                     'coordinator': coordinator,
                     'projects': projects}
     return render_to_response('ac/ac.html', context_dict, context)
@@ -269,8 +269,26 @@ def iitb(request):
     """List all projects at iitb.
     IITB has RC_ID=0."""
     context = RequestContext(request)
+
+    # download APK 
+    if request.POST and request.POST['download']:
+        project = get_object_or_404(Project, id=request.POST['download'])
+        file_path = project.apk
+        response = HttpResponse(
+            file_path,
+            mimetype="application/vnd.android.package-archive")
+        response['Content-Disposition'] = 'attachment; filename=%s' % project.apk
+
+        # increment download count
+        count = project.download_count + 1
+        project.download_count = count
+        project.save()
+
+        # server file for download.
+        return response
+        
     try:
-        iitb = AakashCenter.objects.get(ac_id=0)
+        iitb = AakashCentre.objects.get(ac_id=0)
         coordinator = iitb.coordinator
         coordinator = Coordinator.objects.filter(id=coordinator.id)
         projects = Project.objects.filter(ac=iitb.id)

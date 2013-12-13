@@ -15,8 +15,8 @@ class Coordinator(models.Model):
         return self.user.username
 
 
-class AakashCenter(models.Model):
-    """Aakash centers.
+class AakashCentre(models.Model):
+    """Aakash centres.
     """
     ac_id = models.IntegerField(max_length=6, unique=True)
     quantity = models.IntegerField(max_length=7, default=0)
@@ -46,13 +46,14 @@ class Mentor(models.Model):
         
 class Project(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    ac = models.ForeignKey(AakashCenter)
+    ac = models.ForeignKey(AakashCentre)
     summary = models.TextField(max_length=500, unique=True)
-    member = models.ManyToManyField(TeamMember)
-    mentor = models.ManyToManyField(Mentor)
+    member = models.ManyToManyField(TeamMember, blank=True)
+    mentor = models.ManyToManyField(Mentor, blank=True)
     src_url = models.URLField()
     doc_url = models.URLField()
     apk = models.FileField(upload_to='apk')
+    additional_url = models.URLField(blank=True)
     logo = models.ImageField(upload_to='project_logo', blank=True)
     download_count = models.IntegerField(default=0)
     date_uploaded = models.DateField(auto_now=True)

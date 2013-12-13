@@ -1,15 +1,15 @@
-{% if aakashcenters %}
+{% if aakashcentres %}
 <table class="table table-responsive table-striped"
        border=0>
   <tr>
     <td align="center"><strong>RC-ID</strong></td>
-    <td align="center"><strong>Center name</strong></td>
+    <td align="center"><strong>Centre name</strong></td>
     <td align="center"><strong>City</strong></td>
     <td align="center"><strong>State</strong></td>
     <!-- <td>Coordinator</td> -->
   </tr>
-  <p class="text-info">Found {{aakashcenters|length}} result{{aakashcenters|length|pluralize}}.</p>
-  {% for ac in aakashcenters %}
+  <p class="text-info">Found {{aakashcentres|length}} result{{aakashcentres|length|pluralize}}.</p>
+  {% for ac in aakashcentres %}
   <tr>
     <td align="center"><strong>{{ac.ac_id}}</strong></td>
     <td align="center"><a href="/ac/{{ac.id}}"><strong>{{ac.name}}</strong></a></td>
