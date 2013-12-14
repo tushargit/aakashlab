@@ -7,7 +7,7 @@ import ac_list
 
 def populate_users():
 
-    # Admin 
+    # Admin
     os.system("python manage.py syncdb --noinput")
     os.system("python manage.py createsuperuser --username=admin --email=admin@example.com")
     """

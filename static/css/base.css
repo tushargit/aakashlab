@@ -1,5 +1,11 @@
 /* base.css| for navbar */
 
+body {
+    padding:0;
+    margin:0;
+    border:0;
+}
+
 .navbar {
     top:2%;
     margin-left:0%;
@@ -190,5 +196,45 @@
     }
 }
 
+footer {
+    min-height:200px;
+    background:#424242;
+    color:#ffffff;
+}
 
+#footer-inner {
+    border-bottom:1px solid #000000;
+}
 
+#social, #mhrd {
+    position: relative;
+    height: 200px;
+    
+}
+
+#social-icons {
+    margin-top:23%;
+    text-align:center;
+}
+
+#mhrd img {
+    margin-top:15%;
+    
+}
+
+#iitb {
+    padding-top:2%;
+}
+
+#social a:hover{
+  text-decoration: none;
+}
+
+#social img {
+  margin-left: 7px;
+  width: 40px;
+}
+
+#credits {
+    padding:10px 0;
+}

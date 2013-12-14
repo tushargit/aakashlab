@@ -13,8 +13,8 @@
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen">
     <link href="{% static 'css/bootstrap-theme.css' %}" rel="stylesheet">
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <link href="{% static 'font-awesome-4.0.3/css/font-awesome.min.css' %}"
 	  rel="stylesheet">
 
@@ -203,13 +203,56 @@
 
 
       <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">Privacy</a> &middot;<a href="#">Terms</a></p></p>
-        <p>&copy; 2013 IIT Bombay.</p>  
-      </footer>
 
     </div><!-- /.container -->
+    <footer>
+      <div id="footer-inner" class="container">
+      <div class="col-lg-4" align="center" id="mhrd">
+        <a href="#">
+          <img src="{% static 'images/mhrd-logo.png' %}" alt="mhrd-logo">
+        </a>
+      </div>
+      <div class="col-lg-4" id="iitb" >
+        <center>
+          <img src="{% static 'images/iitb-logo.gif' %}" alt="iitb-logo">
+        </center>
+        <p align="justify">
+          The Indian Institute of Technology Bombay is a public
+          engineering institution located in Powai, Mumbai, India. It
+          has been ranked among the top engineering colleges in
+          India. 
+        </p>
+      </div>
 
+      <div class="col-lg-4" id="social">
+	<div id="social-icons">
+        <a href="#">
+          <img src="{% static 'images/twitter.png' %}" alt="twitter">
+        </a>
+        <a href="https://github.com/androportal">
+          <img src="{% static 'images/github-white.png' %}" alt="github">
+        </a>
+        <a href="#">
+          <img src="{% static 'images/googleplus.png' %}" alt="googleplus">
+        </a>
+        <a href="#">
+          <img src="{% static 'images/facebook.png' %}" alt="facebook">
+        </a>
+        <a href="http://www.youtube.com/user/theaakashtablet">
+          <img src="{% static 'images/youtube.png' %}" alt="youtube">
+        </a>
+	</div>
+      </div>
+
+      </div> <!-- container -->
+      
+      <div class="container" id="credits">
+      	<div class="pull-left"> &copy; 2013 IIT Bombay.</div>
+        <div class="pull-right"><a href="#">Privacy</a> &middot;<a href="#">Terms</a></div>
+      </div>
+
+      
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

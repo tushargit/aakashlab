@@ -352,7 +352,10 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return HttpResponseRedirect('/admin/')
+                return HttpResponse('<html>\
+                <h1>Welcome, user!</h1>\
+                <body>Currently we have nothing here. Please login as <a href="/admin/">admin</a></body>\
+                </html>')
             else:
                 # An inactive account was used - no logging in!
                 messages.info(request, "Your account is disabled.")
