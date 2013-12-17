@@ -238,3 +238,25 @@ footer {
 #credits {
     padding:10px 0;
 }
+
+.active{	
+font-weight:900;
+}
+
+.nav.navbar-nav li a{
+color:#999;
+}
+
+.nav.navbar-nav li a:hover{
+color:#FFF;
+}
+
+a{
+color:rgb(52, 152, 219);
+}
+
+a:hover{
+color:rgb(52, 200, 255);
+}
+
+
