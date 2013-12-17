@@ -76,7 +76,7 @@ def faq(request):
 
 def all_ac(request):
     context = RequestContext(request)
-    aakashcentres = AakashCentre.objects.order_by('ac_id')
+    aakashcentres = AakashCentre.objects.filter(active=True).order_by('ac_id')
     coordinators = Coordinator.objects.all()
 
     context_dict = {'aakashcentres': aakashcentres,
@@ -232,7 +232,7 @@ def ac(request, id):
     coordinator_detail = User.objects.get(id=coordinator_name.user_id)
     # print coordinator_detail.first_name
 
-    projects = Project.objects.filter(ac=id)
+    projects = Project.objects.filter(approve=True, ac=id)
     
     context_dict = {'aakashcentre': aakashcentre,
                     'coordinator': coordinator,
@@ -261,7 +261,7 @@ def projects(request):
         # Server apk for download
         return response
 
-    projects = Project.objects.all()
+    projects = Project.objects.filter(approve=True)
     context_dict = {'projects': projects}
     return render_to_response('ac/projects.html', context_dict, context)
 
@@ -291,7 +291,7 @@ def iitb(request):
         iitb = AakashCentre.objects.get(ac_id=0)
         coordinator = iitb.coordinator
         coordinator = Coordinator.objects.filter(id=coordinator.id)
-        projects = Project.objects.filter(ac=iitb.id)
+        projects = Project.objects.filter(approve=True, ac=iitb.id)
     except:
         iitb = None
         coordinator = None
