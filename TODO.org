@@ -1,4 +1,13 @@
 ** DONE Project matching query does not exist.
-** TODO Login form.
+** DONE Login form.
 ** TODO Registration form.
-** TODO FAQ form.
+** DONE FAQ form.
+** TODO Search projects w.r.t Aakash Centre.
+** TODO Populate every thing by parsing xls -> csv -> py to db.
+** TODO Aakash Centre/Coordinator Form.
+** TODO Project Form
+** TODO Navbar IITB icon and Aakash icon still not aligned when size of browser 
+   change.
+
+
+
