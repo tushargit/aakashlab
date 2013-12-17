@@ -135,7 +135,7 @@ def suggest_ac_city(request):
 
     ac_city_list = get_ac_city_list(10, starts_with)
     
-    context_dict = {'aakashcenters': ac_city_list}
+    context_dict = {'aakashcentres': ac_city_list}
 
     return render_to_response('ac/ac_list.html',
                               context_dict, context)
