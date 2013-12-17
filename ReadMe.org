@@ -26,7 +26,7 @@
      - =populate_al.py= will create an Admin user and populates the
        database.
 
-     - And run the script(Not working temporarily)
+     - And run the script
        #+BEGIN_SRC sh 
          python populate_al.py
        #+END_SRC sh
