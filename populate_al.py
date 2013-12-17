@@ -6,11 +6,11 @@ import ac_list
 
 
 def populate_users():
-
+    """Populate Coordinators."""
     # Admin
     os.system("python manage.py syncdb --noinput")
     os.system("python manage.py createsuperuser --username=admin --email=admin@example.com")
-    """
+
     for u in coordinators_list.users:
         # Normal users
         print "Adding user: %s" % u['USERNAME']
@@ -29,18 +29,22 @@ def populate_users():
         print "Following user(s) created successfully."
         for i in user_list:
             print i.username
-    """
-def populate_ac():
 
+
+def populate_ac():
+    """Populate Aakash Centres."""
     for ac in ac_list.acs:
         print "Adding AC: %s has coordinator: %s" % (ac['NAME'], ac['COORDINATOR'])
+        usr_instance = User.objects.get(username=ac['COORDINATOR'])
+        coordinator_instance = Coordinator.objects.get(user=usr_instance)
         add_ac(
             ac_id=ac['RC_ID'],
             name=ac['NAME'],
-            coordinator=User.objects.get(username=ac['COORDINATOR']),
+            coordinator=coordinator_instance,
+            #coordinator=User.objects.get(username=ac['COORDINATOR']),
             city=ac['CITY'],
             state=ac['STATE'],
-            status=True)
+            active=True)
 
 
 def populate_faq():
@@ -88,10 +92,10 @@ def add_coordinator(user, contact, picture):
     up = Coordinator(user=user, contact=contact, picture=picture)
     up.save()
 
-def add_ac(ac_id, name, city, state, coordinator, status):
+def add_ac(ac_id, name, city, state, coordinator, active):
     ac = AakashCentre(ac_id=ac_id, name=name, city=city,
                       state=state, coordinator=coordinator,
-                      status=status)
+                      active=active)
     ac.save()
 
 def add_faq(question, answer):
@@ -110,5 +114,5 @@ if __name__ == '__main__':
         os.system("rm ac.db")
 
     populate_users()
-    # populate_ac()
+    populate_ac()
     populate_faq()
