@@ -32,13 +32,15 @@ class AakashCentre(models.Model):
         
 class TeamMember(models.Model):
     name = models.CharField(max_length=200, blank=True)
-
+    email = models.EmailField(blank=True)
+    
     def __unicode__(self):
         return self.name
 
         
 class Mentor(models.Model):
     name = models.CharField(max_length=200, blank=True)
+    email = models.EmailField(blank=True)
     
     def __unicode__(self):
         return self.name
