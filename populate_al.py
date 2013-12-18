@@ -3,12 +3,14 @@ import sys
 import store
 import coordinators_list
 import ac_list
-
+import project_list
 
 def populate_users():
     """Populate Coordinators."""
     # Admin
     os.system("python manage.py syncdb --noinput")
+    # os.system("python manage.py schemamigration ac --initial")
+    # os.system("python manage.py migrate ac")    
     os.system("python manage.py createsuperuser --username=admin --email=admin@example.com")
 
     for u in coordinators_list.users:
@@ -41,10 +43,50 @@ def populate_ac():
             ac_id=ac['RC_ID'],
             name=ac['NAME'],
             coordinator=coordinator_instance,
-            #coordinator=User.objects.get(username=ac['COORDINATOR']),
             city=ac['CITY'],
             state=ac['STATE'],
             active=True)
+
+
+def populate_project():
+    """Populate projects."""
+
+    print "Populating projects.."
+    for project in project_list.projects:
+        if project['AC_ID'] == "0":
+            print "Project: %s doest not have a valid AC_ID." % project['NAME']
+        else:
+            print "RC_ID: %s" % project['AC_ID']
+            print "Project name: %s" % project['NAME'][:1].upper() + project['NAME'][1:].lower()
+        
+            inst_name = AakashCentre.objects.get(ac_id=project['AC_ID'])
+            member = TeamMember(name=project['MEMBER'], email=project['MEMBER_EMAIL'])
+            member.save()
+
+            demo = Project(
+                name=project['NAME'][:1].upper() + project['NAME'][1:].lower(),
+                ac=inst_name,
+                summary=project['DESCRIPTION'],
+                src_url=project['SRC_CODE'],
+                doc_url="",
+                approve=True)
+
+            demo.save()
+            demo.member.add(member)
+        
+    """"
+    # working
+    inst_name = AakashCentre.objects.get(ac_id=1002)
+
+    sachin = TeamMember(name="sachin", email="isachin@github.com")
+    sachin.save()
+
+    ac = AakashCentre.objects.get(ac_id=1001)
+    demo = Project(name="demo", ac=inst_name, summary="demo desc.",
+                   src_url="http://google.com", doc_url="http://google.com")
+    demo.save()
+    demo.member.add(sachin)
+    """
 
 
 def populate_faq():
@@ -98,9 +140,24 @@ def add_ac(ac_id, name, city, state, coordinator, active):
                       active=active)
     ac.save()
 
+
 def add_faq(question, answer):
     faq = Faq(question=question, answer=answer)
     faq.save()
+
+
+def add_project(name, ac, summary, team_member, src_url, doc_url=None,
+                approve=False):
+    project = Project(name=name, ac=ac, summary=summary,
+                      src_url=src_url, doc_url=doc_url, approve=approve)
+    project.save()
+    project.member.add(team_member)
+
+
+def add_member(name, email):
+    member = TeamMember(name=name, email=email)
+    member.save()
+
     
 # start execution here!
 if __name__ == '__main__':
@@ -108,6 +165,7 @@ if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'aakashlabs.settings')
     from ac.models import AakashCentre, Coordinator
     from ac.models import Faq
+    from ac.models import Mentor, TeamMember, Project
     from django.contrib.auth.models import User
 
     if os.path.exists('ac.db'):
@@ -116,3 +174,4 @@ if __name__ == '__main__':
     populate_users()
     populate_ac()
     populate_faq()
+    populate_project()
