@@ -37,6 +37,15 @@ def about(request):
     return render_to_response('about.html')
 
 
+def compete(request):
+    """Competition page.
+
+    Arguments:
+    - `Request`:
+    """
+    return render_to_response('compete.html')    
+
+
 def contact(request):
     """Contact us page.
 
@@ -267,7 +276,7 @@ def projects(request):
 
 def iitb(request):
     """List all projects at iitb.
-    IITB has RC_ID=0."""
+    IITB has RC_ID=1000."""
     context = RequestContext(request)
 
     # download APK 
@@ -288,7 +297,7 @@ def iitb(request):
         return response
         
     try:
-        iitb = AakashCentre.objects.get(ac_id=0)
+        iitb = AakashCentre.objects.get(ac_id=1000)
         coordinator = iitb.coordinator
         coordinator = Coordinator.objects.filter(id=coordinator.id)
         projects = Project.objects.filter(approve=True, ac=iitb.id)

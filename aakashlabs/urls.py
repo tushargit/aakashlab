@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'ac.views.index', name='index'),
     url(r'^about/$', 'ac.views.about', name='about'),
+    url(r'^compete/$', 'ac.views.compete', name='compete'),
     url(r'^contact/$', 'ac.views.contact', name='contact'),
     url(r'^faqs/$', 'ac.views.faq', name='faq'),
     url(r'^ac/', include('ac.urls')),                       

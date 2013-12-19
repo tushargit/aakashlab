@@ -1,5 +1,5 @@
 {% if aakashcentres %}
-<table class="table table-responsive table-striped"
+<table class="table table-responsive table-bordered table-striped"
        border=0>
   <tr>
     <td align="center"><strong>RC-ID</strong></td>
@@ -8,7 +8,7 @@
     <td align="center"><strong>State</strong></td>
     <!-- <td>Coordinator</td> -->
   </tr>
-  <p class="text-info">Found {{aakashcentres|length}} result{{aakashcentres|length|pluralize}}.</p>
+  <p class="text-info">Found {{aakashcentres|length}} centre{{aakashcentres|length|pluralize}}.</p>
   {% for ac in aakashcentres %}
   <tr>
     <td align="center"><strong>{{ac.ac_id}}</strong></td>
