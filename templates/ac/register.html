@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+<div class="container" style="padding-top:2.5cm;">
+  <div class="page-header" align="center">
+      <h1><i class="fa fa-pencil"></i> Register <small> your Aakash
+      Centre.</small>
+      </h1>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <form role="form" id="register" method="post"
+	    enctype="multipart/form-data">
+	{% csrf_token %}
+	<!-- {{contactform.as_p}} -->
+	<!-- Success/Error messages -->
+	{% if messages %}
+	{% for message in messages %}
+	{% if message.tags == "success" %}
+	<p class="text-info" align="center"><strong>{{ message }}</strong></p>
+	{% else %}
+	<p class="text-danger" align="center"><strong>{{ message }}</strong></p>
+	{% endif %}
+	{% endfor %}
+	{% endif %} 
+	<!-- Success/Error messages ends here -->
+	
+	{{aakashcentreform.as_p}}
+	{{coordinatorform.as_p}}
+	{{userform.as_p}}
+	
+        <!-- <div class="form-group"> -->
+	<!--   <\!-- {{contactform.name.errors}} -\-> -->
+        <!--   <label for="id_name">Name</label> -->
+	<!--   {{contactform.name}} -->
+        <!-- </div> -->
+
+	<div align="center">
+        <input type="submit" name="register" class="btn btn-primary"
+	       value="Register" />
+	</div>
+
+      </form>
+    </div>
+    
+    
+  </div> <!-- row -->
+</div><!-- /.container -->
+{% endblock body_block %}
+

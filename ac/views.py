@@ -12,12 +12,14 @@ from ac.models import Project, Mentor, TeamMember
 from ac.models import Faq
 
 # Forms
-from ac.forms import ContactForm
+from ac.forms import ContactForm, AakashCentreForm
+from ac.forms import CoordinatorForm, UserForm
 
 # Local libs
 from get_list import get_ac_id_list, get_ac_city_list
 from get_list import get_ac_name_list, get_ac_state_list
 from get_list import get_project_list
+
 
 def index(request):
     """Index page.
@@ -342,6 +344,51 @@ def project(request, id):
     return render_to_response('ac/project.html', context_dict, context)
 
 
+def register(request):
+    """Registeration Form.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)
+    
+    if request.method == 'POST':
+        print "We've a request to register"
+        aakashcentreform = AakashCentreForm(data=request.POST)
+        coordinatorform = CoordinatorForm(data=request.POST)
+        userform = UserForm(data=request.POST)
+
+        if aakashcentreform.is_valid() and coordinatorform.is_valid() and userform.is_valid():
+            print "Forms are Valid"
+            user = userform.save(commit=False)
+            print user.username
+            print user.first_name
+            print user.password
+            user.save()
+
+            coordinator = coordinatorform.save(commit=False)
+            print coordinator.contact
+            coordinator.user = User.objects.get(username=user.username)
+            coordinator.save()
+            
+            aakashcentre = aakashcentreform.save(commit=False)
+            aakashcentre.coordinator = Coordinator.objects.get(user=coordinator.user)
+            aakashcentre.save()
+            print aakashcentre.ac_id
+        else:
+            if aakashcentreform.errors or coordinatorform.errors or userform.errors:
+                print aakashcentreform.errors, coordinatorform.errors, userform.errors
+    else:
+        aakashcentreform = AakashCentreForm()
+        coordinatorform = CoordinatorForm()
+        userform = UserForm()
+        
+    context_dict = {'aakashcentreform': aakashcentreform,
+                    'coordinatorform': coordinatorform,
+                    'userform': userform}
+    return render_to_response('ac/register.html', context_dict, context)
+
+    
 def user_login(request):
     """Login form.
     
@@ -387,4 +434,3 @@ def logout(request):
     logout(request)
     return HttpResponseRedirect('/')    
     
-        
