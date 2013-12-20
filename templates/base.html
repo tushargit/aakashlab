@@ -39,7 +39,7 @@
     <div class="navbar-wrapper">
       <div class="container">
         <div class="navbar navbar-inverse navbar-static-top" role="navigation">
-          <div class="container">
+          <div class="container nav-sub_container" >
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -47,11 +47,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/"><img src="{% static 'images/Aakash_logo.png' %}" alt="Aakash logo" width="80px" style="padding-left:5px;"></a>
+              <a class="navbar-brand" href="/"><img src="{% static 'images/Aakash_logo.png' %}" alt="Aakash logo" width="80px" style="padding-left:5px; position:absolute; left:5px; z-index:3;"></a>
               <a class="navbar-right-logo" href="/"><img src="{% static 'images/iitb_logo_white.png' %}" alt="IITB logo" width="55px"></a>
             </div>
             <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav nav-left">
                 <li class=""><a href="/">Home</a></li>
                 <li><a href="/about/">About</a></li>
 		<li><a href="/ac/">Aakash Centres</a></li>
@@ -69,6 +69,8 @@
                 <!--     <li><a href="#">One more separated link</a></li> -->
                 <!--   </ul> -->
                 <!-- </li> -->
+	      </ul>
+	      <ul class="nav navbar-nav nav-right">
 		<li><a href="/contact/">Contact Us</a></li>
 		{% if user.is_authenticated %}
 		<li><a href="#">Profile</a></li>
@@ -208,7 +210,9 @@
 	</div><!-- /.col-lg-4 -->
 
 	<div class="col-lg-4">
-	  <a style="text-decoration:none;" href="/compete/"><h3 class="lead">Compete</h3></a>
+	  <a style="text-decoration:none;"  href="/compete/"><h3 class="lead">Compete</h3></a>
+	  
+	  
 	</div><!-- /.col-lg-4 -->
 
 	<div class="col-lg-4">
@@ -243,15 +247,13 @@
     <footer>
       <div id="footer-inner" class="container">
       <div class="col-lg-4" align="center" id="mhrd">
-        <a href="http://mhrd.gov.in/">
+        <a href="#">
           <img src="{% static 'images/mhrd-logo.png' %}" alt="mhrd-logo">
         </a>
       </div>
       <div class="col-lg-4" id="iitb" >
         <center>
-	  <a href="http://iitb.ac.in/">
           <img src="{% static 'images/iitb-logo.gif' %}" alt="iitb-logo">
-	  </a>
         </center>
         <p align="justify">
           The Indian Institute of Technology Bombay is a public
@@ -285,7 +287,7 @@
       
       <div class="container" id="credits">
       	<div class="pull-left"> &copy; 2013 IIT Bombay.</div>
-        <div class="pull-right"><a href="#">Privacy</a> &middot; <a href="#">Terms</a></div>
+        <div class="pull-right"><a href="#">Privacy</a> &middot;<a href="#">Terms</a></div>
       </div>
       
     </footer>
