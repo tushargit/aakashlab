@@ -47,7 +47,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/"><img src="{% static 'images/Aakash_logo.png' %}" alt="Aakash logo" width="80px" style="padding-left:5px;"></a>
+              <a class="navbar-brand" href="/"><img src="{% static 'images/Aakash_logo.png' %}" alt="Aakash logo" width="80px" style="padding-left:5px; position:absolute; left:5px; z-index:3;"></a>
               <a class="navbar-right-logo" href="/"><img src="{% static 'images/iitb_logo_white.png' %}" alt="IITB logo" width="55px"></a>
             </div>
             <div class="navbar-collapse collapse">
@@ -74,7 +74,7 @@
 		<li><a href="#">Profile</a></li>
 		<li><a href="/logout/">Logout</a></li>
 		{% else %}
-		<li><a href="/ac/register/">Register</a></li>
+		<li><a href="#">Register</a></li>
 		<li><a href="/login/">Login</a></li>
 		{% endif %}
               </ul>
@@ -208,7 +208,9 @@
 	</div><!-- /.col-lg-4 -->
 
 	<div class="col-lg-4">
-	  <a style="text-decoration:none;" href="/compete/"><h3 class="lead">Compete</h3></a>
+	  <a style="text-decoration:none;"  href="/compete/"><h3 class="lead">Compete</h3></a>
+	  
+	  
 	</div><!-- /.col-lg-4 -->
 
 	<div class="col-lg-4">
@@ -243,15 +245,13 @@
     <footer>
       <div id="footer-inner" class="container">
       <div class="col-lg-4" align="center" id="mhrd">
-        <a href="http://mhrd.gov.in/">
+        <a href="#">
           <img src="{% static 'images/mhrd-logo.png' %}" alt="mhrd-logo">
         </a>
       </div>
       <div class="col-lg-4" id="iitb" >
         <center>
-	  <a href="http://iitb.ac.in/">
           <img src="{% static 'images/iitb-logo.gif' %}" alt="iitb-logo">
-	  </a>
         </center>
         <p align="justify">
           The Indian Institute of Technology Bombay is a public
@@ -285,7 +285,7 @@
       
       <div class="container" id="credits">
       	<div class="pull-left"> &copy; 2013 IIT Bombay.</div>
-        <div class="pull-right"><a href="#">Privacy</a> &middot; <a href="#">Terms</a></div>
+        <div class="pull-right"><a href="#">Privacy</a> &middot;<a href="#">Terms</a></div>
       </div>
       
     </footer>

@@ -27,7 +27,7 @@ body {
     top:0;
     right:0;
     /* float: right;*/
-    padding-right: 22px;
+    padding-right: 10px;
     font-size: 18px;
     padding-top:2px;
     line-height: 20px;
@@ -138,11 +138,21 @@ body {
 
     .navbar ul{
 	font-size:11px;
-	margin-left:-13px;
+	
     }
 
     .container{
 	width:100%;
+    }
+  .navbar-collapse .collapse{
+	text-align:center;
+	}
+    .navbar-nav{
+	margin:0 auto;
+padding-left:25px;
+	text-align:left;
+	width:645px;
+	float:none;
     }
 }
 
@@ -169,6 +179,16 @@ body {
     .navbar-nav{
 	margin-left:2%;
     }
+
+ .navbar-collapse .collapse{
+	text-align:center;
+	}
+    .navbar-nav{
+	margin:0 auto;
+	text-align:left;
+	width:760px;
+	float:none;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -190,9 +210,15 @@ body {
     #back_to_top{
 	width:4%;
     }
-
+	
+    .navbar-collapse .collapse{
+	text-align:center;
+	}
     .navbar-nav{
-	margin-left:10%;
+	margin:0 auto;
+	text-align:left;
+	width:760px;
+	float:none;
     }
 }
 
