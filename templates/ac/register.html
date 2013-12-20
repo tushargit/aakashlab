@@ -9,10 +9,9 @@
       </h1>
   </div>
   <div class="row">
-    <div class="col-lg-6 col-lg-offset-3">
-      <form role="form" id="register" method="post"
-	    enctype="multipart/form-data">
-	{% csrf_token %}
+    <form role="form" id="register" method="post"
+	  enctype="multipart/form-data">
+      {% csrf_token %}
 	<!-- {{contactform.as_p}} -->
 	<!-- Success/Error messages -->
 	{% if messages %}
@@ -25,27 +24,31 @@
 	{% endfor %}
 	{% endif %} 
 	<!-- Success/Error messages ends here -->
-	
+	<div class="col-lg-6">
+	  <h4>Aakash Centre details.</h4>
+	<hr>
 	{{aakashcentreform.as_p}}
-	{{coordinatorform.as_p}}
-	{{userform.as_p}}
 	
         <!-- <div class="form-group"> -->
 	<!--   <\!-- {{contactform.name.errors}} -\-> -->
         <!--   <label for="id_name">Name</label> -->
 	<!--   {{contactform.name}} -->
         <!-- </div> -->
+	</div> <!-- col-lg-6 -->
 
+	<div class="col-lg-6">
+	  <h4>Coordinator details.</h4>
+	  <hr>
+	  {{userform.as_p}}
+	  {{coordinatorform.as_p}}
+	</div>
 	<div align="center">
         <input type="submit" name="register" class="btn btn-primary"
 	       value="Register" />
 	</div>
-
-      </form>
-    </div>
-    
-    
+    </form>
   </div> <!-- row -->
+  
 </div><!-- /.container -->
 {% endblock body_block %}
 

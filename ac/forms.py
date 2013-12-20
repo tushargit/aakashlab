@@ -28,7 +28,7 @@ class ContactForm(forms.ModelForm):
 
 class AakashCentreForm(forms.ModelForm):
     """Register Aakash Centre."""
-    ac_id = forms.IntegerField(
+    ac_id = forms.IntegerField(label="Aakash Centre ID",
         widget= forms.TextInput(
             attrs={'class': 'form-control',
                    'placeholder': 'Aakash Centre ID or RC ID*.'}),
@@ -36,7 +36,7 @@ class AakashCentreForm(forms.ModelForm):
     quantity = forms.IntegerField(
         widget= forms.TextInput(
             attrs={'class': 'form-control',
-                   'placeholder': 'Number of tablets received at your centre.'}),
+                   'placeholder': 'Number of tablets received at your centre(Optional).'}),
         help_text="", required=False)
     name = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control',
@@ -74,22 +74,22 @@ class CoordinatorForm(forms.ModelForm):
     
 
 class UserForm(forms.ModelForm):
-    username = forms.CharField(
+    username = forms.CharField(label='Username',
         widget= forms.TextInput(
             attrs={'class': 'form-control',
-                   'placeholder': 'Coordinator name*.'}),
+                   'placeholder': 'Username to login*.'}),
             help_text="", required=True,
         error_messages={'required':'Username is required.'})
     first_name = forms.CharField(
         widget= forms.TextInput(
             attrs={'class': 'form-control',
-                   'placeholder': 'First name*.'}),
+                   'placeholder': 'Coordinator first name*.'}),
             help_text="", required=True,
         error_messages={'required':'First name is required.'})
     last_name = forms.CharField(
         widget= forms.TextInput(
             attrs={'class': 'form-control',
-                   'placeholder': 'Last name*.'}),
+                   'placeholder': 'Coordinator last name*.'}),
         help_text="", required=True,
         error_messages={'required':'Last name is required.'})
     email = forms.CharField(
