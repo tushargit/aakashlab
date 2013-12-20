@@ -17,18 +17,18 @@
       <h3 align="center">List of project{{projects|pluralize}} <span class="badge">{{projects|length}}</span></h3>
       <table class="table table-responsive table-striped">
 	<tr>
-	  <td align="center"><strong>Serial number</strong></td>
-	  <td align="center"><strong>Project name</strong></td>
-	  <td align="center"><strong>Download</strong></td>	      
+	  <td align="left"><strong>Serial number</strong></td>
+	  <td align="left"><strong>Project name</strong></td>
+	  <td align="left"><strong>Download</strong></td>	      
 	</tr>
 	<form id="download_project_form" method="post">
 	  {% csrf_token %}
 	  {% for project in projects %}
 	  <tr>
-	    <td align="center">
+	    <td align="left">
 	      {{forloop.counter}}. 
 	    </td>
-	    <td align="center">
+	    <td align="left">
 	      <a href="/ac/project/{{project.id}}">{{project.name}}</a><br>
 	    </td>
 	    <td align="center">
