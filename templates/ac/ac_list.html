@@ -2,19 +2,19 @@
 <table class="table table-responsive table-bordered table-striped"
        border=0>
   <tr>
-    <td align="center"><strong>RC-ID</strong></td>
-    <td align="center"><strong>Centre name</strong></td>
-    <td align="center"><strong>City</strong></td>
-    <td align="center"><strong>State</strong></td>
+    <td align="left"><strong>Centre ID</strong></td>
+    <td align="left"><strong>Centre name</strong></td>
+    <td align="left"><strong>City</strong></td>
+    <td align="left"><strong>State</strong></td>
     <!-- <td>Coordinator</td> -->
   </tr>
   <p class="text-info">Found {{aakashcentres|length}} centre{{aakashcentres|length|pluralize}}.</p>
   {% for ac in aakashcentres %}
   <tr>
-    <td align="center"><strong>{{ac.ac_id}}</strong></td>
-    <td align="center"><a href="/ac/{{ac.id}}"><strong>{{ac.name}}</strong></a></td>
-    <td align="center">{{ac.city}}</td>
-    <td align="center">{{ac.state}}</td>
+    <td align="left"><strong>{{ac.ac_id}}</strong></td>
+    <td align="left"><a href="/ac/{{ac.id}}"><strong>{{ac.name}}</strong></a></td>
+    <td align="left">{{ac.city}}</td>
+    <td align="left">{{ac.state}}</td>
     <!-- <td>{{ac.coordinator.id}}</td> -->
   </tr>
   {% endfor %}
