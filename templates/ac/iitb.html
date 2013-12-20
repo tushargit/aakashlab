@@ -17,19 +17,25 @@
       <h3 align="center">List of project{{projects|pluralize}} <span class="badge">{{projects|length}}</span></h3>
       <table class="table table-responsive table-striped">
 	<tr>
-	  <td align="left"><strong>Serial number</strong></td>
+	  <td align="left"><strong>Icon</strong></td>
 	  <td align="left"><strong>Project name</strong></td>
-	  <td align="left"><strong>Download</strong></td>	      
+	  <td align="center"><strong>Download</strong></td>	      
 	</tr>
 	<form id="download_project_form" method="post">
 	  {% csrf_token %}
 	  {% for project in projects %}
 	  <tr>
 	    <td align="left">
-	      {{forloop.counter}}. 
+	      {% if project.logo %}
+	      <img src="media/{{project.logo}}" height="60" width="60"
+		   class="img-rounded img-responsive">
+	      {% else %}
+	      <i class="fa fa-android fa-3x"></i>
+	      {% endif %}
+      <!-- {{forloop.counter}}.  -->
 	    </td>
 	    <td align="left">
-	      <a href="/ac/project/{{project.id}}">{{project.name}}</a><br>
+	      <strong><a href="/ac/project/{{project.id}}">{{project.name}}</a></strong>
 	    </td>
 	    <td align="center">
 	      <!-- {{project.id}} -->

@@ -34,9 +34,9 @@
 		 src="media/{{c.picture}}" height="140" width="240">
 	  </a>
 	  {% else %}
-	  <img src="{% static 'images/no_image_available.png' %}"
-	       height="140" width="240"
-	       class="img-rounded img-responsive">
+	  <div style="padding-top:50px;">
+	  <i class="fa fa-user fa-5x fa-lg"></i>
+	  </div>
 	  {% endif %}
       </div>   <!-- col-md-4 -->
       {% endfor %}
@@ -50,16 +50,22 @@
 	  </h3>
 	  <table class="table table-responsive table-striped">
 	    <tr>
-	      <td align="left"><strong>Serial number</strong></td>
+	      <td align="left"><strong>Icon</strong></td>
 	      <td align="left"><strong>Project name</strong></td>
-	      <td align="left"><strong>Download</strong></td>	      
+	      <td align="center"><strong>Download</strong></td>	      
 	    </tr>
 	    <form id="download_project_form" method="post">
 	      {% csrf_token %}
 	  {% for project in projects %}
 	  <tr>
 	    <td align="left">
-	      {{forloop.counter}}. 
+	      {% if project.logo %}
+	      <img src="media/{{project.logo}}" height="60" width="60"
+		   class="img-rounded img-responsive">
+	      {% else %}
+	      <i class="fa fa-android fa-3x"></i>
+	      {% endif %}
+	      <!-- {{forloop.counter}}.  -->
 	    </td>
 	    <td align="left">
 	      <a href="/ac/project/{{project.id}}">{{project.name}}</a><br>
@@ -76,7 +82,7 @@
 	  </form>
 	  </table>
 	  {% else %}
-	  No projects submitted by <strong>{{aakashcentre.name}}</strong>.
+	  <strong>Projects coming soon...</strong>
 	  {% endif %}
       </div>
     </div> <!-- row -->
