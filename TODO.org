@@ -1,14 +1,14 @@
 ** DONE Project matching query does not exist.
 ** DONE Login form.
-** TODO Registration form.
+** DONE Registration form.
 ** DONE FAQ form.
 ** TODO Search projects w.r.t Aakash Centre.
 ** TODO Populate every thing by parsing xls -> csv -> py to db.
 ** TODO Aakash Centre/Coordinator Form.
 ** TODO Project Form
-** TODO Navbar IITB icon and Aakash icon still not aligned when size of browser 
+** DONE Navbar IITB icon and Aakash icon still not aligned when size of browser 
    change.
 ** TODO member=models.ForeignKey(AakashCentre) ??
-
+   
 
 
