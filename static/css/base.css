@@ -101,6 +101,7 @@ body {
 	width:100%;
     }
     
+
     .navbar-nav .open .dropdown-menu {
 	position: static;
 	float: none;
@@ -110,9 +111,19 @@ body {
 	border: 0;
 	box-shadow: none;
     }
+
+.nav-right{float:left; margin-top:-10px;}
+
+.nav-left{padding-top:25px;}
+
+.nav-sub_container{width:100%; padding-left:0px;}
+
 }
 
 @media (min-width: 768px) and (max-width: 992px){
+
+.nav-sub_container{
+width:88%; padding-left:30px;}
 
     .featurette-image{
 	margin-left: auto;
@@ -142,7 +153,7 @@ body {
     }
 
     .container{
-	width:100%;
+	
     }
   .navbar-collapse .collapse{
 	text-align:center;
@@ -151,12 +162,18 @@ body {
 	margin:0 auto;
 padding-left:25px;
 	text-align:left;
-	width:645px;
+	
 	float:none;
     }
+.nav-left{float:left;}
+
+.nav-right{float:right;}
 }
 
 @media (min-width: 992px) and (max-width: 1200px){
+
+.nav-sub_container{
+width:88%; padding-left:30px;}
 
     .featurette-image{
 	margin-left: auto;
@@ -186,13 +203,18 @@ padding-left:25px;
     .navbar-nav{
 	margin:0 auto;
 	text-align:left;
-	width:760px;
+	padding-left:25px;
 	float:none;
     }
+.nav-left{float:left;}
+
+.nav-right{float:right;}
 }
 
 @media (min-width: 1200px) {
 
+.nav-sub_container{
+width:88%; padding-left:30px;}
     .featurette-image{
 	margin-left: auto;
 	margin-right: auto; 
@@ -217,9 +239,13 @@ padding-left:25px;
     .navbar-nav{
 	margin:0 auto;
 	text-align:left;
-	width:760px;
+	padding-left:25px;
 	float:none;
     }
+
+.nav-left{float:left;}
+
+.nav-right{float:right;}
 }
 
 footer {

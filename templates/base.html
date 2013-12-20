@@ -39,7 +39,7 @@
     <div class="navbar-wrapper">
       <div class="container">
         <div class="navbar navbar-inverse navbar-static-top" role="navigation">
-          <div class="container">
+          <div class="container nav-sub_container" >
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -51,7 +51,7 @@
               <a class="navbar-right-logo" href="/"><img src="{% static 'images/iitb_logo_white.png' %}" alt="IITB logo" width="55px"></a>
             </div>
             <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav nav-left">
                 <li class=""><a href="/">Home</a></li>
                 <li><a href="/about/">About</a></li>
 		<li><a href="/ac/">Aakash Centres</a></li>
@@ -69,12 +69,14 @@
                 <!--     <li><a href="#">One more separated link</a></li> -->
                 <!--   </ul> -->
                 <!-- </li> -->
+	      </ul>
+	      <ul class="nav navbar-nav nav-right">
 		<li><a href="/contact/">Contact Us</a></li>
 		{% if user.is_authenticated %}
 		<li><a href="#">Profile</a></li>
 		<li><a href="/logout/">Logout</a></li>
 		{% else %}
-		<li><a href="#">Register</a></li>
+	<!--	<li><a href="#">Register</a></li> -->
 		<li><a href="/login/">Login</a></li>
 		{% endif %}
               </ul>
