@@ -368,6 +368,8 @@ def register(request):
 
             coordinator = coordinatorform.save(commit=False)
             print coordinator.contact
+            if 'picture' in request.FILES:
+                coordinator.picture = request.FILES['picture']
             coordinator.user = User.objects.get(username=user.username)
             coordinator.save()
             
@@ -375,6 +377,8 @@ def register(request):
             aakashcentre.coordinator = Coordinator.objects.get(user=coordinator.user)
             aakashcentre.save()
             print aakashcentre.ac_id
+            messages.success(request, "Form successfully submitted.")
+            return HttpResponseRedirect('/ac/register/')
         else:
             if aakashcentreform.errors or coordinatorform.errors or userform.errors:
                 print aakashcentreform.errors, coordinatorform.errors, userform.errors

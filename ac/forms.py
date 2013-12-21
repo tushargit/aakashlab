@@ -63,9 +63,9 @@ class CoordinatorForm(forms.ModelForm):
             attrs={'class': 'form-control',
                    'placeholder': 'Coordinator contact number*.'}),
         help_text="", required=True)
-    picture = forms.FileField(
+    picture = forms.FileField(label='Profile picture',
         widget = forms.FileInput(
-            attrs={'placeholder': 'Coordinator contact number*.'}),
+            attrs={'placeholder': 'Coordinator picture.'}),
         required=False)
     
     class Meta:

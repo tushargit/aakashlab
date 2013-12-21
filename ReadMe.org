@@ -19,7 +19,16 @@
      virtualenv visit [[http://www.virtualenv.org/en/latest/][this]] link.
      #+BEGIN_SRC sh
        pip install -r requirements.txt
+
      #+END_SRC sh
+     or
+     #+BEGIN_SRC sh
+       easy_install `cat requirements.txt`
+     #+END_SRC sh
+     should also work instead of `pip`.
+
+     Note: You need to install 'python-devel'(CentOS) or
+     'python-dev'(Ubuntu) before running `pip/easy_install`.
 
 *** Populate database
 
@@ -53,6 +62,34 @@
 
     - =coordinators_list.py=: Python dictionary contains Aakash center
       coordinators information.
+
+    - =project_parser.py=: Parses =projects.csv= and creates =project_list.py=.
+
+    - =project_list.py=: Contains all project detail.
+
+*** Deploy(on server)
+
+**** Using Apache and mod_wsgi
+
+     - Collect all static files.
+
+     #+BEGIN_SRC sh
+       python manage.py collectstatic
+     #+END_SRC sh
+
+     This will collect all the static files(including admin CSS/JS)
+     and copy them to =aakashlabs/aakashlabs/static=.
+
+     - Install Apache WSGI module =mod_wsgi=
+
+     - Configure Apache(TODO)
+     - Configure Django WSGI(TODO)
+
+     - Restart the server
+       #+BEGIN_SRC sh
+         sudo service httpd restart
+       #+END_SRC sh
+       
 
 ** How to Contribute?
 
