@@ -82,3 +82,18 @@ class Faq(models.Model):
 
     def __unicode__(self):
         return self.question
+
+
+class Pub(models.Model):
+    """Publications and articles related to Aakash.
+    """
+    title = models.CharField(max_length=200, unique=True)
+    description = models.TextField(max_length=500, blank=True)
+    url = models.URLField(blank=True)
+    attachment = models.FileField(upload_to='pubs', blank=True)
+    
+    def __unicode__(self):
+        return self.title
+        
+        
+

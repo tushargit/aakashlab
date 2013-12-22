@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+- Pubs
+{% endblock title %}
+
+{% block body_block %}
+<div class="container" style="padding-top:2.5cm;">
+  <div class="page-header">
+      <h1><i class="fa fa-archive"></i> Publications and Articles<small>
+	  related to Aakash project.</small>
+      </h1>
+  </div>
+
+  {% if pubs %}
+  {% for pub in pubs %}
+  <h4><p class="lead text-default">
+      {{forloop.counter}}.&nbsp
+      <strong>{{pub.title}}</strong>
+      {% if pub.attachment %}
+      | <a href="/media/{{pub.attachment}}"><i class="fa fa-file-text"> file</i></a>
+      {% endif %}
+      {% if pub.url %}
+      | <a href="{{pub.url}}"><i class="fa fa-globe"> url</i></a>
+      {% endif %}
+    </p>
+  </h4>
+  <p align="justify">
+    {{pub.description}}
+  </p>
+  <hr>
+  {% endfor %}
+  {% else %}
+  <p class="text-muted">No Pubs.</p>
+  {% endif %}
+</div>
+{% endblock body_block %}

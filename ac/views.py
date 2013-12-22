@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 # Models
 from ac.models import AakashCentre, Coordinator
 from ac.models import Project, Mentor, TeamMember
-from ac.models import Faq
+from ac.models import Faq, Pub
 
 # Forms
 from ac.forms import ContactForm, AakashCentreForm
@@ -83,6 +83,19 @@ def faq(request):
     faqs = Faq.objects.all()
     context_dict = {'faqs': faqs}
     return render_to_response('faqs.html', context_dict, context)
+
+
+def pubs(request):
+    """Publications and Articles/links related to Aakash.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)
+
+    pubs = Pub.objects.all()
+    context_dict = {'pubs': pubs}
+    return render_to_response('pubs.html', context_dict, context)    
 
 
 def all_ac(request):
