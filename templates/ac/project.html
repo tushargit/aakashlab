@@ -23,7 +23,7 @@
       
       <div class="col-md-6">	 
 	<h1 class="text-default">{{project.name}}</h1>
-	<p class="text-muted">By <strong><a href="/ac/{{project.ac.id}}">{{project.ac}}</a></strong> (RC_ID: {{project.ac.ac_id}})</p>
+	<p class="text-muted">By <strong><a href="/ac/{{project.ac.id}}">{{project.ac}}</a></strong> (Centre ID: {{project.ac.ac_id}})</p>
 	<p class="text-muted"><strong>{{project.ac.city}}, {{project.ac.state}}</strong></p> 
       </div>
       </div> <!-- row well-->
@@ -31,18 +31,18 @@
       <div class="well">
 	<div class="row"  >
 	  <div class="col-md-3">
-	    {% if project.member.all %}
-	    <h3>Team Member{{project.member.all|length|pluralize}}</h3>
-	    {% for member in project.member.all %}
+	    {% if members %}
+	    <h3>Team Member{{members|length|pluralize}}</h3>
+	    {% for member in members %}
 	    {{forloop.counter}}. {{member}}<br/>
 	    {% endfor %}
 	    {% else %}
 	    <p>No team members.</p>
 	    {% endif %}
 
-	    {% if project.mentor.all %}
-	    <h3>Mentor{{project.mentor.all|length|pluralize}}</h3>
-	    {% for mentor in project.mentor.all %}
+	    {% if mentors %}
+	    <h3>Mentor{{mentors|length|pluralize}}</h3>
+	    {% for mentor in mentors %}
 	    {{forloop.counter}}. {{mentor}}<br/>
 	    {% endfor %}
 	    {% else %}

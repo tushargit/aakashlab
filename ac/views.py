@@ -354,10 +354,18 @@ def project(request, id):
     # print id
     try:
         project = Project.objects.get(pk=id)
+        members = TeamMember.objects.filter(project=id)
+        print members
+        mentors = Mentor.objects.filter(project=id)
+        print mentors
     except:
         project = None
+        members = None
+        mentors = None
     
-    context_dict = {'project': project}
+    context_dict = {'project': project,
+                    'members': members,
+                    'mentors': mentors}
     return render_to_response('ac/project.html', context_dict, context)
 
 

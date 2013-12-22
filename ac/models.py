@@ -30,28 +30,10 @@ class AakashCentre(models.Model):
         return self.name
 
         
-class TeamMember(models.Model):
-    name = models.CharField(max_length=200, blank=True)
-    email = models.EmailField(blank=True)
-    
-    def __unicode__(self):
-        return self.name
-
-        
-class Mentor(models.Model):
-    name = models.CharField(max_length=200, blank=True)
-    email = models.EmailField(blank=True)
-    
-    def __unicode__(self):
-        return self.name
-
-        
 class Project(models.Model):
     name = models.CharField(max_length=200, unique=True)
     ac = models.ForeignKey(AakashCentre)
     summary = models.TextField(max_length=500, unique=True)
-    member = models.ManyToManyField(TeamMember, blank=True)
-    mentor = models.ManyToManyField(Mentor, blank=True)
     src_url = models.URLField()
     doc_url = models.URLField()
     apk = models.FileField(upload_to='apk')
@@ -64,6 +46,24 @@ class Project(models.Model):
     
     def __unicode__(self):
         return self.name        
+
+
+class TeamMember(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField(blank=True)
+    project = models.ForeignKey(Project)
+    
+    def __unicode__(self):
+        return self.name
+
+        
+class Mentor(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField(blank=True)
+    project = models.ForeignKey(Project)
+    
+    def __unicode__(self):
+        return self.name
 
 
 class Contact(models.Model):
