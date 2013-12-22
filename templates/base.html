@@ -9,7 +9,7 @@
     <meta name="author" content="iitb">
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
 
-    <title>Aakashlabs</title>
+    <title>Aakashlabs{% block title %}{% endblock title %}</title>
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen">
     <link href="{% static 'css/bootstrap-theme.css' %}" rel="stylesheet">
@@ -154,7 +154,10 @@
           presentations, launch a quiz, conduct live polls, and
           generate results on bar graph. Using this system, students
           can write exams, ask questions, and view results
-          instantly.  </p>
+          instantly.</p>
+
+	  <p><a class="btn btn-success" href="http://www.it.iitb.ac.in/clicker/"
+          role="button">Visit Site &raquo;</a></p>
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-responsive" src="{% static 'images/clicker.png' %}" alt="Clicker">
@@ -299,6 +302,19 @@
     <script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <script src="{% static 'js/base.js' %}"></script>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-46662661-1', 'aakashlabs.org');
+      ga('send', 'pageview');
+
+    </script>
+    <!-- Google analytics scripts ends here. -->
     
-  </body>    
+  </body>
 </html>
