@@ -2,18 +2,16 @@
 {% load static %}
 
 {% block title %}
-- Register
+- Project - add
 {% endblock title %}
-
 {% block body_block %}
 <div class="container" style="padding-top:2.5cm;">
   <div class="page-header" align="center">
-      <h1><i class="fa fa-pencil"></i> Register <small> your Aakash
-      Centre.</small>
+      <h1><i class="fa fa-plus-square"></i> Add project
       </h1>
   </div>
   <div class="row">
-    <form role="form" id="register" method="post"
+    <form role="form" id="project_new" method="post"
 	  enctype="multipart/form-data">
       {% csrf_token %}
 	<!-- {{contactform.as_p}} -->
@@ -28,10 +26,10 @@
 	{% endfor %}
 	{% endif %} 
 	<!-- Success/Error messages ends here -->
-	<div class="col-lg-6">
-	  <h4>Aakash Centre details.</h4>
-	<hr>
-	{{aakashcentreform.as_p}}
+	<div class="col-lg-6 col-lg-offset-3">
+	  <h4>Project details.</h4>
+
+	  {{projectform.as_p}}
 	
         <!-- <div class="form-group"> -->
 	<!--   <\!-- {{contactform.name.errors}} -\-> -->
@@ -40,12 +38,6 @@
         <!-- </div> -->
 	</div> <!-- col-lg-6 -->
 
-	<div class="col-lg-6">
-	  <h4>Coordinator details.</h4>
-	  <hr>
-	  {{userform.as_p}}
-	  {{coordinatorform.as_p}}
-	</div>
 	<div align="center">
         <input type="submit" name="register" class="btn btn-primary"
 	       value="Register" />

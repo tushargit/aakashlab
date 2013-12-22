@@ -13,10 +13,11 @@ urlpatterns = patterns('',
     url(r'^contact/$', 'ac.views.contact', name='contact'),
     url(r'^faqs/$', 'ac.views.faq', name='faq'),
     url(r'^pubs/$', 'ac.views.pubs', name='pubs'),
+    url(r'^user/profile/$', 'ac.views.user_profile', name='profile'),
     url(r'^ac/', include('ac.urls')),                       
     # url(r'^aakashlabs/', include('aakashlabs.foo.urls')),
     url(r'^login/$', 'ac.views.user_login', name='login'),
-    url(r'^logout/$', 'ac.views.logout', name='logout'),
+    url(r'^logout/$', 'ac.views.user_logout', name='logout'),
                        
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

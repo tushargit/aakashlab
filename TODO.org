@@ -4,7 +4,7 @@
 ** DONE FAQ form.
 ** TODO Search projects w.r.t Aakash Centre.
 ** TODO Populate every thing by parsing xls -> csv -> py to db.
-** TODO Aakash Centre/Coordinator Form.
+** DONE Aakash Centre/Coordinator Form(this is registration form).
 ** TODO Project Form
 ** DONE Navbar IITB icon and Aakash icon still not aligned when size of browser 
    change.

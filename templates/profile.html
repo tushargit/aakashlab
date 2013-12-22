@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+- {{user}} - Profile
+{% endblock title %}
+
+{% block body_block %}
+<div class="container" style="padding-top:2.5cm;">
+  <div class="page-header">
+      <h1><i class="fa fa-pagelines"></i> Profile
+	<small>
+	  | Welcome {{user.first_name|capfirst}}
+	  {{user.last_name|capfirst}}(<strong>{{user.username}}</strong>) !
+	</small>
+      </h1>
+  </div>
+
+  <p><a href="/ac/register/">Register an Aakash Center</a></p>
+  <p><a href="/ac/project/add/">Add new project</a></p>
+</div>
+{% endblock body_block %}

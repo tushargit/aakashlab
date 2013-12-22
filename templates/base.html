@@ -52,7 +52,7 @@
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav nav-left">
-                <li class=""><a href="/">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/about/">About</a></li>
 		<li><a href="/ac/">Aakash Centres</a></li>
 		<li><a href="/ac/projects/">Projects</a></li>
@@ -72,8 +72,13 @@
 	      <ul class="nav navbar-nav nav-right">
 		<li><a href="/contact/">Contact Us</a></li>
 		{% if user.is_authenticated %}
-		<li><a href="#">Profile</a></li>
-		<li><a href="/logout/">Logout</a></li>
+		<li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.username}}<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+		    <li><a href="/user/profile/">Profile</a></li>
+		    <li><a href="/logout/">Logout</a></li>
+		  </ul>
+		</li>
 		{% else %}
 		<!-- <li><a href="/ac/register/">Register</a></li> -->
 		<li><a href="/login/">Login</a></li>

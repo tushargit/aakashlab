@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 # import from ac models
 from ac.models import Contact
 from ac.models import Coordinator, AakashCentre, User
+from ac.models import Project, TeamMember, Mentor
 
 
 class ContactForm(forms.ModelForm):
@@ -108,3 +109,40 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password']
+
+
+class ProjectForm(forms.ModelForm):
+    """Form to add new project.
+    """
+    name = forms.CharField(label='Project name',
+        widget= forms.TextInput(
+            attrs={'class': 'form-control',
+                   'placeholder': 'Project name*.'}),
+            help_text="", required=True,
+        error_messages={'required':'Project name is required.'})
+
+    summary = forms.CharField(label='Summary',
+        widget= forms.TextInput(
+            attrs={'class': 'form-control', 'rows': 3,
+                   'placeholder': 'Summary of the project*.'}),
+            help_text="", required=True,
+        error_messages={'required':'Summary is required.'})
+
+    centre = forms.ModelChoiceField(
+        label='Centre',
+        cache_choices=True,
+        widget = None,
+        queryset = AakashCentre.objects.all(),
+        help_text="", required=True,
+        error_messages={'required':'Aakash centre is required.'})
+
+    member = forms.ModelMultipleChoiceField(
+        label='Members',
+        widget = None,
+        queryset = TeamMember.objects.all(),
+        help_text="", required=True,
+        error_messages={'required':'Summary is required.'})
+    
+    class Meta:
+        model = Project
+        fields = ['name', 'summary', 'centre', 'member']

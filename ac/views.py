@@ -14,6 +14,7 @@ from ac.models import Faq, Pub
 # Forms
 from ac.forms import ContactForm, AakashCentreForm
 from ac.forms import CoordinatorForm, UserForm
+from ac.forms import ProjectForm
 
 # Local libs
 from get_list import get_ac_id_list, get_ac_city_list
@@ -27,7 +28,8 @@ def index(request):
     Arguments:
     - `Request`:
     """
-    return render_to_response('index.html')
+    context = RequestContext(request)
+    return render_to_response('index.html', context)
 
 
 def about(request):
@@ -36,7 +38,8 @@ def about(request):
     Arguments:
     - `Request`:
     """
-    return render_to_response('about.html')
+    context = RequestContext(request)
+    return render_to_response('about.html', context)
 
 
 def compete(request):
@@ -45,7 +48,8 @@ def compete(request):
     Arguments:
     - `Request`:
     """
-    return render_to_response('compete.html')    
+    context = RequestContext(request)    
+    return render_to_response('compete.html', context)
 
 
 def contact(request):
@@ -357,6 +361,30 @@ def project(request, id):
     return render_to_response('ac/project.html', context_dict, context)
 
 
+@login_required    
+def project_add(request):
+    """Add new project.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)
+
+    if request.method == 'POST':
+        print "We got a request to add new project"
+        projectform = ProjectForm(data=request.POST)
+
+        if projectform.is_valid():
+            print "Add project form is valid."
+        else:
+            print projectform.errors
+    else:
+        projectform = ProjectForm()
+        
+    context_dict = {'projectform': projectform}
+    return render_to_response('ac/project_add.html', context_dict, context)
+
+
 def register(request):
     """Registeration Form.
     
@@ -376,7 +404,7 @@ def register(request):
             user = userform.save(commit=False)
             print user.username
             print user.first_name
-            print user.password
+            user.set_password(user.password)
             user.save()
 
             coordinator = coordinatorform.save(commit=False)
@@ -425,10 +453,7 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return HttpResponse('<html>\
-                <h1>Welcome, user!</h1>\
-                <body>Currently we have nothing here. Please login as <a href="/admin/">admin</a></body>\
-                </html>')
+                return HttpResponseRedirect('/user/profile/')
             else:
                 # An inactive account was used - no logging in!
                 messages.info(request, "Your account is disabled.")
@@ -441,7 +466,7 @@ def user_login(request):
 
 
 @login_required
-def logout(request):
+def user_logout(request):
     """Logout user.
     
     Arguments:
@@ -450,4 +475,13 @@ def logout(request):
     context = RequestContext(request)
     logout(request)
     return HttpResponseRedirect('/')    
+    
+
+@login_required
+def user_profile(request):
+    """User profile."""
+    context = RequestContext(request)
+    print request.user.username
+    return render_to_response('profile.html', context)
+    
     
