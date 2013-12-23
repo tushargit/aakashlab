@@ -34,8 +34,9 @@ class Project(models.Model):
     name = models.CharField(max_length=200, unique=True)
     ac = models.ForeignKey(AakashCentre)
     summary = models.TextField(max_length=500, unique=True)
-    src_url = models.URLField()
-    doc_url = models.URLField()
+    src_url = models.URLField(blank=True)
+    doc_url = models.URLField(blank=True)
+    doc_file = models.FileField(upload_to='docs', blank=True)
     apk = models.FileField(upload_to='apk')
     additional_url = models.URLField(blank=True)
     logo = models.ImageField(upload_to='project_logo', blank=True)
@@ -49,21 +50,21 @@ class Project(models.Model):
 
 
 class TeamMember(models.Model):
-    name = models.CharField(max_length=200)
-    email = models.EmailField(blank=True)
-    project = models.ForeignKey(Project)
+    member_name = models.CharField(max_length=200)
+    member_email = models.EmailField(blank=True)
+    member_project = models.ForeignKey(Project)
     
     def __unicode__(self):
-        return self.name
+        return self.member_name
 
-        
+
 class Mentor(models.Model):
-    name = models.CharField(max_length=200)
-    email = models.EmailField(blank=True)
-    project = models.ForeignKey(Project)
+    mentor_name = models.CharField(max_length=200)
+    mentor_email = models.EmailField(blank=True)
+    mentor_project = models.ForeignKey(Project)
     
     def __unicode__(self):
-        return self.name
+        return self.mentor_name
 
 
 class Contact(models.Model):

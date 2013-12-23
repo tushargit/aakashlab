@@ -35,8 +35,10 @@ class AakashCentreForm(forms.ModelForm):
                    'placeholder': 'Aakash Centre ID or RC ID*.'}),
         help_text="", required=True)
     quantity = forms.IntegerField(
+        label = 'Number of tablets received at your Center(0 if you don\'t know).',
         widget= forms.TextInput(
             attrs={'class': 'form-control',
+                   'value': '0',
                    'placeholder': 'Number of tablets received at your centre(Optional).'}),
         help_text="", required=False)
     name = forms.CharField(
@@ -64,7 +66,7 @@ class CoordinatorForm(forms.ModelForm):
             attrs={'class': 'form-control',
                    'placeholder': 'Coordinator contact number*.'}),
         help_text="", required=True)
-    picture = forms.FileField(label='Profile picture',
+    picture = forms.ImageField(label='Profile picture',
         widget = forms.FileInput(
             attrs={'placeholder': 'Coordinator picture.'}),
         required=False)
@@ -122,13 +124,13 @@ class ProjectForm(forms.ModelForm):
         error_messages={'required':'Project name is required.'})
 
     summary = forms.CharField(label='Summary',
-        widget= forms.TextInput(
-            attrs={'class': 'form-control', 'rows': 3,
+        widget= forms.Textarea(
+            attrs={'class': 'form-control', 'rows': '3',
                    'placeholder': 'Summary of the project*.'}),
             help_text="", required=True,
         error_messages={'required':'Summary is required.'})
 
-    centre = forms.ModelChoiceField(
+    ac = forms.ModelChoiceField(
         label='Centre',
         cache_choices=True,
         widget = None,
@@ -136,13 +138,93 @@ class ProjectForm(forms.ModelForm):
         help_text="", required=True,
         error_messages={'required':'Aakash centre is required.'})
 
-    member = forms.ModelMultipleChoiceField(
-        label='Members',
-        widget = None,
-        queryset = TeamMember.objects.all(),
-        help_text="", required=True,
-        error_messages={'required':'Summary is required.'})
-    
+    src_url = forms.URLField(
+        label='Source code URL',
+        widget= forms.TextInput(
+            attrs={'class': 'form-control',
+                   'placeholder': 'Valid URL of source code.'}),
+        error_messages={'invalid': 'Enter valid URL.'},
+        required=False)
+
+    doc_url = forms.URLField(
+        label='Documentation URL',
+        widget = forms.TextInput(
+            attrs={'class': 'form-control',
+                   'placeholder': 'Valid URL where docs are hosted.'}),
+        error_messages={'invalid': 'Enter valid URL.'},
+        required=False)
+
+    doc_file = forms.FileField(
+        label = 'Documentation file.',
+        widget = forms.FileInput(),
+        help_text = 'Upload documentation.',
+        required=False)
+
+    additional_url = forms.URLField(
+        label='Addition URL',
+        widget= forms.TextInput(
+            attrs={'class': 'form-control',
+                   'placeholder': 'Addition URL where project related files are hosted.'}),
+        required=False)
+
+    apk = forms.FileField(
+        label='APK',
+        help_text = 'Upload APK.',
+        error_messages={'required': 'APK is required.'},
+        required=True)
+
+    logo = forms.FileField(
+        label = 'Logo',
+        help_text = 'Upload project logo.',
+        required=False)
+
     class Meta:
         model = Project
-        fields = ['name', 'summary', 'centre', 'member']
+        fields = ['name', 'summary', 'ac', 'src_url', 'doc_url',
+                   'doc_file', 'additional_url', 'apk', 'logo']
+
+
+class MemberForm(forms.ModelForm):
+    """Project member form.
+    """
+    member_name = forms.CharField(
+        label = 'Member name',
+        widget= forms.TextInput(
+            attrs={'class': 'form-control',
+                   'placeholder': 'Team member name*.'}),
+            help_text="", required=False,
+        error_messages={'required':'Member name is required.'})
+    
+    member_email = forms.CharField(
+        widget= forms.TextInput(
+            attrs={'class': 'form-control',
+                   'placeholder': 'Enter valid email.'}),
+            help_text="", required=False,
+        error_messages={'required': 'Valid Email address is required.'})
+        
+    class Meta:
+        model = TeamMember
+        fields = ['member_name', 'member_email']
+
+
+class MentorForm(forms.ModelForm):
+    """Mentor form.
+    """
+    mentor_name = forms.CharField(
+        label = 'Mentor\'s name',
+        widget= forms.TextInput(
+            attrs={'class': 'form-control',
+                   'placeholder': 'Mentor name*.'}),
+            help_text="", required=False,
+        error_messages={'required':'Mentor name is required.'})
+    
+    mentor_email = forms.CharField(
+        widget= forms.TextInput(
+            attrs={'class': 'form-control',
+                   'placeholder': 'Enter valid email.'}),
+            help_text="", required=False,
+        error_messages={'required': 'Valid Email address is required.'})
+        
+    class Meta:
+        model = Mentor
+        fields = ['mentor_name', 'mentor_email']        

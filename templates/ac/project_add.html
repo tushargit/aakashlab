@@ -26,7 +26,7 @@
 	{% endfor %}
 	{% endif %} 
 	<!-- Success/Error messages ends here -->
-	<div class="col-lg-6 col-lg-offset-3">
+	<div class="col-lg-6">
 	  <h4>Project details.</h4>
 
 	  {{projectform.as_p}}
@@ -38,9 +38,22 @@
         <!-- </div> -->
 	</div> <!-- col-lg-6 -->
 
+	<div class="col-lg-6">
+	  <h4>Other details.</h4>
+
+	  {{memberform.as_p}}
+	  {{mentorform.as_p}}
+	
+        <!-- <div class="form-group"> -->
+	<!--   <\!-- {{contactform.name.errors}} -\-> -->
+        <!--   <label for="id_name">Name</label> -->
+	<!--   {{contactform.name}} -->
+        <!-- </div> -->
+	</div> <!-- col-lg-6 -->
+
 	<div align="center">
-        <input type="submit" name="register" class="btn btn-primary"
-	       value="Register" />
+        <input type="submit" name="add_project" class="btn btn-primary"
+	       value="Add project" />
 	</div>
     </form>
   </div> <!-- row -->

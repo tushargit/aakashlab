@@ -54,7 +54,11 @@
 	    <strong class="text-info">Summary:</strong>
 	    <p align="justify">{{project.summary}}</p>
 
-	    <strong class="text-info">Documentation:</strong>
+	    <strong class="text-info">Documentation:
+	      {% if project.doc_file %}
+	      <a href="/media/{{project.doc_file}}"><i class="fa fa-download"></i></a>
+	      {% endif %}
+	    </strong>
 	    <p ><a href={{project.doc_url}}>{{project.doc_url}}</a></p>
 	    
 	    <strong class="text-info">Source code:</strong>

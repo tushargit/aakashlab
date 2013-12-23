@@ -15,6 +15,7 @@ from ac.models import Faq, Pub
 from ac.forms import ContactForm, AakashCentreForm
 from ac.forms import CoordinatorForm, UserForm
 from ac.forms import ProjectForm
+from ac.forms import MemberForm, MentorForm
 
 # Local libs
 from get_list import get_ac_id_list, get_ac_city_list
@@ -351,12 +352,12 @@ def project(request, id):
         return response
 
         
-    # print id
+    print id
     try:
         project = Project.objects.get(pk=id)
-        members = TeamMember.objects.filter(project=id)
+        members = TeamMember.objects.filter(member_project=id)
         print members
-        mentors = Mentor.objects.filter(project=id)
+        mentors = Mentor.objects.filter(mentor_project=id)
         print mentors
     except:
         project = None
@@ -380,19 +381,39 @@ def project_add(request):
 
     if request.method == 'POST':
         print "We got a request to add new project"
-        projectform = ProjectForm(data=request.POST)
+        projectform = ProjectForm(request.POST, request.FILES)
+        memberform = MemberForm(request.POST)
+        mentorform = MentorForm(request.POST)
 
-        if projectform.is_valid():
+        if projectform.is_valid() and memberform.is_valid() and mentorform.is_valid():
             print "Add project form is valid."
+            projectform = projectform.save(commit=False)
+            print projectform.name
+            memberform = memberform.save(commit=False)
+            mentorform = mentorform.save(commit=False)
+            projectform.ac = AakashCentre.objects.get(name=projectform.ac)
+            print projectform.name
+            projectform.save()
+            memberform.member_project = projectform
+            memberform.save()
+            mentorform.mentor_project = projectform
+            mentorform.save()
+            messages.success(request, "Project successfully submitted. Waiting for approval.")
+            return HttpResponseRedirect('/ac/project/add/')
         else:
-            print projectform.errors
+            print projectform.errors, memberform.errors, mentorform.errors
     else:
         projectform = ProjectForm()
+        memberform = MemberForm()
+        mentorform = MentorForm()
         
-    context_dict = {'projectform': projectform}
+    context_dict = {'projectform': projectform,
+                    'memberform': memberform,
+                    'mentorform': mentorform}
     return render_to_response('ac/project_add.html', context_dict, context)
 
 
+@login_required
 def register(request):
     """Registeration Form.
     
@@ -489,7 +510,6 @@ def user_logout(request):
 def user_profile(request):
     """User profile."""
     context = RequestContext(request)
-    print request.user.username
     return render_to_response('profile.html', context)
     
     
