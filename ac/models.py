@@ -8,7 +8,7 @@ class Coordinator(models.Model):
     user = models.OneToOneField(User)
 
     # Addition info
-    contact = models.IntegerField(max_length=12, blank=True)
+    contact = models.CharField(max_length=12, blank=True)
     picture = models.ImageField(upload_to='profile_image', blank=True)
 
     def __unicode__(self):
@@ -33,7 +33,7 @@ class AakashCentre(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=200, unique=True)
     ac = models.ForeignKey(AakashCentre)
-    summary = models.TextField(max_length=500, unique=True)
+    summary = models.TextField(max_length=500)
     src_url = models.URLField(blank=True)
     doc_url = models.URLField(blank=True)
     doc_file = models.FileField(upload_to='docs', blank=True)

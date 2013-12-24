@@ -53,6 +53,38 @@
          python manage.py runserver
        #+END_SRC sh
 
+*** Deploy(on server)
+
+**** Using Apache and mod_wsgi
+
+     - Install Apache WSGI module =mod_wsgi=
+     - Configure Apache(TODO)
+     - Configure Django WSGI(TODO)
+
+     - Install dependencies
+
+       #+BEGIN_SRC sh
+         sudo yum install mysql-devel
+       #+END_SRC sh
+
+       #+BEGIN_SRC sh
+         pip install MySQL-python
+       #+END_SRC sh
+
+     - Collect all static files.
+
+     #+BEGIN_SRC sh
+       python manage.py collectstatic
+     #+END_SRC sh
+
+     This will collect all the static files(including admin CSS/JS)
+     and copy them to =aakashlabs/aakashlabs/static=.
+
+     - Restart the server
+       #+BEGIN_SRC sh
+         sudo service httpd restart
+       #+END_SRC sh
+
 *** Other files
 
     - =rc_parser.py=: Parses =rc.csv= and create two files,
@@ -67,30 +99,8 @@
 
     - =project_list.py=: Contains all project detail.
 
-*** Deploy(on server)
 
-**** Using Apache and mod_wsgi
-
-     - Collect all static files.
-
-     #+BEGIN_SRC sh
-       python manage.py collectstatic
-     #+END_SRC sh
-
-     This will collect all the static files(including admin CSS/JS)
-     and copy them to =aakashlabs/aakashlabs/static=.
-
-     - Install Apache WSGI module =mod_wsgi=
-
-     - Configure Apache(TODO)
-     - Configure Django WSGI(TODO)
-
-     - Restart the server
-       #+BEGIN_SRC sh
-         sudo service httpd restart
-       #+END_SRC sh
        
-
 ** How to Contribute?
 
    - Please create a separate branch(with appropriate name) and send
