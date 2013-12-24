@@ -174,4 +174,4 @@ if __name__ == '__main__':
     populate_users()
     populate_ac()
     populate_faq()
-    populate_project()
+#    populate_project()

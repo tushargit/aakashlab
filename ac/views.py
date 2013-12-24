@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.forms.formsets import formset_factory
 
 # Models
 from ac.models import AakashCentre, Coordinator
@@ -379,36 +380,45 @@ def project_add(request):
     """
     context = RequestContext(request)
 
+    MemberFormset = formset_factory(MemberForm,
+                                    can_delete=False,
+                                    extra=1)
+
     if request.method == 'POST':
         print "We got a request to add new project"
         projectform = ProjectForm(request.POST, request.FILES)
-        memberform = MemberForm(request.POST)
+        memberformset = MemberFormset(request.POST)
         mentorform = MentorForm(request.POST)
 
-        if projectform.is_valid() and memberform.is_valid() and mentorform.is_valid():
+        if projectform.is_valid() and memberformset.is_valid() and mentorform.is_valid():
             print "Add project form is valid."
             projectform = projectform.save(commit=False)
-            print projectform.name
-            memberform = memberform.save(commit=False)
+            #memberformset = memberformset.save(commit=False)
             mentorform = mentorform.save(commit=False)
             projectform.ac = AakashCentre.objects.get(name=projectform.ac)
             print projectform.name
             projectform.save()
-            memberform.member_project = projectform
-            memberform.save()
+
+            #TODO: If TeamMember & Mentor values are NULL, don't save it.
+            for form in memberformset.forms:
+                memberform = form.save(commit=False)
+                memberform.member_project = projectform
+                memberform.save()
+            # memberformset.member_project = projectform
+            # memberformset.save()
             mentorform.mentor_project = projectform
             mentorform.save()
             messages.success(request, "Project successfully submitted. Waiting for approval.")
             return HttpResponseRedirect('/ac/project/add/')
         else:
-            print projectform.errors, memberform.errors, mentorform.errors
+            print projectform.errors, memberformset.errors, mentorform.errors
     else:
         projectform = ProjectForm()
-        memberform = MemberForm()
+        memberformset = MemberFormset()
         mentorform = MentorForm()
-        
+
     context_dict = {'projectform': projectform,
-                    'memberform': memberform,
+                    'memberformset': memberformset,
                     'mentorform': mentorform}
     return render_to_response('ac/project_add.html', context_dict, context)
 
