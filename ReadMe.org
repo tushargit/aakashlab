@@ -72,14 +72,23 @@
        #+BEGIN_SRC sh 
          python populate_al.py
        #+END_SRC sh
+<<<<<<< HEAD
+       It will prompt for admin password.
+
+       Alternately you can run
+=======
 
        Instead run
+>>>>>>> 84f27b0... Subject: Case insensitive search.
        #+BEGIN_SRC sh
          python manage.py syncdb
        #+END_SRC sh
        and insert data using the 'admin' interface.
 
+<<<<<<< HEAD
+=======
        It will prompt for admin password.
+>>>>>>> 84f27b0... Subject: Case insensitive search.
 
      - Finally run development server
        #+BEGIN_SRC sh
