@@ -27,8 +27,41 @@
      #+END_SRC sh
      should also work instead of `pip`.
 
-     Note: You need to install 'python-devel'(CentOS) or
-     'python-dev'(Ubuntu) before running `pip/easy_install`.
+*** Deploy
+**** Using Apache and mod_wsgi
+
+     - Install Apache WSGI module =mod_wsgi=
+     - Configure Apache(TODO)
+     - Configure Django WSGI(TODO)
+
+     - Install dependencies
+       (for MySQL)
+
+       CentOS
+       #+BEGIN_SRC sh
+         sudo yum install python-devel
+         sudo yum install mysql-devel
+       #+END_SRC sh
+
+       Ubuntu-12.04
+       #+BEGIN_SRC sh
+         sudo apt-get install python-dev
+         sudo apt-get install libmysqlclient-dev
+       #+END_SRC sh
+
+     - Collect all static files.
+
+     #+BEGIN_SRC sh
+       python manage.py collectstatic
+     #+END_SRC sh
+
+     This will collect all the static files(including admin CSS/JS)
+     and copy them to =aakashlabs/aakashlabs/static=.
+
+     - Restart the server
+       #+BEGIN_SRC sh
+         sudo service httpd restart
+       #+END_SRC sh
 
 *** Populate database
 
@@ -53,38 +86,6 @@
          python manage.py runserver
        #+END_SRC sh
 
-*** Deploy(on server)
-
-**** Using Apache and mod_wsgi
-
-     - Install Apache WSGI module =mod_wsgi=
-     - Configure Apache(TODO)
-     - Configure Django WSGI(TODO)
-
-     - Install dependencies
-
-       #+BEGIN_SRC sh
-         sudo yum install mysql-devel
-       #+END_SRC sh
-
-       #+BEGIN_SRC sh
-         pip install MySQL-python
-       #+END_SRC sh
-
-     - Collect all static files.
-
-     #+BEGIN_SRC sh
-       python manage.py collectstatic
-     #+END_SRC sh
-
-     This will collect all the static files(including admin CSS/JS)
-     and copy them to =aakashlabs/aakashlabs/static=.
-
-     - Restart the server
-       #+BEGIN_SRC sh
-         sudo service httpd restart
-       #+END_SRC sh
-
 *** Other files
 
     - =rc_parser.py=: Parses =rc.csv= and create two files,
@@ -100,7 +101,6 @@
     - =project_list.py=: Contains all project detail.
 
 
-       
 ** How to Contribute?
 
    - Please create a separate branch(with appropriate name) and send

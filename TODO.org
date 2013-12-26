@@ -8,7 +8,7 @@
 ** TODO Project Form
 ** DONE Navbar IITB icon and Aakash icon still not aligned when size of browser 
    change.
-** TODO member=models.ForeignKey(AakashCentre) ??
-   
+** DONE member=models.ForeignKey(AakashCentre) ??
+** TODO 'Add another member/mentor' in project_add form. (/ac/project/add)
 
 

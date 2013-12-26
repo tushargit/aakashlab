@@ -26,7 +26,7 @@ import sys
 
 # activate_this = '/VIRTUALENV_PATH/bin/activate_this.py'
 # execfile(activate_this, dict(__file__=activate_this))
-# sys.path.append("/PROJECT_PATH/")
+# sys.path.append("/PROJECT_PATH/") # Project directory PATH.
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "aakashlabs.settings")
 

@@ -161,10 +161,10 @@ class ProjectForm(forms.ModelForm):
         required=False)
 
     additional_url = forms.URLField(
-        label='Addition URL',
+        label='Additional URL',
         widget= forms.TextInput(
             attrs={'class': 'form-control',
-                   'placeholder': 'Addition URL where project related files are hosted.'}),
+                   'placeholder': 'Additional URL where project related files are hosted.'}),
         required=False)
 
     apk = forms.FileField(
