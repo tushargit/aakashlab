@@ -399,7 +399,7 @@ def project_add(request):
             print projectform.name
             projectform.save()
 
-            #TODO: If TeamMember & Mentor values are NULL, don't save it.
+            #TODO: If TeamMember &/OR Mentor values are NULL, don't save it.
             for form in memberformset.forms:
                 memberform = form.save(commit=False)
                 memberform.member_project = projectform

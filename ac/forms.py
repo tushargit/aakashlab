@@ -173,15 +173,39 @@ class ProjectForm(forms.ModelForm):
         error_messages={'required': 'APK is required.'},
         required=True)
 
-    logo = forms.FileField(
+    logo = forms.ImageField(
         label = 'Logo',
         help_text = 'Upload project logo.',
         required=False)
+
 
     class Meta:
         model = Project
         fields = ['name', 'summary', 'ac', 'src_url', 'doc_url',
                    'doc_file', 'additional_url', 'apk', 'logo']
+
+
+    def clean_doc_file(self):
+        """Limit doc_file upload size."""
+        if self.cleaned_data['doc_file']:
+            doc_file = self.cleaned_data['doc_file']
+            if doc_file._size/(1024*1024) <= 5: # < 5MB
+                return doc_file
+            else:
+                raise forms.ValidationError("Filesize should be less than 5MB.")
+
+
+    def clean_apk(self):
+        """Limit APK upload size."""
+        if self.cleaned_data['apk']:
+            apk = self.cleaned_data['apk']
+            if apk.content_type.split('/')[1] == "vnd.android.package-archive":
+                if apk._size/(1024*1024) <= 12: # < 5MB
+                    return apk
+                else:
+                    raise forms.ValidationError("APK file max. size is 12MB.")
+            else:
+                raise forms.ValidationError("Not a valid APK!")
 
 
 class MemberForm(forms.ModelForm):
@@ -195,13 +219,14 @@ class MemberForm(forms.ModelForm):
             help_text="", required=False,
         error_messages={'required':'Member name is required.'})
     
-    member_email = forms.CharField(
+    member_email = forms.EmailField(
         widget= forms.TextInput(
             attrs={'class': 'form-control',
                    'placeholder': 'Enter valid email.'}),
             help_text="", required=False,
         error_messages={'required': 'Valid Email address is required.'})
-        
+
+
     class Meta:
         model = TeamMember
         fields = ['member_name', 'member_email']
@@ -218,13 +243,14 @@ class MentorForm(forms.ModelForm):
             help_text="", required=False,
         error_messages={'required':'Mentor name is required.'})
     
-    mentor_email = forms.CharField(
+    mentor_email = forms.EmailField(
         widget= forms.TextInput(
             attrs={'class': 'form-control',
                    'placeholder': 'Enter valid email.'}),
             help_text="", required=False,
         error_messages={'required': 'Valid Email address is required.'})
-        
+
+
     class Meta:
         model = Mentor
-        fields = ['mentor_name', 'mentor_email']        
+        fields = ['mentor_name', 'mentor_email']
