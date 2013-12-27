@@ -135,6 +135,7 @@ class ProjectForm(forms.ModelForm):
         cache_choices=True,
         widget = None,
         queryset = AakashCentre.objects.all(),
+        empty_label="--- None ---",
         help_text="", required=True,
         error_messages={'required':'Aakash centre is required.'})
 

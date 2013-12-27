@@ -395,7 +395,7 @@ def project_add(request):
             projectform = projectform.save(commit=False)
             #memberformset = memberformset.save(commit=False)
             mentorform = mentorform.save(commit=False)
-            projectform.ac = AakashCentre.objects.get(name=projectform.ac)
+            projectform.ac = AakashCentre.objects.get(pk=projectform.ac_id)
             print projectform.name
             projectform.save()
 
