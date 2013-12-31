@@ -18,7 +18,11 @@ urlpatterns = patterns('',
     # url(r'^aakashlabs/', include('aakashlabs.foo.urls')),
     url(r'^login/$', 'ac.views.user_login', name='login'),
     url(r'^logout/$', 'ac.views.user_logout', name='logout'),
-                       
+
+    url(r'^user/password/change/$',
+        'django.contrib.auth.views.password_change'),
+    url(r'^user/password/change/done/$',
+        'django.contrib.auth.views.password_change_done'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
