@@ -291,6 +291,10 @@ footer {
     padding:10px 0;
 }
 
+#credits a {
+    text-decoration: none;
+}
+
 .active{	
 font-weight:900;
 }
