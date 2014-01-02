@@ -498,7 +498,7 @@ def user_login(request):
                 messages.info(request, "Your account is disabled.")
         else:
             # Bad login details were provided. So we can't log the user in.
-            messages.error(request, "Bad login.")
+            messages.error(request, "Bad login!")
             return render_to_response('ac/login.html', context)
     else:
         return render_to_response('ac/login.html', context)

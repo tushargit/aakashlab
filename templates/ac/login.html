@@ -15,7 +15,17 @@
       <form class="form-signin" role="form" id="login_form" method="post">
 	{% csrf_token %}
 	<i class="fa fa-user fa-5x"></i>
-        <h2 class="form-signin-heading">Please sign in</h2>
+	<!-- error msg -->
+	{% if messages %}
+	{% for message in messages %}
+	{% if message.tags == "error" %}
+	<p class="text-danger" align="center"><strong>{{ message }}</strong></p>
+	{% endif %}
+	{% endfor %}
+	{% else %}
+	<h2 class="form-signin-heading">Please sign in</h2>
+	{% endif %}
+
         <input name="username" id="id_username" type="text" class="form-control"
 	       placeholder="Username" required autofocus>
         <input name="password" id="id_username" type="password" class="form-control"
