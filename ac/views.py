@@ -384,17 +384,21 @@ def project_add(request):
                                     can_delete=False,
                                     extra=1)
 
+    MentorFormset = formset_factory(MentorForm,
+                                    can_delete=False,
+                                    extra=1)
+
     if request.method == 'POST':
         print "We got a request to add new project"
         projectform = ProjectForm(request.POST, request.FILES)
         memberformset = MemberFormset(request.POST)
-        mentorform = MentorForm(request.POST)
+        mentorformset = MentorFormset(request.POST)
 
-        if projectform.is_valid() and memberformset.is_valid() and mentorform.is_valid():
+        if projectform.is_valid() and memberformset.is_valid() and mentorformset.is_valid():
             print "Add project form is valid."
             projectform = projectform.save(commit=False)
             #memberformset = memberformset.save(commit=False)
-            mentorform = mentorform.save(commit=False)
+            #mentorformset = mentorformset.save(commit=False)
             projectform.ac = AakashCentre.objects.get(pk=projectform.ac_id)
             print projectform.name
             projectform.save()
@@ -406,20 +410,28 @@ def project_add(request):
                 memberform.save()
             # memberformset.member_project = projectform
             # memberformset.save()
-            mentorform.mentor_project = projectform
-            mentorform.save()
+	    
+	#    for form1 in mentorformset.forms:
+         #       mentorform = form1.save(commit=False)
+          #      mentorform.mentor_project = projectform
+           #     mentorform.save()
+           
             messages.success(request, "Project successfully submitted. Waiting for approval.")
             return HttpResponseRedirect('/ac/project/add/')
+
+	 
         else:
-            print projectform.errors, memberformset.errors, mentorform.errors
+            print projectform.errors, memberformset.errors, mentorformset.errors
+
+
     else:
         projectform = ProjectForm()
         memberformset = MemberFormset()
-        mentorform = MentorForm()
+        mentorformset = MentorFormset()
 
     context_dict = {'projectform': projectform,
                     'memberformset': memberformset,
-                    'mentorform': mentorform}
+                    'mentorformset': mentorformset}
     return render_to_response('ac/project_add.html', context_dict, context)
 
 
