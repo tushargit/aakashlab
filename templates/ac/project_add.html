@@ -118,59 +118,37 @@ function deleteForm(btn, prefix, delclassname) {
 	<p class="text-danger" align="center"><strong>{{ message }}</strong></p>
 	{% endif %}
 	{% endfor %}
-	{% endif %} 
+	{% endif %}
+	
 	<!-- Success/Error messages ends here -->
 	<div class="col-lg-6">
 	  <h4>Project details.</h4>
-
 	  {{projectform.as_p}}
-	
-        <!-- <div class="form-group"> -->
-	<!--   <\!-- {{contactform.name.errors}} -\-> -->
-        <!--   <label for="id_name">Name</label> -->
-	<!--   {{contactform.name}} -->
-        <!-- </div> -->
 	</div> <!-- col-lg-6 -->
 
 	<div class="col-lg-6">
+	  
 	  <h4>Other details.</h4>
+	  {{memberformset.management_form }}
+	  {% for member in memberformset.forms %}
+	  <div class="item">
+	    {{ member.as_p }}
+	    <p style=""><a class="delete" onClick="deleteForm(this,'form','item');">Delete</a></p>
+	  </div>
+	  {% endfor %}
+	  <p><a id="add" onClick="addForm(this,'form','item');" >Add another member</a></p>
 
-	
-	<!--  {{memberformset}}-->
+	  <hr>
+	  
+	  {{mentorformset.management_form }}
+	  {% for mentor in mentorformset.forms %}
+	  <div class="mentoritem">
+	    {{ mentor.as_p }}
+	    <p style=""><a class="delete" onClick="deleteForm(this,'form','mentoritem');">Delete</a></p>
+	  </div>
+	  {% endfor %}
+	  <p><a id="add" onClick="addForm(this,'form','mentoritem');" >Add another mentor</a></p>
 
-  {{memberformset.management_form }}
-    {% for member in memberformset.forms %}
-    <div class="item">
-      {{ member.as_p }}
-
-      <p style=""><a class="delete" onClick="deleteForm(this,'form','item');">Delete</a></p>
-    </div>
-    {% endfor %}
-
-  <p><a id="add" onClick="addForm(this,'form','item');" >Add another member</a></p>
-
-
-<!--{{mentorformset.management_form }}
-    {% for mentor in mentorformset.forms %}
-    <div class="mentoritem">
-      {{ mentor.as_p }}
-
-      <p style=""><a class="delete" onClick="deleteForm(this,'form','mentoritem');">Delete</a></p>
-    </div>
-    {% endfor %}
-
-  <p><a id="add" onClick="addForm(this,'form','mentoritem');" >Add another mentor</a></p>
--->
-	
-
-
-	
-	
-        <!-- <div class="form-group"> -->
-	<!--   <\!-- {{contactform.name.errors}} -\-> -->
-        <!--   <label for="id_name">Name</label> -->
-	<!--   {{contactform.name}} -->
-        <!-- </div> -->
 	</div> <!-- col-lg-6 -->
 
 	<div align="center">
