@@ -6,96 +6,76 @@
 {% endblock title %}
 {% block body_block %}
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
 <script type="text/javascript">
 
-
-
-//this fuction is to add members items...
-  function updateElementIndex(el, prefix, ndx) {
+// Update ElementIndex 
+function updateElementIndex(el, prefix, ndx) {
     var id_regex = new RegExp('(' + prefix + '-\\d+-)');
     var replacement = prefix + '-' + ndx + '-';
     if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex,
- replacement));
+								       replacement));
     if (el.id) el.id = el.id.replace(id_regex, replacement);
     if (el.name) el.name = el.name.replace(id_regex, replacement);
-  }
-
+}
 
 
 // this is add form
 function addForm(btn, prefix, classname) {
-
-
     var formCount = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
- 
-
     // You can only submit a maximum of 20  
     if (formCount < 20) {
-      // Clone a form (without event handlers) from the first form
-      var row = $("."+classname+":first").clone(false).get(0);
-      // Insert it after the last form
-      $(row).removeAttr('id').hide().insertAfter("."+classname+":last").slideDown(300);
-      
-      // Remove the bits we don't want in the new row/form
-      // e.g. error messages
-      $(".errorlist", row).remove();
-      $(row).children().removeClass('error');
-      
-      // Relabel/rename all the relevant bits
-      $(row).children().children().each(function() {
-        updateElementIndex(this, prefix, formCount);
-        if ( $(this).attr('type') == 'text' )
-          $(this).val('');
-      });
-      
-    
+	// Clone a form (without event handlers) from the first form
+	var row = $("."+classname+":first").clone(false).get(0);
+	// Insert it after the last form
+	$(row).removeAttr('id').hide().insertAfter("."+classname+":last").slideDown(300);
+	
+	// Remove the bits we don't want in the new row/form
+	// e.g. error messages
+	$(".errorlist", row).remove();
+	$(row).children().removeClass('error');
+	
+	// Relabel/rename all the relevant bits
+	$(row).children().children().each(function() {
+            updateElementIndex(this, prefix, formCount);
+            if ( $(this).attr('type') == 'text' )
+		$(this).val('');
+	});
 
-      // Update the total form count
-      $('#id_' + prefix + '-TOTAL_FORMS').val(formCount + 1); 
+	// Update the total form count
+	$('#id_' + prefix + '-TOTAL_FORMS').val(formCount + 1); 
 
     } // End if
     else {
-      alert("Sorry, you can only enter a maximum of 20 items.");
+	alert("Sorry, you can only enter a maximum of 20 items.");
     }
     return false;
-  }
+}
 
-//to delete a member field
+// Delete a form
 function deleteForm(btn, prefix, delclassname) {
-	
-     
-     
-     
-
-
- var forms = $('.'+delclassname); // Get all the forms
-     
-  if (forms.length > 1) {
-
-	   // Delete the item/form
-    
+    var forms = $('.'+delclassname); // Get all the forms
+    if (forms.length > 1) {
+	// Delete the item/form
         $(btn).parents('.'+delclassname).remove();
 	
-      // Update the total number of forms (1 less than before)
-      $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+	// Update the total number of forms (1 less than before)
+	$('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
 
-      var i = 0;
-      // Go through the forms and set their indices, names and IDs
-      for (formCount = forms.length; i < formCount; i++) {
-        $(forms.get(i)).children().children().each(function() {
-          updateElementIndex(this, prefix, i);
-        });
-      }
+	var i = 0;
+	// Go through the forms and set their indices, names and IDs
+	for (formCount = forms.length; i < formCount; i++) {
+            $(forms.get(i)).children().children().each(function() {
+		updateElementIndex(this, prefix, i);
+            });
+	}
     }
-     // End if
+    // End if
     else {
         alert("You have to enter at least one data!");
     }
     return false;
-  }
-
-
+}
 </script>
 
 
@@ -122,32 +102,53 @@ function deleteForm(btn, prefix, delclassname) {
 	
 	<!-- Success/Error messages ends here -->
 	<div class="col-lg-6">
-	  <h4>Project details.</h4>
+	  <h3>Project details.</h3>
 	  {{projectform.as_p}}
 	</div> <!-- col-lg-6 -->
 
 	<div class="col-lg-6">
 	  
-	  <h4>Other details.</h4>
+	  <h3>Other details(Optional).</h3>
+	  <h4 class="text-muted">Member detail.</h4>
 	  {{memberformset.management_form }}
 	  {% for member in memberformset.forms %}
-	  <div class="item">
+	  <div class="memberitem">
 	    {{ member.as_p }}
-	    <p style=""><a class="delete" onClick="deleteForm(this,'form','item');">Delete</a></p>
+	    <p>
+	      <a class="delete text-warning"
+		 onClick="deleteForm(this,'member','memberitem');">
+		Delete
+	      </a>
+	    </p>
 	  </div>
 	  {% endfor %}
-	  <p><a id="add" onClick="addForm(this,'form','item');" >Add another member</a></p>
+	  <p>
+	    <a id="add"
+	       onClick="addForm(this,'member','memberitem');" >
+	      Add another member
+	  </a>
+	  </p>
 
 	  <hr>
-	  
+	  <h4 class="text-muted">Mentor detail.</h4>	  
 	  {{mentorformset.management_form }}
 	  {% for mentor in mentorformset.forms %}
 	  <div class="mentoritem">
 	    {{ mentor.as_p }}
-	    <p style=""><a class="delete" onClick="deleteForm(this,'form','mentoritem');">Delete</a></p>
+	    <p>
+	      <a class="delete text-warning"
+		 onClick="deleteForm(this,'mentor','mentoritem');">
+		Delete
+	      </a>
+	    </p>
 	  </div>
 	  {% endfor %}
-	  <p><a id="add" onClick="addForm(this,'form','mentoritem');" >Add another mentor</a></p>
+	  <p>
+	    <a id="add"
+		onClick="addForm(this,'mentor','mentoritem');">
+	      Add another mentor
+	    </a>
+	  </p>
 
 	</div> <!-- col-lg-6 -->
 

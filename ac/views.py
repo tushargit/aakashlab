@@ -380,6 +380,7 @@ def project_add(request):
     """
     context = RequestContext(request)
 
+    # I'm not sure about 'extra' argument if it is needed.
     MemberFormset = formset_factory(MemberForm,
                                     can_delete=False,
                                     extra=1)
@@ -389,27 +390,23 @@ def project_add(request):
                                     extra=1)
 
     if request.method == 'POST':
-        print "We got a request to add new project"
+        print "We got a request to add new project."
         projectform = ProjectForm(request.POST, request.FILES)
-        memberformset = MemberFormset(request.POST)
-        mentorformset = MentorFormset(request.POST)
+        memberformset = MemberFormset(request.POST, prefix="member")
+        mentorformset = MentorFormset(request.POST, prefix="mentor")
 
         if projectform.is_valid() and memberformset.is_valid() and mentorformset.is_valid():
-            print "Add project form is valid."
+            print "Add-New-Project form: is valid."
             projectform = projectform.save(commit=False)
-            #memberformset = memberformset.save(commit=False)
-            #mentorformset = mentorformset.save(commit=False)
             projectform.ac = AakashCentre.objects.get(pk=projectform.ac_id)
             print projectform.name
             projectform.save()
 
-            #TODO: If TeamMember &/OR Mentor values are NULL, don't save it.
+            #FIXME: If TeamMember &/OR Mentor values are NULL, don't save it.
             for form in memberformset.forms:
                 memberform = form.save(commit=False)
                 memberform.member_project = projectform
                 memberform.save()
-            # memberformset.member_project = projectform
-            # memberformset.save()
 	    
             for form in mentorformset.forms:
                 mentorform = form.save(commit=False)
@@ -422,8 +419,8 @@ def project_add(request):
             print projectform.errors, memberformset.errors, mentorformset.errors
     else:
         projectform = ProjectForm()
-        memberformset = MemberFormset()
-        mentorformset = MentorFormset()
+        memberformset = MemberFormset(prefix="member")
+        mentorformset = MentorFormset(prefix="mentor")
 
     context_dict = {'projectform': projectform,
                     'memberformset': memberformset,
