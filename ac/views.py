@@ -380,46 +380,55 @@ def project_add(request):
     """
     context = RequestContext(request)
 
+    # I'm not sure about 'extra' argument if it is needed.
     MemberFormset = formset_factory(MemberForm,
                                     can_delete=False,
                                     extra=1)
 
-    if request.method == 'POST':
-        print "We got a request to add new project"
-        projectform = ProjectForm(request.POST, request.FILES)
-        memberformset = MemberFormset(request.POST)
-        mentorform = MentorForm(request.POST)
+    MentorFormset = formset_factory(MentorForm,
+                                    can_delete=False,
+                                    extra=1)
 
-        if projectform.is_valid() and memberformset.is_valid() and mentorform.is_valid():
-            print "Add project form is valid."
+    if request.method == 'POST':
+        print "We got a request to add new project."
+        projectform = ProjectForm(request.POST, request.FILES)
+        memberformset = MemberFormset(request.POST, prefix="member")
+        mentorformset = MentorFormset(request.POST, prefix="mentor")
+
+        if projectform.is_valid() and memberformset.is_valid() and mentorformset.is_valid():
+            print "Add-New-Project form: is valid."
             projectform = projectform.save(commit=False)
-            #memberformset = memberformset.save(commit=False)
-            mentorform = mentorform.save(commit=False)
             projectform.ac = AakashCentre.objects.get(pk=projectform.ac_id)
             print projectform.name
             projectform.save()
 
-            #TODO: If TeamMember &/OR Mentor values are NULL, don't save it.
+            # FIXME: If TeamMember &/OR Mentor values are NULL, don't
+            # save it.  I'm not sure about 'empty_permitted'
+            # attribute. Till then let 'has_changed' do the work.
             for form in memberformset.forms:
-                memberform = form.save(commit=False)
-                memberform.member_project = projectform
-                memberform.save()
-            # memberformset.member_project = projectform
-            # memberformset.save()
-            mentorform.mentor_project = projectform
-            mentorform.save()
+                if form.has_changed(): # Don't store empty values
+                    memberform = form.save(commit=False)
+                    memberform.member_project = projectform
+                    memberform.save()
+	    
+            for form in mentorformset.forms:
+                if form.has_changed(): # Don't store empty values
+                    mentorform = form.save(commit=False)
+                    mentorform.mentor_project = projectform
+                    mentorform.save()
+           
             messages.success(request, "Project successfully submitted. Waiting for approval.")
             return HttpResponseRedirect('/ac/project/add/')
         else:
-            print projectform.errors, memberformset.errors, mentorform.errors
+            print projectform.errors, memberformset.errors, mentorformset.errors
     else:
         projectform = ProjectForm()
-        memberformset = MemberFormset()
-        mentorform = MentorForm()
+        memberformset = MemberFormset(prefix="member")
+        mentorformset = MentorFormset(prefix="mentor")
 
     context_dict = {'projectform': projectform,
                     'memberformset': memberformset,
-                    'mentorform': mentorform}
+                    'mentorformset': mentorformset}
     return render_to_response('ac/project_add.html', context_dict, context)
 
 
