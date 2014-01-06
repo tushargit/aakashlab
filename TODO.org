@@ -5,10 +5,12 @@
 ** TODO Search projects w.r.t Aakash Centre.
 ** TODO Populate every thing by parsing xls -> csv -> py to db.
 ** DONE Aakash Centre/Coordinator Form(this is registration form).
-** IN-PROGRESS Project Form
+** DONE Project Form
+   CLOSED: [2014-01-06 Mon 20:45]
 ** DONE Navbar IITB icon and Aakash icon still not aligned when size of browser 
    change.
 ** DONE member=models.ForeignKey(AakashCentre) ??
-** TODO 'Add another member/mentor' in project_add form. (/ac/project/add)
-
-
+** DONE 'Add another member/mentor' in project_add form. (/ac/project/add)
+   CLOSED: [2014-01-06 Mon 20:45]
+** TODO Edit existing project details(for respective coordinator)
+** TODO Edit existing Aakash Centre(for respective coordinator)
