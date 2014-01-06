@@ -402,16 +402,20 @@ def project_add(request):
             print projectform.name
             projectform.save()
 
-            #FIXME: If TeamMember &/OR Mentor values are NULL, don't save it.
+            # FIXME: If TeamMember &/OR Mentor values are NULL, don't
+            # save it.  I'm not sure about 'empty_permitted'
+            # attribute. Till then let 'has_changed' do the work.
             for form in memberformset.forms:
-                memberform = form.save(commit=False)
-                memberform.member_project = projectform
-                memberform.save()
+                if form.has_changed(): # Don't store empty values
+                    memberform = form.save(commit=False)
+                    memberform.member_project = projectform
+                    memberform.save()
 	    
             for form in mentorformset.forms:
-                mentorform = form.save(commit=False)
-                mentorform.mentor_project = projectform
-                mentorform.save()
+                if form.has_changed(): # Don't store empty values
+                    mentorform = form.save(commit=False)
+                    mentorform.mentor_project = projectform
+                    mentorform.save()
            
             messages.success(request, "Project successfully submitted. Waiting for approval.")
             return HttpResponseRedirect('/ac/project/add/')
