@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.forms.formsets import formset_factory
+from django.core.mail import send_mail
 
 # Models
 from ac.models import AakashCentre, Coordinator
@@ -66,6 +67,14 @@ def contact(request):
         contactform = ContactForm(data=request.POST)
         if contactform.is_valid():
             contactform = contactform.save(commit=True)
+            email_message = "Sender Email: " + contactform.email + "\n\n" + contactform.message
+            send_mail(contactform.name, email_message,
+                      'support@aakashlabs.org',
+                      [
+                          'iclcoolster@gmail.com',
+                          'Aakashprojects.iitb@gmail.com',
+                      ],
+                      fail_silently=False)
             messages.success(request, "Thank you for your reply. We\
             will get back to you soon.")
         else:
