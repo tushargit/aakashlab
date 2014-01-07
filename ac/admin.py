@@ -3,10 +3,27 @@ from ac.models import AakashCentre, Coordinator
 from ac.models import Project, TeamMember, Mentor
 from ac.models import Contact, Faq, Pub
 
-admin.site.register(AakashCentre)
-admin.site.register(Coordinator)
 
-admin.site.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    """Modify admin's Project page."""
+    list_display = ('name', 'ac', 'approve')
+
+
+class AcAdmin(admin.ModelAdmin):
+    """Aakash Centre admin page."""
+    list_display = ('ac_id', 'name', 'coordinator', 'city', 'state')
+    search_fields = ('ac_id',)
+
+
+class CoordinatorAdmin(admin.ModelAdmin):
+    """Coordinator page."""
+    list_display = ('user', 'contact')
+
+
+admin.site.register(AakashCentre, AcAdmin)
+admin.site.register(Coordinator, CoordinatorAdmin)
+
+admin.site.register(Project, ProjectAdmin)
 admin.site.register(TeamMember)
 admin.site.register(Mentor)
 
