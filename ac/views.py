@@ -478,7 +478,26 @@ def register(request):
             aakashcentre.coordinator = Coordinator.objects.get(user=coordinator.user)
             aakashcentre.save()
             print aakashcentre.ac_id
-            messages.success(request, "Form successfully submitted.")
+            email_subject="New Aakash Center has been registered."
+            email_message="""
+New Aakash Center has been registered.
+
+Details:
+Name: """ + aakashcentre.name + """
+City: """ + aakashcentre.city + """
+State: """ + aakashcentre.state + """
+Coordinator's Name: """ + coordinator.name.first_name + coordinator.name.last_name + """
+
+Waiting for you approval"""
+            send_mail(email_subject, email_message,
+                      'support@aakashlabs.org',
+                      [
+                          'iclcoolster@gmail.com',
+                          'Aakashprojects.iitb@gmail.com',
+                      ],
+                      fail_silently=False)
+            messages.success(request, "Form successfully submitted. Waiting for\
+            activation from admin.")
             return HttpResponseRedirect('/ac/register/')
         else:
             if aakashcentreform.errors or coordinatorform.errors or userform.errors:
