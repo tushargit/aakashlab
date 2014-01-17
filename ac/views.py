@@ -388,6 +388,10 @@ def project_add(request):
     - `request`:
     """
     context = RequestContext(request)
+    print request.user
+    coordinator = Coordinator.objects.get(user=request.user)
+    ac = AakashCentre.objects.get(coordinator=coordinator)
+    print ac, ac.ac_id
 
     # I'm not sure about 'extra' argument if it is needed.
     MemberFormset = formset_factory(MemberForm,
@@ -449,6 +453,7 @@ Waiting for you approval"""
             print projectform.errors, memberformset.errors, mentorformset.errors
     else:
         projectform = ProjectForm()
+        projectform.fields['ac'].queryset = AakashCentre.objects.filter(ac_id=ac.ac_id)
         agreement = Agreement()
         memberformset = MemberFormset(prefix="member")
         mentorformset = MentorFormset(prefix="mentor")
