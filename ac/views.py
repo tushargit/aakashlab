@@ -403,8 +403,9 @@ def project_add(request):
         projectform = ProjectForm(request.POST, request.FILES)
         memberformset = MemberFormset(request.POST, prefix="member")
         mentorformset = MentorFormset(request.POST, prefix="mentor")
+        agreement = Agreement(request.POST)
 
-        if projectform.is_valid() and memberformset.is_valid() and mentorformset.is_valid():
+        if projectform.is_valid() and memberformset.is_valid() and mentorformset.is_valid() and agreement.is_valid():
             print "Add-New-Project form: is valid."
             projectform = projectform.save(commit=False)
             projectform.ac = AakashCentre.objects.get(pk=projectform.ac_id)
