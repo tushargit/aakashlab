@@ -134,7 +134,7 @@ class ProjectForm(forms.ModelForm):
         label='Centre',
         cache_choices=True,
         widget = None,
-        queryset = AakashCentre.objects.all(),
+        queryset = AakashCentre.objects.all().order_by('name'),
         empty_label="--- None ---",
         help_text="", required=True,
         error_messages={'required':'Aakash centre is required.'})
@@ -255,3 +255,14 @@ class MentorForm(forms.ModelForm):
     class Meta:
         model = Mentor
         fields = ['mentor_name', 'mentor_email']
+
+
+class Agreement(forms.Form):
+    """Terms & Conditions.
+    """
+    agree = forms.BooleanField(
+        widget=forms.CheckboxInput(),
+        label="This Project will be always be licensed \
+        under GNU GPL v3 or greater ",
+        required=True,
+        error_messages={'required': 'You must agree to terms and conditions.'},)

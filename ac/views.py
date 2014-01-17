@@ -16,7 +16,7 @@ from ac.models import Faq, Pub
 # Forms
 from ac.forms import ContactForm, AakashCentreForm
 from ac.forms import CoordinatorForm, UserForm
-from ac.forms import ProjectForm
+from ac.forms import ProjectForm, Agreement
 from ac.forms import MemberForm, MentorForm
 
 # Local libs
@@ -432,10 +432,12 @@ def project_add(request):
             print projectform.errors, memberformset.errors, mentorformset.errors
     else:
         projectform = ProjectForm()
+        agreement = Agreement()
         memberformset = MemberFormset(prefix="member")
         mentorformset = MentorFormset(prefix="mentor")
 
     context_dict = {'projectform': projectform,
+                    'agreement': agreement,
                     'memberformset': memberformset,
                     'mentorformset': mentorformset}
     return render_to_response('ac/project_add.html', context_dict, context)
