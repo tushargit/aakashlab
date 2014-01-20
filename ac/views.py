@@ -441,16 +441,17 @@ New Project has been added.
 
 Details:
 Name: """ + projectform.name + """
+AC_ID: """ + projectform.ac.ac_id + """
 Aakash Centre: """ + projectform.ac.name + """
 
-Waiting for you approval"""
+Waiting for your approval"""
             send_mail(email_subject, email_message,
-                    'support@aakashlabs.org',
+                      'support@aakashlabs.org',
                       [
-                        'iclcoolster@gmail.com',
+                          'iclcoolster@gmail.com',
                           'Aakashprojects.iitb@gmail.com',
                       ],
-                    fail_silently=False)
+                      fail_silently=False)
             messages.success(request, "Project successfully submitted. Waiting for approval.")
             return HttpResponseRedirect('/ac/project/add/')
         else:
