@@ -2,32 +2,102 @@
 {% load static %}
 
 {% block body_block %}
-    <!-- Carousel
-    ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-	<li data-target="#myCarousel" data-slide-to="3"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="{% static 'images/img1.jpg' %}" alt="First slide">
-        </div>
-        <div class="item">
-          <img src="{% static 'images/img2.jpg' %}" alt="Second slide">
-        </div>
-        <div class="item">
-          <img src="{% static 'images/img3.jpg' %}" alt="Third slide">
-        </div>
-	<div class="item">
-          <img src="{% static 'images/img4.jpg' %}" alt="Forth slide">
-        </div>
+
+<div class="container" style="padding-top:2.5cm; padding-bottom:2.5cm;">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="col-md-3">
+	<div class="well">
+	  {% block sidebar %}
+	  Govt. of India
+	  <br \>
+	  MHRD
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>
+	  LINK
+	  <br \>	  
+	  
+	  {% endblock sidebar %}
+	</div>
       </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-    </div><!-- /.carousel -->
+      <div class="col-md-9">
+	<div class="well">
+	  {% block content %}
+We aim at developing useful Open Source applications and content for
+	  use on Aakash. These will encompass the entire educational
+	  spectrum from schools to colleges, and from vocational
+	  training to professional studies. Our goal is to complete
+	  useful development of engineering colleges, and to build a
+	  large community of thousands of these talented professional
+	  students and teachers, to carry out large scale development
+	  of applications and content for use in all schools and
+	  colleges. Content in Indian languages will receive special
+	  attention.
+
+	  The Aakash Lab has been set up in the department of CSE
+	  (Computer Science and Engineering Department) at Indian
+	  Institute of Technology Bombay, to drive this project. With
+	  the increasing convergence of communication and computing
+	  technologies, tablet computers are fast emerging as popular
+	  consumer devices. In coming years, Aakash is likely to
+	  become a ubiquitous tool in the hands of students, at all
+	  levels of their education.
+
+	  Aakash Lab aims at developing useful Open Source
+	  applications and content for use on Aakash Tablet. These
+	  will encompass the entire educational spectrum from schools
+	  to colleges and from vocational training to professional
+	  studies. The goal is to complete the deployment at over 500
+	  engineering colleges, and to build a large community of
+	  thousands of talented professional students and teachers
+	  from these colleges, to carry out large scale development of
+	  applications and content for use in all schools and
+	  colleges.
+
+	  Building upon the past work at IIT Bombay, the team made
+	  substantial progress, and the work continues in full
+	  swing. It has added key functionalities through these
+	  applications.
+	  {% endblock content %}
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock body_block %}
