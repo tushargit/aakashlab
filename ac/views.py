@@ -67,9 +67,10 @@ def contact(request):
         contactform = ContactForm(data=request.POST)
         if contactform.is_valid():
             contactform = contactform.save(commit=True)
-            email_message = "Sender Email: " + contactform.email + "\n\n" + contactform.message
-            send_mail(contactform.name, email_message,
-                      'support@aakashlabs.org',
+            email_subject = "[Contact Us] aakashlabs.org"
+            email_message = "Sender Name: " + contactform.name + "\n\n" + contactform.message
+            send_mail(email_subject, email_message,
+                      contactform.email,
                       [
                           'iclcoolster@gmail.com',
                           'Aakashprojects.iitb@gmail.com',
