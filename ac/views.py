@@ -54,6 +54,68 @@ def compete(request):
     context = RequestContext(request)    
     return render_to_response('compete.html', context)
 
+def introduction(request):
+    """Introduction page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/introduction.html', context)
+
+def proposal(request):
+    """Proposal page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/proposal.html', context)
+
+def history(request):
+    """History page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/history.html', context)
+
+def distribution(request):
+    """Tablet Distribution and Testing page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/distribution.html', context)
+
+def training(request):
+    """Training and Contest page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/training.html', context)
+
+def research(request):
+    """RnD page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/research.html', context)
+
+def future(request):
+    """Future of Aakash page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/future.html', context)
 
 def contact(request):
     """Contact us page.
