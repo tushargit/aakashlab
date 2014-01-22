@@ -112,6 +112,15 @@ def pubs(request):
     context_dict = {'pubs': pubs}
     return render_to_response('pubs.html', context_dict, context)    
 
+def activities(request):
+    """links of all the activites related to Aakash.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('activities.html', context)
+
 
 def all_ac(request):
     context = RequestContext(request)

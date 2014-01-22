@@ -249,7 +249,7 @@ width:88%; padding-left:30px;}
 }
 
 footer {
-    min-height:200px;
+    min-height:130px;
     background:#424242;
     color:#ffffff;
 }
@@ -260,17 +260,24 @@ footer {
 
 #social, #mhrd {
     position: relative;
-    height: 200px;
+    height: 0px; /*200px*/
     
 }
 
 #social-icons {
-    margin-top:23%;
+    margin-top:5%; /*23%*/
     text-align:center;
 }
 
 #mhrd img {
-    margin-top:15%;
+    margin-top:0%; /*15%*/
+	width:35%;
+    
+}
+
+#nmeict img {
+     margin-top:0%; /*15%*/
+	width:15%;
     
 }
 

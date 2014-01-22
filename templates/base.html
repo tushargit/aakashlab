@@ -51,10 +51,38 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav nav-left">
                 <li><a href="/">Home</a></li>
-                <li><a href="/about/">About</a></li>
-		<li><a href="/ac/">Aakash Centres</a></li>
+              <!--  <li><a href="/about/">About</a></li> -->
+		 <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aakash Projects <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/ac/">Aakash Centres</a></li>
+		 <li class="divider"></li>
+                   <li><a href="/ac/iitb/">IITB Projects</a></li>
+		    <li><a href="/ac/projects/">All Projects</a></li>
+                   <!-- <li class="divider"></li>
+                    <li><a href="/compete/">Compete</a></li>
+                    <li><a href="#">News</a></li> -->
+                  </ul>
+                </li>
+		<!--  <li><a href="/activities/">Activities at IITB </a></li>-->
+		 <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aakash Activities <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/activities/">IITB</a></li>
+		 <li class="divider"></li>
+                   <li><a href="">Others</a></li>
+		   
+                   <!-- <li class="divider"></li>
+                    <li><a href="/compete/">Compete</a></li>
+                    <li><a href="#">News</a></li> -->
+                  </ul>
+                </li>		
+		 <!-- <li><a href="/pubs/">Publications</a></li> -->
+
+
+	<!--	<li><a href="/ac/">Aakash Centres</a></li>
 		<li><a href="/ac/projects/">Projects</a></li>
-		<li><a href="/ac/iitb/">IITB</a></li>
+		<li><a href="/ac/iitb/">IITB</a></li> -->
 		<li><a href="/faqs/">FAQs</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
@@ -62,7 +90,10 @@
                     <li><a href="http://docs.aakashlabs.org">Docs</a></li>
                     <li><a href="/pubs/">Articles & publications</a></li>
                     <li class="divider"></li>
+		    <li><a href="#">Tutorials</a></li>
+		     <li class="divider"></li>
                     <li><a href="/compete/">Compete</a></li>
+		    <li class="divider"></li>
                     <li><a href="#">News</a></li>
                   </ul>
                 </li>
@@ -100,30 +131,17 @@
     {% endblock body_block %} 
 
     <!-- FOOTER -->
-    <footer>
+    <footer >
       <div id="footer-inner" class="container">
       <div class="col-lg-4" align="center" id="mhrd">
         <a href="http://mhrd.gov.in/">
           <img src="{% static 'images/mhrd-logo.png' %}" alt="mhrd-logo">
         </a>
       </div>
-      <div class="col-lg-4" id="iitb" >
-        <center>
-          <img src="{% static 'images/iitb-logo.gif' %}" alt="iitb-logo">
-        </center>
-        <p align="justify">
-          The Indian Institute of Technology Bombay is a public
-          engineering institution located in Powai, Mumbai, India. It
-          has been ranked among the top engineering colleges in
-          India. 
-        </p>
-      </div>
 
-      <div class="col-lg-4" id="social">
+ <div class="col-lg-4" id="social">
 	<div id="social-icons">
-        <a href="#">
-          <img src="{% static 'images/twitter.png' %}" alt="twitter">
-        </a>
+       
         <a href="https://github.com/androportal">
           <img src="{% static 'images/github-white.png' %}" alt="github">
         </a>
@@ -138,6 +156,16 @@
         </a>
 	</div>
       </div>
+
+      <div class="col-lg-4" id="nmeict" >
+        <center>
+		<a href= "http://www.sakshat.ac.in/">
+          <img src="{% static 'images/nmeict.png' %}" alt="iitb-logo">
+		</a>
+        </center>
+      </div>
+
+     
 
       </div> <!-- container -->
       
