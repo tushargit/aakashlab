@@ -5,24 +5,25 @@
 
 <div class="container" style="padding-top:2.5cm; padding-bottom:0cm;">
   <div class="container-fluid"  >
-    <div class="row-fluid">
+    <div class="row-fluid ">
       <div class="col-md-3">
-	<div class="well" >
+	<div class="well well-sm" >
 	  {% block sidebar %}
-	  <a href="#"><p><strong>Introduction</strong></p>
-	  <p><strong>Proposal by IITB</strong></p>
-	  <p><strong>History of Aakash</strong></p>
-	  <p><strong>Tablet Distribution and Testing</strong></p>
-	  <p><strong>Training and Contests</strong></p>
-	  <p><strong>Research & Developement</strong></p> 
-	  <p><strong>Future of Aakash</strong></p>   
-	  
+	<ul class="nav">
+	  <li><a href="" style="padding-top:2px">Introduction</a></li>
+	  <li><a href="" style="padding-top:2px">Proposal by IITB</a></li>
+	  <li><a href="" style="padding-top:2px">History of Aakash</a></li>
+	  <li><a href="" style="padding-top:2px">Tablet Distribution and Testing</a></li>
+	  <li><a href="" style="padding-top:2px">Training and Contests</a></li>
+	  <li><a href="" style="padding-top:2px">Research & Developement</a></li>
+	  <li><a href="" style="padding-top:2px">Future of Aakash</a></li>   
+	 </ul>
 	  {% endblock sidebar %}
 	</div>
       </div>
       
-	<div class="col-md-9" style="height:285px;">
-	<div class="well" style="height:450px; overflow-y:scroll;">
+	<div class="col-md-9" >
+	<div class="well" style=" overflow-y:scroll;">
 	  {% block content %}
 		We aim at developing useful Open Source applications and content for
 	  use on Aakash. These will encompass the entire educational
@@ -34,7 +35,7 @@
 	  of applications and content for use in all schools and
 	  colleges. Content in Indian languages will receive special
 	  attention.
-
+</br></br>
 	  The Aakash Lab has been set up in the department of CSE
 	  (Computer Science and Engineering Department) at Indian
 	  Institute of Technology Bombay, to drive this project. With
@@ -42,7 +43,7 @@
 	  technologies, tablet computers are fast emerging as popular
 	  consumer devices. In coming years, Aakash is likely to
 	  become a ubiquitous tool in the hands of students, at all
-	  levels of their education.
+	  levels of their education.</br></br>
 
 We aim at developing useful Open Source applications and content for
 	  use on Aakash. These will encompass the entire educational
@@ -53,7 +54,7 @@ We aim at developing useful Open Source applications and content for
 	  students and teachers, to carry out large scale development
 	  of applications and content for use in all schools and
 	  colleges. Content in Indian languages will receive special
-	  attention.
+	  attention.</br></br>
 
 	  The Aakash Lab has been set up in the department of CSE
 	  (Computer Science and Engineering Department) at Indian
@@ -63,7 +64,7 @@ We aim at developing useful Open Source applications and content for
 	  consumer devices. In coming years, Aakash is likely to
 	  become a ubiquitous tool in the hands of students, at all
 	  levels of their education.
-
+</br></br>
 	  Aakash Lab aims at developing useful Open Source
 	  applications and content for use on Aakash Tablet. These
 	  will encompass the entire educational spectrum from schools
@@ -74,7 +75,7 @@ We aim at developing useful Open Source applications and content for
 	  from these colleges, to carry out large scale development of
 	  applications and content for use in all schools and
 	  colleges.
-
+</br></br>
 	  Building upon the past work at IIT Bombay, the team made
 	  substantial progress, and the work continues in full
 	  swing. It has added key functionalities through these
@@ -84,8 +85,8 @@ We aim at developing useful Open Source applications and content for
 	</div>
       </div>
 
-<div class="col-md-3" >
-	<div class="well well-sm" style="height:165px;">
+<div class="col-md-3 " >
+	<div class="well well-sm news">
 	  {% block news %}
 	 <p> <strong>News and Events</strong> </p>
 	  <p> Building upon the past work at IIT Bombay, the team made
