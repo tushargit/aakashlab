@@ -3,97 +3,45 @@
 
 {% block body_block %}
 
-<div class="container" style="padding-top:2.5cm; padding-bottom:2.5cm;">
-  <div class="container-fluid">
-    <div class="row-fluid">
+<div class="container" style="padding-top:2.5cm; padding-bottom:0cm;">
+  <div class="container-fluid"  >
+    <div class="row-fluid ">
       <div class="col-md-3">
-	<div class="well">
+	<div class="well well-sm" >
 	  {% block sidebar %}
-	  Govt. of India
-	  <br \>
-	  MHRD
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>
-	  LINK
-	  <br \>	  
-	  
+	<ul class="nav">
+	  <li><a href="/home/introduction" target="content" style="padding-top:2px">Introduction</a></li>
+	  <li><a href="/home/proposal" target="content" style="padding-top:2px">Proposal by IITB</a></li>
+	  <li><a href="/home/history" target="content" style="padding-top:2px">History of Aakash</a></li>
+	  <li><a href="/home/distribution" target="content" style="padding-top:2px">Tablet Distribution and Testing</a></li>
+	  <li><a href="/home/training" target="content" style="padding-top:2px">Training and Contests</a></li>
+	  <li><a href="/home/research" target="content" style="padding-top:2px">Research & Developement</a></li>
+	  <li><a href="/home/future" target="content" style="padding-top:2px">Future of Aakash</a></li>   
+	 </ul>
 	  {% endblock sidebar %}
 	</div>
       </div>
-      <div class="col-md-9">
-	<div class="well">
+      
+	<div class="col-md-9" >
+	<!-- <div class="well" style=" overflow-y:scroll;"> -->
 	  {% block content %}
-We aim at developing useful Open Source applications and content for
-	  use on Aakash. These will encompass the entire educational
-	  spectrum from schools to colleges, and from vocational
-	  training to professional studies. Our goal is to complete
-	  useful development of engineering colleges, and to build a
-	  large community of thousands of these talented professional
-	  students and teachers, to carry out large scale development
-	  of applications and content for use in all schools and
-	  colleges. Content in Indian languages will receive special
-	  attention.
+		<iframe name="content" class="well" src="/home/introduction" width="100%" height="100%">
+ 			 <p>Your browser does not support iframes.</p>
+		</iframe>
 
-	  The Aakash Lab has been set up in the department of CSE
-	  (Computer Science and Engineering Department) at Indian
-	  Institute of Technology Bombay, to drive this project. With
-	  the increasing convergence of communication and computing
-	  technologies, tablet computers are fast emerging as popular
-	  consumer devices. In coming years, Aakash is likely to
-	  become a ubiquitous tool in the hands of students, at all
-	  levels of their education.
-
-	  Aakash Lab aims at developing useful Open Source
-	  applications and content for use on Aakash Tablet. These
-	  will encompass the entire educational spectrum from schools
-	  to colleges and from vocational training to professional
-	  studies. The goal is to complete the deployment at over 500
-	  engineering colleges, and to build a large community of
-	  thousands of talented professional students and teachers
-	  from these colleges, to carry out large scale development of
-	  applications and content for use in all schools and
-	  colleges.
-
-	  Building upon the past work at IIT Bombay, the team made
-	  substantial progress, and the work continues in full
-	  swing. It has added key functionalities through these
-	  applications.
 	  {% endblock content %}
+	<!-- </div> -->
+      </div>
+
+<div class="col-md-3 " >
+	<div class="well well-sm news">
+	  {% block news %}
+	 <p> <strong>News and Events</strong> </p>
+	  <p> Building upon the past work at IIT Bombay, the team made
+	  substantial progress, and the work continues in full
+	  swing. </p>
+	  
+	  {% endblock news %}
 	</div>
       </div>
     </div>

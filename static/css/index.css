@@ -1,0 +1,74 @@
+@media (max-width: 468px) {
+.news{
+	margin-top:190px;
+	height:135px;
+}
+
+.col-md-9 > .well{
+height:485px;
+}
+
+.col-md-9{
+	height:315px;
+}	
+}
+
+@media (min-width: 468px) and (max-width:768px) {
+.news{
+	margin-top:190px;
+	height:120px;
+}
+
+.col-md-9 > .well{
+height:485px;
+}
+
+.col-md-9{
+	height:315px;
+}
+}
+
+@media (min-width: 768px) and (max-width:992px) {
+.news{
+
+	height:165px;
+margin-top:190px;
+}
+
+.col-md-9 > .well{
+height:480px;
+}
+
+.col-md-9{
+	height:315px;
+}
+}
+
+@media (min-width: 992px) and (max-width:1200px) {
+.news{
+
+	height:165px;
+}
+
+.col-md-9 > .well{
+height:480px;
+}
+
+.col-md-9{
+	height:315px;
+}
+}
+
+@media (min-width: 1200px) {
+.news{
+	height:165px;
+}
+
+.col-md-9 > .well{
+height:440px;
+}
+
+.col-md-9{
+	height:275px;
+}
+}
