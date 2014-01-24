@@ -175,13 +175,40 @@ def pubs(request):
     return render_to_response('pubs.html', context_dict, context)    
 
 def activities(request):
-    """links of all the activites related to Aakash.
+    """links of all the activites by IITB related to Aakash.
     
     Arguments:
     - `request`:
     """
     context = RequestContext(request)    
     return render_to_response('activities.html', context)
+
+def tutorials(request):
+    """Tutorial page
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('tutorials.html', context)
+
+def news(request):
+    """news page.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('news.html', context)
+
+def others(request):
+    """links of all the activites by others related to Aakash.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('other_activities.html', context)
 
 
 def all_ac(request):
