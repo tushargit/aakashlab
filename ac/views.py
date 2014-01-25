@@ -210,6 +210,15 @@ def news(request):
     context = RequestContext(request)    
     return render_to_response('news.html', context)
 
+def sitemap(request):
+    """sitemap page.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('sitemap.html', context)
+
 def others(request):
     """links of all the activites by others related to Aakash.
     
