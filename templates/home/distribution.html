@@ -1,1 +1,154 @@
-This is Distribution Page.
+{% load static %}
+<html>
+<head>
+	<style>
+		p { font-size:17px;
+	  	text-align:justify;
+		padding-left:1cm;
+		padding-right:2cm;
+		}
+		td {
+		height:40;
+		padding-top: 2px;
+		padding-left: 2px;
+		}
+		ol {
+		padding-left:2cm;
+		text-align:justify;
+		padding-right:2cm;
+		}
+		ul {
+		padding-left:2cm;
+		text-align:justify;
+		padding-right:2cm;
+		}
+		li span{
+		padding-left:1cm;
+		text-align:justify;
+		padding-right:1cm;
+		}
+	</style>
+</head>
+
+<body>
+<div>
+<h2>Tablet Distribution and Testing</h2>
+
+<h3 align='left' style="padding-left:10px"><u>Tablet Distribution</u></h3>
+<img class='set' src="{% static 'images/aakash_tablet.jpg' %}" align='left' height="130" width="180" style="padding-left:1cm ; padding-right:10px" > 
+<p>
+A total of 1,00,000 tablets were received by IIT Bombay as ordered from Datawind. These were distributed among various remote center colleges and schools across the country. For the details of remote-center wise receipts of the tablets visit  
+
+<a href=http://www.it.iitb.ac.in/aakash2/dispatchDetailsForManager.jsp>Distribution Details of Tablet.</a>
+<br>
+
+IIT Kharagpur, now a part of IITB for Aakash related activities, have been en-
+trusted with the responsibility of new Remote Centers in the eastern and northern India and
+to distribute Aakash for testing and application development.
+</p>
+</div>
+
+<br>
+<div style="text-align:center">
+
+<h3 align='left' style="padding-left:10px"><u>Lab Testing by C-DAC (Thiruvananthapuram)</u></h3> 
+
+<h3 align='center'>Introduction</h3>
+
+<!-- <img src="/home/raeha/Pictures/testing.jpg" align='left' height="200" width="200" style="margin-left:1cm"> -->
+<p>CDAC Thiruvananthapuram was entrusted the responsibility of carrying out the detailed 
+lab testing of the Aakash tablet samples as part of the Aakash project given by MHRD to 
+IIT Bombay. Testing was done in five phases : 
+</p>
+<img src="{% static 'images/CDAC4.jpg' %}" align='right' height="120" width="180" style="padding-left:20px ; padding-right:2cm"> 
+<ul >
+	<li>Aakash Status Report dated 22 August 2012</li>
+	<li>Aakash Status Report dated 30 May 2013</li>
+	<li>ERTL Test Report dated 15 April 2013</li>
+	<li>Aakash Status Report dated 8 July 2013</li>
+	<li>Aakash Test Report dated 8 July 2013</li>
+</ul>
+<p>
+Below is the latest report dated 8 July 2013. For more details checkout 
+<a href=http://www.it.iitb.ac.in/aakash2/>Aakash Status Report - Document need to be linked and uploaded.</a>
+</p>
+<br>
+
+<h3 align='center'>Aakash Project Status Report &nbsp;&#45;&nbsp; July 08, 2013</h3>
+
+<p>
+A total of 965 Aakash Tablets received in 10 batches till date as given below: </p>
+
+<ol>
+<li>08-10-2012 	&nbsp;&#45;&nbsp; 25 nos &nbsp;&#45;&nbsp;(Serial nos &nbsp;&#45;&nbsp; 10001060&nbsp;&#45;&nbsp;69,  &nbsp;71&nbsp;&#45;&nbsp;79,&nbsp; 85&nbsp;&#45;&nbsp;90)</li>
+<li>27-12-2012 &nbsp;&#45;&nbsp; 40 nos &nbsp;&#45;&nbsp;(Serial nos&nbsp;&#45;&nbsp;10002059&nbsp;&#45;&nbsp;98)</li>
+<li>25-02-2013 &nbsp;&#45;&nbsp; 50 nos &nbsp;&#45;&nbsp;(Serial nos&nbsp;&#45;&nbsp; 10003061&nbsp;&#45;&nbsp;90, 10002801&nbsp;&#45;&nbsp;20)</li>
+<li>02-04-2013 &nbsp;&#45;&nbsp; 150 nos</li>
+<li>15-04-2013 &nbsp;&#45;&nbsp; 100 nos</li>
+<li>25-04-2013 &nbsp;&#45;&nbsp; 100 nos</li>
+<li>29-04-2013 &nbsp;&#45;&nbsp; 100 nos</li>
+<li>09-05-2013 &nbsp;&#45;&nbsp; 100 nos</li>
+<li>31-05-2013 &nbsp;&#45;&nbsp; 200 nos</li>
+<li>11-06-2013 &nbsp;&#45;&nbsp; 100 nos</li>
+</ol>
+
+<p>
+The batches received contain a mix of Tablet variants, comprising of &ldquo;Nuclear&#45;pfdq88c&rdquo;,
+&ldquo;Nuclear Evb&rdquo;, &ldquo;MID&rdquo;, &ldquo;A13MID&rdquo; from &ldquo;Softwinners&rdquo; and &ldquo;RK2926&rdquo; from
+&ldquo;Rockchip&rdquo;.
+</p>
+<img src="{% static 'images/testing1.png' %}" align='right' height="260" width="320" style="padding-right:2cm" >
+<p>
+The problems found during the preliminary evaluation of the tablets are listed below:</p>
+<ul>
+<li> Some of the Tablets are dead. Do not turn ON even with power adaptor
+   connected or after charging.</li>
+<li> Some of the Tablets do not get charged.</li>
+<li> Power adaptors of some are not working. Some of the power adaptors have
+   blown up while switched ON.</li>
+<li> Some of the power adaptors are faulty and the Tablet turns OFF when it is
+   connected.</li>
+<li> Tablets take a longer time to charge with some power adaptors.</li>
+<li> Some of the Tablets intermittently produce a tick sound and then turn-off.</li>
+<li> Arcing sounds are heard in some Tablets while touching / scrolling the screen
+   (with the power adaptor connected).</li>
+<li> Boot problems found in some of the tablets. Tablet does not boot up, only
+   continuously displays the Android logo in a loop.</li>
+<li> Some of the Tablets experience frequent operating system freeze.</li>
+<li> Erratic OS behaviour with automatic invoking and closing of apps, menu
+   clicks etc. experienced in some of the Tablets.</li>
+<li> Extreme heat generation (above 42oC) found in some while charging and after
+    usage for more than 30 mins.</li>
+<li> Misalignment of micro-USB connector, preventing insertion of cable.
+<li> Ripples observed on LCD screen of some Tablets.</li>
+<li> Vertical line also present in display of some Tablets.</li>
+<li> Touch sensitivity of some of the Tablets are very poor.</li>
+<li> Some other problems like touch being insensitive in certain areas of the screen
+   and touch press staying persistent in some points of the screen were also
+  observed.</li>
+<li> USB port of a few Tablets were found to be not working.</li>
+<li> Wi-Fi of some of the Tablets have failed.</li>
+</ul>
+
+<br>
+<h3 align='center'>Aakash Tablet Test Report <br> (July 08, 2013) </h3>
+<p> Result of Testing completed on 3 batches of Tablets received in April, 2013
+<br>
+Tablet batches:</p>
+<ul>
+<li>Batch 4&#58;&nbsp; (Sl. nos&#58;&nbsp; 10001 &nbsp;&#45;&nbsp; 10150) &nbsp;&#45;&nbsp; 150 nos</li>
+<li>Batch 5&#58;&nbsp; (Sl. nos&#58;&nbsp; 10201 &nbsp;&#45;&nbsp; 10300) &nbsp;&#45;&nbsp; 100 nos</li>
+<li>Batch 6&#58;&nbsp; (Sl. nos&#58;&nbsp; 10301 &nbsp;&#45;&nbsp; 10400) &nbsp;&#45;&nbsp; 100 nos</li>
+</ul>
+
+<p>Total no. of Tablets tested: 350 nos</p>
+
+<img src="{% static 'images/1.png' %}"  height="300" width="400" align="center">
+ <br>
+<img src="{% static 'images/2.png' %}"  height="300" width="500" align="middle"> 
+
+</div>
+
+
+</body>
+</html>
