@@ -54,11 +54,11 @@ height:370px;
 }
 
 .container_content{
-height:370px;
+height:380px; /* 370*/
 }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1400px) and (max-width:1680px) {
 
 .col-md-9,.col-md-3,.col-md-3 > .well{
 	height:100%;
@@ -68,6 +68,16 @@ height:370px;
 height:490px;
 }
 
+}
+
+@media (min-width: 1680px){
+.col-md-9,.col-md-3,.col-md-3 > .well{
+	height:100%;
+}
+
+.container_content{
+height:600px; 
+}
 }
 
 @media (min-width: 992px) and (max-width:1200px){
