@@ -81,6 +81,15 @@ def history(request):
     context = RequestContext(request)    
     return render_to_response('home/history.html', context)
 
+def configuration(request):
+    """Configuration page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/configuration.html', context)
+
 def distribution(request):
     """Tablet Distribution and Testing page.
 
