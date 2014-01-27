@@ -30,6 +30,7 @@ urlpatterns = patterns('',
 	url(r'^home/configuration/$', 'ac.views.configuration', name='configuration'),
 	url(r'^home/distribution/$', 'ac.views.distribution', name='distribution'),
 	url(r'^home/training/$', 'ac.views.training', name='training'),
+	url(r'^home/sidebar_projects/$', 'ac.views.sidebar_projects', name='sidebar_projects'),
 	url(r'^home/research/$', 'ac.views.research', name='research'),
 	url(r'^home/future/$', 'ac.views.future', name='future'),
 

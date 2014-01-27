@@ -108,6 +108,15 @@ def training(request):
     context = RequestContext(request)    
     return render_to_response('home/training.html', context)
 
+def sidebar_projects(request):
+    """RnD page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/sidebar_projects.html', context)
+
 def research(request):
     """RnD page.
 
