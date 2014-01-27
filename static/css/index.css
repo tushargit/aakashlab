@@ -76,7 +76,8 @@ height:490px;
 }
 
 .container_content{
-height:600px; 
+height:635px; 
+
 }
 }
 
@@ -88,6 +89,7 @@ height:600px;
 }
 .container_content{
 height:370px;
+
 }
 } 
 
@@ -98,7 +100,4 @@ padding-right:0px;
 
 }
 
-.news > .col-sm-2{
-width:auto;
-}
 
