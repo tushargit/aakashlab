@@ -136,6 +136,15 @@ def future(request):
     context = RequestContext(request)    
     return render_to_response('home/future.html', context)
 
+def privacy(request):
+    """Privacy of Aakash labs.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('privacy.html', context)
+
 def contact(request):
     """Contact us page.
 
