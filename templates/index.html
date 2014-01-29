@@ -2,32 +2,53 @@
 {% load static %}
 
 {% block body_block %}
-    <!-- Carousel
-    ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-	<li data-target="#myCarousel" data-slide-to="3"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="{% static 'images/img1.jpg' %}" alt="First slide">
-        </div>
-        <div class="item">
-          <img src="{% static 'images/img2.jpg' %}" alt="Second slide">
-        </div>
-        <div class="item">
-          <img src="{% static 'images/img3.jpg' %}" alt="Third slide">
-        </div>
-	<div class="item">
-          <img src="{% static 'images/img4.jpg' %}" alt="Forth slide">
-        </div>
+
+<div class="container index" style="padding-top:2.5cm; padding-bottom:0cm;">
+  <div class="container-fluid"  >
+    <div class="row-fluid ">
+<div class="container container_content" >
+      <div class="col-md-3">
+	<div class="well well-sm" >
+	  {% block sidebar %}
+	<ul class="nav">
+	  <li><a href="/home/introduction" target="content" style="padding-top:2px">Introduction</a></li>
+	<!--  <li><a href="/home/proposal" target="content" style="padding-top:2px">Proposal by IITB</a></li> -->
+	  <li><a href="/home/history" target="content" style="padding-top:2px">History of Aakash</a></li>
+	  <li><a href="/home/configuration" target="content" style="padding-top:2px">Aakash Configuration</a></li>	
+	  <li><a href="/home/distribution" target="content" style="padding-top:2px">Tablet Distribution and Testing</a></li>
+	  <li><a href="/home/training" target="content" style="padding-top:2px">Training Programs</a></li>
+<li><a href="/home/sidebar_projects" target="content" style="padding-top:2px">Projects</a></li>
+
+	<!--	  <li><a href="/home/research" target="content" style="padding-top:2px">Research & Developement</a></li> -->
+	  <li><a href="/home/future" target="content" style="padding-top:2px">Future of Aakash</a></li>   
+	 </ul>
+	  {% endblock sidebar %}
+	</div>
       </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-    </div><!-- /.carousel -->
+      
+	<div class="col-md-9" >
+	<!-- <div class="well" style=" overflow-y:scroll;"> -->
+	  {% block content %}
+		<iframe name="content" class="well" src="/home/introduction" width="100%" height="100%">
+ 			 <p>Your browser does not support iframes.</p>
+		</iframe>
+
+	  {% endblock content %}
+	<!-- </div> -->
+      </div>
+</div>
+
+<div class="col-md-12 " style="padding-top:0.5cm" >
+	<div class="well well-sm news">
+	  {% block news %}
+	<p > <strong>News and Events:</strong> </p>
+	<marquee behavior="scroll" direction="left" scrollamount="3">This is a very important news related to the Aakash project. We are going online this 31st.</marquee>
+	  
+	  {% endblock news %}
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock body_block %}

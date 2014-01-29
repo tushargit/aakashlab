@@ -1,0 +1,81 @@
+@media (max-width: 468px) {
+.marketing > .row > .col-sm-3 {
+text-align: center;
+}
+
+.col-sm-3 > a > img{
+ width:250px;
+ height:80px; 
+}
+}
+
+@media (min-width: 468px) and (max-width:768px) {
+.marketing > .row > .col-sm-3 {
+text-align: center;
+}
+
+.col-sm-3 > a > img{
+ width:250px;
+ height:80px; 
+}
+}
+
+
+@media (min-width: 768px) and (max-width:992px) {
+.marketing{
+padding-left:0px;
+padding-right:50px;
+}
+
+.col-sm-3 > a > img{
+ width:180px;
+ height:70px;  
+}
+}
+
+@media (min-width: 992px) and (max-width:1200px) {
+.marketing{
+padding-left:0px;
+padding-right:50px;
+}
+
+.col-sm-3 > a > img{
+ width:230px;
+ height:80px; ; 
+}
+}
+
+@media (min-width: 1200px) and (max-width:1400px){
+.marketing{
+padding-left:50px;
+padding-right:100px;
+}
+
+.col-sm-3 > a > img{
+ width:250px;
+ height:80px; 
+}
+}
+
+@media (min-width: 1400px) {
+.marketing{
+padding-left:50px;
+padding-right:100px;
+}
+
+.col-sm-3 > a > img{
+ width:250px;
+ height:80px; 
+}
+}
+
+
+
+
+.col-sm-3{
+overflow:hidden;
+}
+
+
+
+

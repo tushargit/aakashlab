@@ -54,6 +54,96 @@ def compete(request):
     context = RequestContext(request)    
     return render_to_response('compete.html', context)
 
+def introduction(request):
+    """Introduction page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/introduction.html', context)
+
+def proposal(request):
+    """Proposal page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/proposal.html', context)
+
+def history(request):
+    """History page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/history.html', context)
+
+def configuration(request):
+    """Configuration page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/configuration.html', context)
+
+def distribution(request):
+    """Tablet Distribution and Testing page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/distribution.html', context)
+
+def training(request):
+    """Training and Contest page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/training.html', context)
+
+def sidebar_projects(request):
+    """RnD page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/sidebar_projects.html', context)
+
+
+def research(request):
+    """RnD page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/research.html', context)
+
+def future(request):
+    """Future of Aakash page.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('home/future.html', context)
+
+def privacy(request):
+    """Privacy of Aakash labs.
+
+    Arguments:
+    - `Request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('privacy.html', context)
 
 def contact(request):
     """Contact us page.
@@ -112,6 +202,51 @@ def pubs(request):
     pubs = Pub.objects.all()
     context_dict = {'pubs': pubs}
     return render_to_response('pubs.html', context_dict, context)    
+
+def activities(request):
+    """links of all the activites by IITB related to Aakash.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('activities.html', context)
+
+def tutorials(request):
+    """Tutorial page
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('tutorials.html', context)
+
+def news(request):
+    """news page.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('news.html', context)
+
+def sitemap(request):
+    """sitemap page.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('sitemap.html', context)
+
+def others(request):
+    """links of all the activites by others related to Aakash.
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)    
+    return render_to_response('other_activities.html', context)
 
 
 def all_ac(request):

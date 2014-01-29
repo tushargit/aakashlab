@@ -14,6 +14,8 @@
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen">
     <link href="{% static 'css/bootstrap-theme.css' %}" rel="stylesheet">
     <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+    <link href="{% static 'css/iitb_activity.css' %}" rel="stylesheet">
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <link href="{% static 'font-awesome-4.0.3/css/font-awesome.min.css' %}"
 	  rel="stylesheet">
@@ -46,15 +48,43 @@
                 <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand" href="/"><img src="{% static 'images/Aakash_logo.png' %}" alt="Aakash logo" width="80px" style="padding-left:5px; position:absolute; left:5px; z-index:3;"></a>
-              <a class="navbar-right-logo" href="/"><img src="{% static 'images/iitb_logo_white.png' %}" alt="IITB logo" width="55px"></a>
+              <a class="navbar-right-logo" href="http://www.iitb.ac.in/" target="_blank"><img src="{% static 'images/iitb_logo_white.png' %}" alt="IITB logo" width="55px"></a>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav nav-left">
                 <li><a href="/">Home</a></li>
-                <li><a href="/about/">About</a></li>
-		<li><a href="/ac/">Aakash Centres</a></li>
+              <!--  <li><a href="/about/">About</a></li> -->
+		 <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aakash Projects <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/ac/">Aakash Centres</a></li>
+		 <li class="divider"></li>
+                   <li><a href="/ac/iitb/">IITB Projects</a></li>
+		    <li><a href="/ac/projects/">All Projects</a></li>
+                   <!-- <li class="divider"></li>
+                    <li><a href="/compete/">Compete</a></li>
+                    <li><a href="#">News</a></li> -->
+                  </ul>
+                </li>
+		<!--  <li><a href="/activities/">Activities at IITB </a></li>-->
+		 <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aakash Activities <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/activities/">IITB</a></li>
+		 <li class="divider"></li>
+                   <li><a href="/others/">AADL</a></li>
+		   
+                   <!-- <li class="divider"></li>
+                    <li><a href="/compete/">Compete</a></li>
+                    <li><a href="#">News</a></li> -->
+                  </ul>
+                </li>		
+		 <!-- <li><a href="/pubs/">Publications</a></li> -->
+
+
+	<!--	<li><a href="/ac/">Aakash Centres</a></li>
 		<li><a href="/ac/projects/">Projects</a></li>
-		<li><a href="/ac/iitb/">IITB</a></li>
+		<li><a href="/ac/iitb/">IITB</a></li> -->
 		<li><a href="/faqs/">FAQs</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
@@ -62,8 +92,11 @@
                     <li><a href="http://docs.aakashlabs.org">Docs</a></li>
                     <li><a href="/pubs/">Articles & publications</a></li>
                     <li class="divider"></li>
+		    <li><a href="/tutorials/">Tutorials</a></li>
+		     <li class="divider"></li>
                     <li><a href="/compete/">Compete</a></li>
-                    <li><a href="#">News</a></li>
+		   <!-- <li class="divider"></li>
+                    <li><a href="/news/">News</a></li> -->
                   </ul>
                 </li>
 	      </ul>
@@ -96,143 +129,22 @@
     </div>
 
 
-  {% block body_block %}
+    {% block body_block %}
     {% endblock body_block %} 
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-	<h3 class="text-muted" align="center">Some of our featured projects</h3>
-	<br/>
-	<div class="col-lg-4">
-          <img class="img-circle" src="{% static 'images/st-logo.png' %}" alt="Spoken tutorial logo">
-          <h2>Spoken Tutorial</h2>
-          <p>Screen-casts that will help you to learn and use open
-          source software.</p>
-          <p><a class="btn btn-info"
-          href="http://www.spoken-tutorial.org" role="button">Visit
-          Site &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="{% static 'images/scilab_logo.png' %}" alt="Scilab logo">
-          <h2>Scilab</h2>
-          <p>Scilab software, stemming from Inria, France. source
-          reference in numerical computation software.</p>
-          <p><a class="btn btn-info" href="http://scilab.in/"
-          role="button">Visit Site &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="{% static 'images/oscad-logo.png' %}" alt="Oscad logo">
-          <h2>Oscad</h2>
-          <p>Oscad is an open source EDA tool for circuit design,
-          simulation, analysis and PCB design.</p>
-          <p><a class="btn btn-info" href="http://oscad.in/"
-          role="button">Visit Site &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-
-	<!-- <div class="col-lg-4"> -->
-        <!--   <img class="img-circle" src="{% static 'images/garland_logo.png' %}" alt="CFD logo"> -->
-        <!--   <h2>CFD</h2> -->
-        <!--   <p>he CFD team at FOSEE, IIT Bombay promotes the use of -->
-        <!--   OpenFOAM (Open source Field Operation and Manipulation) as -->
-        <!--   being popular and easily available.</p> -->
-        <!--   <p><a class="btn btn-default" href="http://cfd.fossee.in/" -->
-        <!--   role="button">View cfd.fossee.in &raquo;</a></p> -->
-        <!-- </div><\!-- /.col-lg-4 -\-> -->
-      </div><!-- /.row -->
-
-
-      <!-- START THE FEATURETTES -->
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">Clicker</h2>
-          <p class="lead" align="justify">Clicker software is a
-          student response system in which the instructor can make
-          presentations, launch a quiz, conduct live polls, and
-          generate results on bar graph. Using this system, students
-          can write exams, ask questions, and view results
-          instantly.</p>
-
-	  <p><a class="btn btn-success" href="http://www.it.iitb.ac.in/clicker/"
-          role="button">Visit Site &raquo;</a></p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="{% static 'images/clicker.png' %}" alt="Clicker">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="{% static 'images/apl.png' %}" alt="Aakash Programming Lab">
-        </div>
-        <div class="col-md-7">
-          <h2 class="featurette-heading">Aakash Programming Lab</h2>
-          <p class="lead" align="justify">Provides programming
-          environment for C, C++, Python, and Scilab on the tablet. It
-          allows the users to write, open, save, compile, and execute
-          programs of C, C++, python, and scilab. The program when
-          executed generates and displays the output.</p>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">proxyMITY </h2>
-          <p class="lead" align="justify">proxyMITY helps users to get access to
-          quality lectures of reputed teachers, anytime and
-          anywhere. proxyMITY has two versions : sd-card version and
-          Wi-Fi version. Lectures stored on a sd-card or on a local
-          server can be viewed respectively with these versions. Other
-          than viewing the lectures, contents of the lecture can be
-          traversed with the Tree functionality, a particular part of
-          the lecture can be tagged for future reference with Bookmard
-          functionality, Transcripts of the lecture can be viewed
-          along with the video.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="{% static 'images/proxymity.png' %}" alt="proxyMITY">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-      <!-- /END THE FEATURETTES -->
-
-      <!-- FOOTER -->
-    </div><!-- /.container -->
-    <footer>
+    <!-- FOOTER -->
+    <footer >
       <div id="footer-inner" class="container">
       <div class="col-lg-4" align="center" id="mhrd">
-        <a href="http://mhrd.gov.in/">
+        <a href="http://mhrd.gov.in/" target="_blank">
           <img src="{% static 'images/mhrd-logo.png' %}" alt="mhrd-logo">
         </a>
       </div>
-      <div class="col-lg-4" id="iitb" >
-        <center>
-          <img src="{% static 'images/iitb-logo.gif' %}" alt="iitb-logo">
-        </center>
-        <p align="justify">
-          The Indian Institute of Technology Bombay is a public
-          engineering institution located in Powai, Mumbai, India. It
-          has been ranked among the top engineering colleges in
-          India. 
-        </p>
-      </div>
 
-      <div class="col-lg-4" id="social">
+ <div class="col-lg-4" id="social" style="z-index:2">
 	<div id="social-icons">
-        <a href="#">
-          <img src="{% static 'images/twitter.png' %}" alt="twitter">
-        </a>
-        <a href="https://github.com/androportal">
+       
+        <a href="https://github.com/androportal" target="_blank">
           <img src="{% static 'images/github-white.png' %}" alt="github">
         </a>
         <a href="#">
@@ -241,20 +153,31 @@
         <a href="#">
           <img src="{% static 'images/facebook.png' %}" alt="facebook">
         </a>
-        <a href="http://www.youtube.com/user/theaakashtablet">
+        <a href="http://www.youtube.com/user/theaakashtablet" target="_blank">
           <img src="{% static 'images/youtube.png' %}" alt="youtube">
         </a>
 	</div>
       </div>
 
+	 <div class="col-lg-4" align="center" id="nmeict" style="z-index:1">
+        <a href="http://www.sakshat.ac.in/" target="_blank">
+          <img src="{% static 'images/nmeict.png' %}" alt="nmeict-logo">
+        </a>
+      </div>
+
+     
+
+     
+
       </div> <!-- container -->
       
       <div class="container" id="credits">
-      	<div class="pull-left"> &copy; 2013 IIT Bombay.</div>
+      	<div class="pull-left"> &copy; 2014 IIT Bombay.</div>
         <div class="pull-right">
+	  <a href="/sitemap/">Sitemap</a> &middot;	  
 	  <a href="https://github.com/psachin/aakashlabs/graphs/contributors">Credits</a> &middot;
-	  <a href="#">Privacy</a> &middot;
-	  <a href="#">Terms</a></div>
+	  <a href="/privacy/">Terms & Privacy</a> &middot;
+<!--	  <a href="#">Terms</a></div> -->
       </div>
       
     </footer>
