@@ -23,12 +23,14 @@
 	  <td>Name:</td>
 	  <td>{{c.user.first_name|capfirst}} {{c.user.last_name|capfirst}}</td>
 	  </tr>
+  {% if user.is_staff %}
 	  <tr>
 	  <td>Contact:</td>
 	  <td>{{c.contact}}</td>
 	  <tr>
 	  <td>E-mail:</td>
 	  <td>{{c.user.email}}</td>
+ {% endif %}
 	  </table>
       </div> <!-- col-md-8 -->
       <div class="col-md-4" align="center">
