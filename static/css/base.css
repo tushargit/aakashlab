@@ -6,6 +6,11 @@ body {
     border:0;
 }
 
+/* navbar color for ie browser*/
+.navbar-inverse
+{
+background-color:#333;
+}
 
 
 .navbar {
@@ -124,16 +129,16 @@ body {
 
 @media (min-width: 768px) and (max-width: 992px){
 
-footer{
+/*footer{
 position:fixed;
 width:100%;
 bottom:0%;
-}
+}*/
 
 
-.footer_padding{
+/*.footer_padding{
 padding-bottom:3cm;
-}
+}*/
 
 .nav-sub_container{
 width:88%; padding-left:30px;}
@@ -185,16 +190,16 @@ padding-left:25px;
 
 @media (min-width: 992px) and (max-width: 1200px){
 
-footer{
+/*footer{
 position:fixed;
 width:100%;
 bottom:0%;
-}
+}*/
 
 
-.footer_padding{
+/*.footer_padding{
 padding-bottom:3cm;
-}
+}*/
 
 
 .nav-sub_container{

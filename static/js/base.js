@@ -29,4 +29,16 @@ var href = $(".navbar-nav li:eq("+(i)+") a").attr('href');
 
 }
 
+/* Left side bar current active tab code
+*/
+
+
+$('.sidebar li').click(function(){
+
+ if ($(".sidebar li").hasClass('active') == true) {
+    $('.sidebar li').removeClass('active');
+ }
+ $(this).addClass('active');
+});
+
 
