@@ -1,140 +1,108 @@
+{% extends 'inner-base.html' %}
 {% load static %}
 
-<html>
- <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title> Aakash Configuration</title>
-	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen">
-    <link href="{% static 'css/bootstrap-theme.css' %}" rel="stylesheet">
-    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
-    <link href="{% static 'css/index.css' %}" rel="stylesheet">
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <link href="{% static 'font-awesome-4.0.3/css/font-awesome.min.css' %}"
-	  rel="stylesheet">
-    </head>
+{% block body_block %}
+<div class="well">
+  <h3><strong>Aakash Configuration</strong></h3>
+  <div>
 
-<body style="background:transparent;">
-<h3>Aakash Configuration</h3>
-<div >
+    <table class="center table table-responsive table-bordered
+		  table-striped" border='1' align='center'>
+      <col width='250'>
+      <col width='250'>
+      <col width='250'>
 
+      <tr>
+	<th>Version </th>
+	<th>AAKASH-2 </th>
+	<th>AAKASH-1 </th>
+      </tr>
 
-<!--<img class='set' src="{% static 'images/aakash_tablet_ms.jpg' %}" align='middle' height="230" width="350" style="padding-left:1cm ; padding-right:10px" >  -->
-</br>
-<table class="center table table-responsive table-bordered table-striped" border='1' align='center'>
-<col width='250'>
-<col width='250'>
-<col width='250'>
-<tr>
-<th>Version </th>
-<th>AAKASH-2 </th>
-<th>AAKASH-1 </th>
+      <tr>
+	<td>Processor</td>
+	<td>Cortex A8; 1GHz</td>
+	<td>ARM 11 - 366 MHz</td>
+      </tr>
 
-</tr>
+      <tr>
+	<td>RAM Memory </td>
+	<td>512MB </td>  
+	<td>256MB </td> 
+      </tr>
 
+      <tr>
+	<td>Internal Storage </td>
+	<td>4GB </td>  
+	<td>2GB </td>  
+      </tr>
 
-<tr>
-<td>Processor</td>
-<td>Cortex A8; 1Ghz</td>                        						    
-<td>ARM 11 - 366 mHz</td>
-</tr>
+      <tr>
+	<td>Operating System </td>
+	<td>Android 4.0.4 </td> 
+	<td>Android 2.2 </td>  
+      </tr>
 
-<tr>
-<td>RAM Memory </td>
-<td>512MB </td>  
-<td>256MB </td> 
-</tr>
+      <tr>
+	<td>Touch Panel</td>
+	<td>Capacitive </td> 
+	<td>Resistive </td>  
+      </tr>
 
+      <tr>
+	<td>Camera </td>
+	<td>Front&nbsp;&#45;&nbsp;VGA </td>
+	<td>Front&nbsp;&#45;&nbsp;VGA </td> 	
+      </tr>
 
-<tr>
-<td>Internal Storage </td>
-<td>4GB </td>  
-<td>2GB Flash </td>  
-</tr>
+      <tr>
+	<td>Battery</td>
+	<td>3200 mAh</td>  
+	<td>2100 mAh</td>  
+      </tr>
 
-<tr>
-<td>Operating System </td>
-<td>Android 4.0.X </td> 
-<td>Android 2.2</td>  
- 
-</tr>
+      <tr>
+	<td>Display Size</td>
+	<td>7 Inches </td>  
+	<td>7 Inches </td>  
+      </tr>
 
+      <tr>
+	<td>Display Resolution</td>
+	<td>800×480 Pixels </td>  
+	<td>800×480 Pixels </td>  
+      </tr>
 
-<tr>
-<td>Touch Panel</td>
-<td>Capacitive </td> 
-<td>Resistive </td>  
- 
-</tr>
+      <tr>
+	<td>Network</td>
+	<td>Wi-Fi IEEE 802.11 a/b/g</td>  
+	<td>Wi-Fi </td>  
+      </tr>
 
-<tr>
-<td>Camera </td>
-<td>Front&nbsp;&#45;&nbsp;VGA </td> 
-<td>&nbsp;&#45;&nbsp;</td>  
- 
-</tr>
+      <tr>
+	<td>Expandable Storage </td>
+	<td>upto 32GB Supported </td>  
+	<td>upto 32GB Supported </td>  
+      </tr>
 
+      <tr>
+	<td>Video HD </td>
+	<td>Yes</td>  
+	<td>Yes</td>  
+      </tr>
 
-<tr>
-<td>Battery</td>
-<td>3200 mAh</td>  
-<td>2100 mAh</td>  
+      <tr>
+	<td>Calling </td>
+	<td>No</td>  
+	<td>No</td>  
+      </tr>
 
-</tr>
+      <tr>
+	<td>Additional Facilities </td>
+	<td>Micro SD; Mini USB</td> 
+	<td>2 full length USB</td>  
+      </tr>
 
-
-<tr>
-<td>Display Size</td>
-<td>7 Inches </td>  
-<td>7 Inches </td>  
-</tr>
-
-<tr>
-<td>Display Resolution</td>
-<td>800×480 Pixels </td>  
-<td>800×480 Pixels </td>  
-</tr>
-
-
-
-<tr>
-<td>Network</td>
-<td>Wi-Fi IEEE 802.11 a/b/g</td>  
-<td>Wi-Fi </td>  
-</tr>
-
-
-
-
-
-<tr>
-<td>Expandable Storage </td>
-<td>upto 32GB Supported </td>  
-<td>upto 32GB Supported </td>  
-</tr>
-
-
-<tr>
-<td>Video HD </td>
-<td>Yes</td>  
-<td>Yes</td>  
-</tr>
-
-<tr>
-<td>Calling </td>
-<td>No</td>  
-<td>No</td>  
-</tr>
-
-<tr>
-<td>Additional Facilities </td>
-<td>Micro SD; Mini USB</td> 
-<td>2 full length USB</td>  
-</tr>
-
-
-
-</table> 
+    </table> 
+  </div>
 </div>
-</body>
-</html>
-
+{% endblock body_block %}
