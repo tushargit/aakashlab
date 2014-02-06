@@ -1,105 +1,72 @@
+{% extends 'inner-base.html' %}
 {% load static %}
 
-<html>
-  <head>
-    <style>
-      p {
-      text-align:justify;
-      padding-right:1.5cm;
-      }
-      ol {
-      padding-left:2cm;
-      text-align:justify;
-      padding-right:1.5cm;
-      }
-      ul {
-      padding-left:1cm;
-      text-align:justify;
-      padding-right:1.5cm;
-      }
-      li span{
-      padding-left:1cm;
-      text-align:justify;
-      padding-right:1cm;
-      }
-    </style>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title> History</title>
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen">
-    <link href="{% static 'css/bootstrap-theme.css' %}" rel="stylesheet">
-    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
-    <link href="{% static 'css/index.css' %}" rel="stylesheet">
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <link href="{% static 'font-awesome-4.0.3/css/font-awesome.min.css' %}"
-	  rel="stylesheet">
-  </head>
+{% block body_block %}
+<div class="well">
+  <h3><strong>Tablet Distribution and Testing</strong></h3>
+  <div style="padding-right:15px;  float:left;">
+    <img class="set img-thumbnail img-responsive"
+	 src="{% static 'images/aakash_tablet.jpg' %}"
+	 align='left' height="140" width="200" > 
+  </div>
 
-  <body style="background:transparent;">
-    <div>
-      <h3>Tablet Distribution and Testing</h3>
-</br>
-
-<h4>Tablet Distribution</h4>
-<div style="padding-right:15px;  float:left;">
-  <img class='set' src="{% static 'images/aakash_tablet.jpg' %}"
-  align='left' height="140" width="200" > 
-</div>
-      <p>
-	A total of 1,00,000 tablets were received by IIT Bombay from Datawind. These were distributed among various remote center colleges and schools across the country. For the details of remote-center wise receipts of the tablets visit  
-
-	<a href=http://www.it.iitb.ac.in/aakash2/dispatchDetailsForManager.jsp target="_blank">Distribution Details of Tablet.</a>
-	<br>
-
-	IIT Kharagpur, now a partner of IITB for Aakash related activities, has taken up
-      the responsibility of new Remote Centers in the eastern and northern India and
-	to distribute Aakash for testing and application development.
-      </p>
-</br>
-    </div>
-
-
-
-    <div>
-	<h4>Testing</h4> 
-
-</div>
-
-      <h5><b>Lab Testing by C-DAC (Thiruvananthapuram)</b></h5> 
-
+  <p>
+    A total of 1,00,000 tablets were received by IIT Bombay from
+    Datawind. These were distributed among various remote center
+    colleges and schools across the country. For the details of
+    remote-center wise receipts of the tablets visit
+    
+    <a href=http://www.it.iitb.ac.in/aakash2/dispatchDetailsForManager.jsp
+       target="_blank">Distribution Details of Tablet.</a>
+    <br>
+    
+    IIT Kharagpur, now a partner of IITB for Aakash related
+    activities, has taken up the responsibility of new Remote
+    Centers in the eastern and northern India and to distribute
+    Aakash for testing and application development.
+  </p>
   
-      <p>CDAC Thiruvananthapuram was entrusted the responsibility of carrying out the detailed 
-	lab testing of the Aakash tablet samples as part of the Aakash project given by MHRD to 
-	IIT Bombay. Testing was done in five phases : 
-      </p>
-<div style="padding-left:15px ; padding-right:1.5cm;  float:right;">
-  	   <img src="{% static 'images/CDAC4.jpg' %}"
-	   align="right"
-	   height="100" width="250"
-	   style="padding-left:15px; padding-right:2px;"
-	   class="img-thumbnail img-responsive"> 
-</div>
-      <ul >
-	<li>Aakash Status Report dated 22 August 2012</li>
-	<li>Aakash Status Report dated 30 May 2013</li>
-	<li>ERTL Test Report dated 15 April 2013</li>
-	<li>Aakash Status Report dated 8 July 2013</li>
-	<li>Aakash Test Report dated 8 July 2013</li>
-      </ul>
-      <p>
-	
-	<a href="{% static 'doc/Aakash_Status_2013_08_19_CDAC_LabTest.pdf' %}" target="_blank">Latest Lab Testing report dated 8 July 2013 by CDAC.</a>
-      </p>
-      <br>
+  <h4>Testing</h4>
+  <h5><strong>Lab Testing by C-DAC (Thiruvananthapuram)</strong></h5> 
 
-      <h5><b>Field Testing</b></h5>
-<p>Field Testing is done at the Aakash Project Centre’s (APCs) of IIT Bombay. 
-<br>
-<a href="{% static 'doc/Aakash_Status_2013_08_19_FieldTrial.pdf' %}" target="_blank">Result of Field Trial for Development and Testing.</a>
-</p>
+  <p>
+    CDAC Thiruvananthapuram was entrusted the responsibility of
+    carrying out the detailed lab testing of the Aakash tablet samples
+    as part of the Aakash project given by MHRD to IIT Bombay. Testing
+    was done in five phases :
+  </p>
+
+  <div style="padding-left:15px ; padding-right:1.5cm;  float:right;">
+  	   <img src="{% static 'images/CDAC4.jpg' %}" align="right"
+	   height="100" width="250" style="padding-left:15px;
+	   padding-right:2px;" class="img-thumbnail img-responsive">
+  </div>
+
+  <ul >
+    <li>Aakash Status Report dated 22 August 2012</li>
+    <li>Aakash Status Report dated 30 May 2013</li>
+    <li>ERTL Test Report dated 15 April 2013</li>
+    <li>Aakash Status Report dated 8 July 2013</li>
+    <li>Aakash Test Report dated 8 July 2013</li>
+  </ul>
+
+  <p>
+    <a href="{% static 'doc/Aakash_Status_2013_08_19_CDAC_LabTest.pdf' %}"
+       target="_blank">Latest Lab Testing report dated 8 July 2013 by
+      CDAC.
+    </a>
+  </p>
+
+  <h5><strong>Field Testing</strong></h5>
+  <p>
+    Field Testing is done at the Aakash Project Centre’s (APCs) of IIT
+    Bombay.
+    <br>
+    <a href="{% static 'doc/Aakash_Status_2013_08_19_FieldTrial.pdf' %}"
+       target="_blank">Result of Field Trial for Development and
+       Testing.
+    </a>
+  </p>
       
- 
-    </div>
-
-
-  </body>
-</html>
+</div> <!-- well -->
+{% endblock body_block %}
