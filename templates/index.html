@@ -38,17 +38,64 @@
       </div>
 </div>
 
-<div class="col-md-12 " style="padding-top:0.5cm" >
-	<div class="well well-sm news">
-	  {% block news %}
-	<p > <strong>News and Events:</strong> </p>
-	<marquee behavior="scroll" direction="left"
-	scrollamount="3">This is a very important news related to the
-	Aakash project. We are going online soon.</marquee>
-	  
-	  {% endblock news %}
-	</div>
-      </div>
+    <div class="col-md-12 " style="padding-top:0.5cm" >
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="news">
+                    <p > <strong>News and Events:</strong> </p>
+                    <marquee behavior="scroll" direction="up" scrollamount="3">
+                        <ul>
+                            <li>
+                                <small>
+                                This is a very important news related to the
+                                Aakash project. We are going online soon.
+                                </small>
+                            </li>
+                            <li>
+                                <small>
+                                This is a very important news related to the
+                                Aakash project. We are going online soon.
+                                </small>
+                            </li>
+                        </ul>
+                    </marquee>
+                </div> <!-- /.news -->
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-6">
+                    <a href="http://mhrd.gov.in/" target="_blank" id="mhrd" class="thumbnail">
+                      <img src="{% static 'images/mhrd-logo.png' %}" alt="mhrd-logo">
+                    </a>
+                    </div>
+                    <div class="col-lg-6">
+                    <a href="http://www.sakshat.ac.in/" target="_blank" id="nmeict" class="thumbnail">
+                      <img src="{% static 'images/nmeict.png' %}" alt="nmeict-logo">
+                    </a>
+                    </div>
+                </div> <!-- /.row -->
+            </div>
+
+            <div class="col-lg-3">
+                <div id="social-icons">
+                    <a href="https://github.com/androportal" target="_blank">
+                      <img src="{% static 'images/github.png' %}" alt="github">
+                    </a>
+                    <a href="#">
+                      <img src="{% static 'images/googleplus.png' %}" alt="googleplus">
+                    </a>
+                    <a href="#">
+                      <img src="{% static 'images/facebook.png' %}" alt="facebook">
+                    </a>
+                    <a href="http://www.youtube.com/user/theaakashtablet" target="_blank">
+                      <img src="{% static 'images/youtube.png' %}" alt="youtube">
+                    </a>
+                </div> <!-- /.soc-icons -->
+            </div>
+        </div>
+    </div>
+
     </div>
   </div>
 </div>
