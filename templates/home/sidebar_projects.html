@@ -1,44 +1,40 @@
+{% extends 'inner-base.html' %}
 {% load static %}
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title> Future of Aakash</title>
-	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen">
-    <link href="{% static 'css/bootstrap-theme.css' %}" rel="stylesheet">
-    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
-    <link href="{% static 'css/index.css' %}" rel="stylesheet">
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <link href="{% static 'font-awesome-4.0.3/css/font-awesome.min.css' %}"
-	  rel="stylesheet">
-    </head>
-    <body style="background:transparent;">
-   
 
- 
+{% block body_block %}
+<div class="well">
+  <div class="col-md-9" id="social">
+    
+    <h3>Projects</h3>
+    <p align ="justify"> IIT Bombay, has created this web
+      portal to serve as a central repository for all Aakash
+      Projects and research and development related undertaken
+      at every Aakash Centre’s.</br></br>
       
-              
-           <div class="col-md-9" id="social">
-         
-       
-		
-        
-                    <h3>Projects</h3>
-             <p align ="justify"> IIT Bombay, has created this web portal to serve as a central repository for all Aakash Projects and research and development related undertaken at every Aakash Centre’s.</br></br>
- 
-      Aakash Lab aims at developing useful Open Source applications and content for Aakash Tablet. These will encompass the entire educational spectrum from schools to colleges and from vocational training to professional studies.Various applications have been developed at IIT Bombay. </br></br>
-      We have around 350 Engineering colleges as Aakash Centre’s who aid us in research and development of applications for Aakash Tablet. The goal is to complete the deployment at over 500 engineering colleges, and to build a large community of thousands of talented professional students and teachers from these colleges, to carry out large scale development of applications and content for use in all schools and colleges.  </br>
-<table class="center table table-responsive table-bordered table-striped" border='1' align='center'>
-<tr>
-<td><a href="/ac/" target="_parent">Aakash Centers </a></td>
-<td><a href="/ac/iitb/" target="_parent">IITB Projects</a></td>
-<td><a href="/ac/projects/" target="_parent">All Projects</a></td>
-</tr>
-</table>
-</p>
-                </div>
-</br>
-           
+      Aakash Lab aims at developing useful Open Source applications
+      and content for Aakash Tablet. These will encompass the entire
+      educational spectrum from schools to colleges and from
+      vocational training to professional studies.Various applications
+      have been developed at IIT Bombay. <br /><br /> We have around
+      350 Engineering colleges as Aakash Centre’s who aid us in
+      research and development of applications for Aakash Tablet. The
+      goal is to complete the deployment at over 500 engineering
+      colleges, and to build a large community of thousands of
+      talented professional students and teachers from these colleges,
+      to carry out large scale development of applications and content
+      for use in all schools and colleges.<br />
 
-    </body>
-</html>
+      <table class="center table table-responsive table-bordered
+		    table-striped"
+	     border='1' align='center'>
+	<tr>
+	  <td><a href="/ac/" target="_parent">Aakash Centers </a></td>
+	  <td><a href="/ac/iitb/" target="_parent">IITB Projects</a></td>
+	  <td><a href="/ac/projects/" target="_parent">All Projects</a></td>
+	</tr>
+      </table>
+
+  </div> <!-- col -->
+</div> <!-- well  -->
+{% endblock body_block %}
 
