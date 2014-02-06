@@ -1,110 +1,75 @@
+{% extends 'inner-base.html' %}
 {% load static %}
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title> History</title>
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen">
-    <link href="{% static 'css/bootstrap-theme.css' %}" rel="stylesheet">
-    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
-    <link href="{% static 'css/index.css' %}" rel="stylesheet">
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <link href="{% static 'font-awesome-4.0.3/css/font-awesome.min.css' %}"
-	  rel="stylesheet">
-  </head>
-  <body style="background:transparent;">
-    <div class="col-md-9" id="social">
-      <h3>History</h3>
-      <br />
-      <h4> Aakash II </h4>
-      <div align="justify">
-	<p align="justify">
-	  <div style=" float:right; padding-left:10px">
-	    <img src="{% static 'images/Aakash Tablet.jpg' %}"
-		 style=" width:300px;height=400px;"
-		 class="img-thumbnail img-responsive"/>
-	  </div>
 
-	  In March 2012, the Aakash project was transferred to IIT
-	  Bombay, with CDAC as its testing partner. As IIT Rajasthan
-	  selected Datawind through due diligence, following all CAG
-	  norms, IIT Bombay decided to procure Aakash 2 from the same
-	  vendor. IIT Bombay negotiated with Datawind once again and
-	  froze the prices at Rs. 2,263. </br>In July 2012, Datawind
-	  agreed to upgrade the device to a better one without any
-	  cost escalation. The new device would have 512 MB RAM, 1GHz
-	  ARM Cortex A8 processor, Android 4.0 operating system and a
-	  gravity sensor, all upgrades over the purchase order issued
-	  by IIT Bombay in May 2012.The specifications of this device
-	  are 800 MHz ARM Cortex A8, 256 MB RAM, 2GB NAND flash, 2GB
-	  SD card, 7”display with 800x480 resolution, four point multi
-	  touch projective capacitive touch panel, Android 2.3 or
-	  later. They also agreed to provide the tablet at Rs. 2,276,
-	  the rupee equivalent of $49.98 on the day the purchase order
-	  was placed. This would more correctly account for the
-	  delays, while protecting against the fluctuations in the
-	  exchange rates. This new improved device was christened as
-	  Aakash 2.<br /><br />
+{% block body_block %}
+<div class="well">
+<div class="col-md-9" id="social">
+  <h3><strong>History</strong></h3>
+  <h4> Aakash II </h4>
+  <p align="justify">
+      <div style=" float:right; padding-left:10px">
+	<img src="{% static 'images/Aakash Tablet.jpg' %}"
+	     style=" width:300px;height=400px;"
+	     class="img-thumbnail img-responsive"/>
       </div>
 
+      In March 2012, the Aakash project was transferred to IIT
+      Bombay, with CDAC as its testing partner. As IIT Rajasthan
+      selected Datawind through due diligence, following all CAG
+      norms, IIT Bombay decided to procure Aakash 2 from the same
+      vendor. IIT Bombay negotiated with Datawind once again and
+      froze the prices at Rs. 2,263. </br>In July 2012, Datawind
+      agreed to upgrade the device to a better one without any
+      cost escalation. The new device would have 512 MB RAM, 1GHz
+      ARM Cortex A8 processor, Android 4.0 operating system and a
+      gravity sensor, all upgrades over the purchase order issued
+      by IIT Bombay in May 2012.The specifications of this device
+      are 800 MHz ARM Cortex A8, 256 MB RAM, 2GB NAND flash, 2GB
+      SD card, 7”display with 800x480 resolution, four point multi
+      touch projective capacitive touch panel, Android 2.3 or
+      later. They also agreed to provide the tablet at Rs. 2,276,
+      the rupee equivalent of $49.98 on the day the purchase order
+      was placed. This would more correctly account for the
+      delays, while protecting against the fluctuations in the
+      exchange rates. This new improved device was christened as
+      Aakash 2.<br /><br />
 
-      <br />
-
-
-      <div><h4> Aakash I </h4></div>
-      <div align="justify">
-	<p align="justify">
-	  <div style="float:left;padding-right:10px">
-	    <img src="{% static 'images/KapilSibbal_Aakash.jpg' %}"
-		 style=" width:300px;height=400px; float:left;"
-		 class="img-thumbnail img-responsive" />
-	  </div>
-      </p>
+  <h4> Aakash I </h4>
+    <p align="justify">
+      <div style="float:left;padding-right:10px">
+	<img src="{% static 'images/KapilSibbal_Aakash.jpg' %}"
+	     style=" width:300px;height=400px; float:left;"
+	     class="img-thumbnail img-responsive" />
       </div>
+    </p>
+    
+    <p align="justify">
+      The low cost access and computing device was christened Aakash
+      and was launched on 5 Oct. 2011 by the then Human Resource
+      Development Minister, Shri Kapil Sibal.  In order to bring
+      Aakash closer to people’s expectations, the specifications were
+      redrawn in a meeting held between MHRD, IIT Rajasthan and
+      Datawind in Nov. 2011. In this meeting, Datawind agreed to
+      provide a capacitive touch screen in lieu of the resistive
+      screen.<br>Aakash tablet is part of the central government Rs
+      4612 crore national mission on education through information and
+      communication technology (NMEICT), launched in 2009.</p>
 
-      <div align="justify">
-	<p align="justify">
+    <p align="justify">
+      <h4>NMEICT</h4>
 
-	  <!--<div style=" width:320px;height=700px;
-    float:right;"><img src="{% static 'images/aakash-tab-1.jpg' %}"
-    style=" width:300px;height=400px;" /> </div> -->
+      National Mission on Education through ICT (NMEICT) was launched
+      by Human Resource Development Minister Shri Arjun Singh
+      inaugurated at Tirupati on 2 Feb. 2009, with an outlay of
+      Rs. 4,612 crore, equivalent to one billion US$ at the prevailing
+      exchange rates. Out of this sum, about 60% was allocated to
+      provide good bandwidth to universities and colleges and the
+      remaining was meant for content development and a low cost
+      access and computing device.  The objective of this mission was
+      to raise the levels of education in India. It was an initiative
+      of the Department of Higher Education, MHRD, Government of
+      India.</p>
 
-	  The low cost access and computing device was christened
-    Aakash and was launched on 5 Oct. 2011 by the then Human Resource
-    Development Minister, Shri Kapil Sibal.  In order to bring Aakash
-    closer to people’s expectations, the specifications were redrawn
-    in a meeting held between MHRD, IIT Rajasthan and Datawind in
-    Nov. 2011. In this meeting, Datawind agreed to provide a
-    capacitive touch screen in lieu of the resistive screen.<br>Aakash
-    tablet is part of the central government Rs 4612 crore national
-    mission on education through information and communication
-    technology (NMEICT), launched in 2009.</p></div>
-
-      <div align="justify">
-	<p align="justify">
-
-	  <!--<div style=" width:320px;height=700px;
-	  float:left;"><img src="{% static 'images/2.jpg' %}" style="
-	  width:300px;height=400px;" />
-					      </div>	-->
-	  <br />
-	  <h4>NMEICT</h4>
-	  
-	  National Mission on Education through ICT (NMEICT) was
-	  launched by Human Resource Development Minister Shri Arjun
-	  Singh inaugurated at Tirupati on 2 Feb. 2009, with an outlay
-	  of Rs. 4,612 crore, equivalent to one billion US$ at the
-	  prevailing exchange rates. Out of this sum, about 60% was
-	  allocated to provide good bandwidth to universities
-	  and colleges and the remaining was meant for content
-	  development and a low cost access and computing device.  The
-	  objective of this mission was to raise the levels of
-	  education in India. It was an initiative of the Department
-	  of Higher Education, MHRD, Government of India.
-
-	</p>
-
-      </div>   
-    </div>
-  </body>
-</html>
-
+</div>   
+</div> <!-- well -->
+{% endblock body_block %}
