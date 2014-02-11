@@ -360,7 +360,7 @@ footer {
 }
 
 #footer-inner {
-    border-bottom:1px solid #000000;
+    border-bottom:1px solid #302727;
 }
 
 #social {
@@ -390,7 +390,7 @@ footer {
 }
 
 #credits {
-    padding:0px 0;
+    padding:2px 0;
 }
 
 #credits a {
@@ -438,8 +438,8 @@ height:1%;
 }
 
 #nmeict img {
-     margin-top:10%; /*15%*/
-    width:5%;
+     margin-top:15%; /*15%*/
+     width:14%;
 }	
 }
 
@@ -464,8 +464,8 @@ height:1%;
 }
 
 #nmeict img {
-     margin-top:10%; /*15%*/
-    width:5%;
+    margin-top:12%; /*15%*/
+    width:14%;
 }		
 }
 
