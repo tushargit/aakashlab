@@ -1,80 +1,55 @@
+{% extends 'inner-base.html' %}
 {% load static %}
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title> Future of Aakash</title>
-	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen">
-    <link href="{% static 'css/bootstrap-theme.css' %}" rel="stylesheet">
-    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
-    <link href="{% static 'css/index.css' %}" rel="stylesheet">
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <link href="{% static 'font-awesome-4.0.3/css/font-awesome.min.css' %}"
-	  rel="stylesheet">
-    </head>
-    <body style="background:transparent;">
-   
 
- 
-      
-              
-           <div class="col-md-9" id="social">
-         
-       
-		
-        
-                    <h3>Future Plans on Aakash</h3>
-              
-</br>
+{% block body_block %}
+<div class="well">
+  <div class="col-md-9">
 
-<p align="justify">
-After much deliberation, the Union HRD ministry has given the go ahead to its 
+    <h3><strong>Future Plans for Aakash</strong></h3>
+    
+    <p align="justify">
+      After much deliberation, the Union HRD ministry has given the go ahead
+      to its ambitious Aakash 4 project, and a cabinet note seeking
+      permission for the production of the low-cost tablet is expected
+      soon. <br />
 
-ambitious Aakash 4 project, and a cabinet note seeking permission for the production 
+      Under this proposal, HRD plans to procure over 22 lakh tablets at a
+      cost of Rs 330 crore through Directorate General of Supplies &
+      Disposal (DGS&D). For more about Aakash 4 please follow:</br></br>
 
-of the low-cost tablet is expected soon. </br>
+      <ul>
+	<li>
+	  <a href="{% static 'doc/Technical_details_Specification_Aakash4.pdf' %}"
+		 target="_blank">
+	    The Technical Particulars For Aakash 4 For RC Period (01-01-2014 To
+	    31-12-2014)
+	  </a></br>
+	  <small>(Downloaded on 27/01/2014. Source: www.dgsnd.gov.in)</small>
 
-Under this proposal, HRD plans to procure over 22 lakh tablets at a cost of Rs 330 
+	<li>
+	  <a href="{% static 'doc/TenderDoc_Aakash4.pdf' %}"
+	       target="_blank"> The Schedule To Tender Inquiry
+	  </a></br>
+	  <small>(Downloaded on 27/01/2014. Source: www.dgsnd.gov.in)</small>
+	  <br />
 
-crore through Directorate General of Supplies & Disposal (DGS&D). For more about 
+	  <p>
+	    In the first phase of the scheme, Aakash 4 tablets will be
+	    given to engineering institutes which will be directly
+	    bought from vendors empaneled by the DGS&D.  The tablet,
+	    estimated at USD 35 per piece, will be provided to
+	    students at a subsidised rate.
+	  </p>
 
-Aakash 4 please follow:</br></br>
+	  <p>
+	    The new version of the tablet will allow students to read
+	    and compose in Hindi, Kannada, Punjabi, Gujarati, Tamil,
+	    Malayalam, Manipur etc along with audio-video chat
+	    facility.
+	  </p>
 
-<ul><li><a href="{% static 'doc/Technical_details_Specification_Aakash4.pdf' %}" target="_blank"> The Technical Particulars For Aakash 4 For RC Period (01-01-2014 To 31-12-2014)</a></br>
 
-<small>(Downloaded on 27/01/2014 from www.dgsnd.gov.in‎)</br>
- Source:https://www.dgserver.dgsnd.gov.in/reports/rwservlet?KEY1&report=techpert01pdf11.rdf&destype=cache&desformat=pdf&paramform=no&p_major=711B0000&p_rcfrom=01-01-2014&p_rcto=31-12-2014&p_date=30-10-2013
-</small></li></br>
-<li><a href="{% static 'doc/TenderDoc_Aakash4.pdf' %}" target="_blank"> The Schedule To Tender Enquiry</a></br>
-
-<small>(Downloaded on 27/01/2014 from www.dgsnd.gov.in‎)</br>
- Source:http://www.dgserver.dgsnd.gov.in/
-
-formseal/server/custompdfsigner.jsp?TID=03711B00001214&FORMNAME=TENDER_ENQUIRY&URL=/
-
-reports/rwservlet?
-
-KEY1&report=tedocpdfsb_new.rdf&destype=cache&desformat=pdf&paramform=no&server=rsnic&p_file=0
-
-3711B00001214&p_rcfrom=01-01-2014</small></li></ul></br>
-
-In the first phase of the scheme, Aakash 4 tablets will be given to engineering 
-
-institutes which will be directly bought from vendors empanelled by the DGS&D.
-
-The tablet, estimated at USD 35 per piece, will be provided to students at a subsidised 
-
-rate.</br>
-
-The new version of the tablet will allow students to read and compose in Hindi, 
-
-Kannada, Punjabi, Gujarati, Tamil, Malayalam, Manipur etc along with audio-video 
-
-chat facility.</br>
-</p>
-                </div>
-</br>
-           
-
-    </body>
-</html>
+  </div> <!-- col -->
+</div> <!-- well -->
+{% endblock body_block %}
 
