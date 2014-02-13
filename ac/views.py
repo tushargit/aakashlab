@@ -178,6 +178,16 @@ def contact(request):
     return render_to_response('contact.html', context_dict, context)
 
 
+def gnu(request):
+    """
+    
+    Arguments:
+    - `request`:
+    """
+    context = RequestContext(request)
+    return render_to_response('gnu.html', context)
+
+
 def faq(request):
     """Display FAQs.
     
