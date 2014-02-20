@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
+from django.views.generic import TemplateView
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -11,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^about/$', 'ac.views.about', name='about'),
     url(r'^compete/$', 'ac.views.compete', name='compete'),
     url(r'^contact/$', 'ac.views.contact', name='contact'),
+    url(r'^gnu/$', 'ac.views.gnu', name='gnu'),
     url(r'^faqs/$', 'ac.views.faq', name='faq'),
     url(r'^pubs/$', 'ac.views.pubs', name='pubs'),
     url(r'^activities/$', 'ac.views.activities', name='activities'),
@@ -25,15 +27,15 @@ urlpatterns = patterns('',
     url(r'^login/$', 'ac.views.user_login', name='login'),
     url(r'^logout/$', 'ac.views.user_logout', name='logout'),
 	
-	url(r'^home/introduction/$', 'ac.views.introduction', name='introduction'),
-	url(r'^home/proposal/$', 'ac.views.proposal', name='proposal'),
-	url(r'^home/history/$', 'ac.views.history', name='history'),
-	url(r'^home/configuration/$', 'ac.views.configuration', name='configuration'),
-	url(r'^home/distribution/$', 'ac.views.distribution', name='distribution'),
-	url(r'^home/training/$', 'ac.views.training', name='training'),
-	url(r'^home/sidebar_projects/$', 'ac.views.sidebar_projects', name='sidebar_projects'),
-	url(r'^home/research/$', 'ac.views.research', name='research'),
-	url(r'^home/future/$', 'ac.views.future', name='future'),
+    url(r'^home/introduction/$', 'ac.views.introduction', name='introduction'),
+    url(r'^home/proposal/$', 'ac.views.proposal', name='proposal'),
+    url(r'^home/history/$', 'ac.views.history', name='history'),
+    url(r'^home/configuration/$', 'ac.views.configuration', name='configuration'),
+    url(r'^home/distribution/$', 'ac.views.distribution', name='distribution'),
+    url(r'^home/training/$', 'ac.views.training', name='training'),
+    url(r'^home/sidebar_projects/$', 'ac.views.sidebar_projects', name='sidebar_projects'),
+    url(r'^home/research/$', 'ac.views.research', name='research'),
+    url(r'^home/future/$', 'ac.views.future', name='future'),
 
     url(r'^user/password/change/$',
         'django.contrib.auth.views.password_change'),
@@ -44,6 +46,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+    # Finally add robot.txt
+    url(r'^robots\.txt$', TemplateView.as_view(template_name='robot.txt')),
 )
 
 if settings.DEBUG is False:

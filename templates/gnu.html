@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+- GNU/Linux on Aakash
+{% endblock title %}
+
+{% block body_block %}
+<div class="container  footer_padding" style="padding-top:2.5cm;">
+  <div class="page-header">
+    <h1><i class="fa fa-linux"></i> GNU/Linux <small> on Aakash</small>
+    </h1>
+  </div>
+
+  <div class="container marketing">
+
+    <!-- START THE FEATURETTES -->
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading"></h2>
+        <p class="lead" align="justify">
+	  Aakash can run Android as well as GNU/Linux. GNU/Linux can
+	  be burned on the external SD card and will not effect
+	  existing Android system. It has Debian package manager and
+	  can run all GNU application with almost no
+	  modification. Distros such
+	  as <a href="https://github.com/androportal/linux-on-aakash/tree/debian">Debian</a>,
+	  Linaro, Ubuntu & Fedora have been tested to run on
+	  Aakash. Please visit the documentation on 'How to port
+	  GNU/Linux on Aakash'. Also visit
+	  the <a href="/pubs">publications</a> section for more
+	  detail.
+	</p>
+
+	<p><a class="btn btn-success" href="http://androportal.github.io/linux-on-aakash/"
+	      role="button">Documentation &raquo;</a></p>
+      </div>
+
+      <div class="col-md-5">
+        <img class="featurette-image img-responsive img-rounded"
+	     src="{% static 'images/linux1.png' %}" alt="linux">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+    
+    <div class="row featurette">
+      <div class="col-md-5">
+        <img class="featurette-image img-responsive img-rounded"
+	     src="{% static 'images/expeyes.jpg' %}" alt="expeyes">
+      </div>
+      
+      <div class="col-md-7">
+        <h2 class="featurette-heading">expEYES</h2>
+        <p class="lead" align="justify">
+	  <a href="http://www.expeyes.in/">expEyes</a> is a tool to
+	  learn science by exploring and experimenting. It can be
+	  run on Aakash to carry out 50 documented experiments.  It
+	  is a hardware & software framework for developing science
+	  experiments, demonstrations and projects without getting
+	  in to the details of electronics or computer
+	  programming. It converts Aakash into a science laboratory.
+	</p>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Oscad</h2>
+        <p class="lead" align="justify">
+	  <a href="http://www.oscad.in">Oscad</a> is an open source
+	  EDA tool for circuit design, simulation, analysis and PCB
+	  design. It is an integrated tool built using open source
+	  software such
+	  as <a href="http://www.kicad-pcb.org">KiCad</a>, <a href="http://ngspice.sourceforge.net">Ngspice</a>
+	  and <a href="http://www.scilab.org">Scilab</a>. The image
+	  shows Oscad(Ngspice simulation) running on Aakash.
+	</p>
+      </div>
+
+      <div class="col-md-5">
+        <img class="featurette-image img-responsive img-rounded"
+	     src="{% static 'images/oscad-setup.png' %}" alt="oscad">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+    
+    <div class="row featurette">
+      <div class="col-md-5">
+        <img class="featurette-image img-responsive img-rounded"
+	     src="{% static 'images/anuduino.png' %}" alt="expeyes">
+      </div>
+      
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Anuduino</h2>
+        <p class="lead" align="justify">
+	  It is a two
+	  dollar <a href="http://www.arduino.cc/">arduino</a>
+	  compatible usb development board based on ATtiny-85
+	  micro-controller developed at Indian Institute of Technology
+	  Bombay. Adjacent image shows its usage to measure room
+	  temperature. Visit
+	  <a href="https://github.com/androportal/anuduino/blob/master/doc/getting_started.rst">documentation</a>
+	  on how to build it from scratch.
+	</p>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+  </div> <!-- marketing -->
+</div><!-- /.container -->
+{% endblock body_block %}
