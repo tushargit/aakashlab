@@ -18,7 +18,7 @@ background-color:#333;
     margin-left:0%;
     border: 1px solid transparent;
     min-height: 60px;
-    opacity:0.9;
+    opacity:1;
     position:fixed;
 }
 
@@ -85,6 +85,11 @@ background-color:#333;
     border-radius: 4px;
     z-index:3;
     opacity:0.6;
+}
+
+.dropdown-menu > li > a:hover {
+    background: #424242;
+    color: #ffffff;
 }
 
 @media (max-width: 768px){
