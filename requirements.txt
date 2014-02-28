@@ -4,3 +4,4 @@ PIL==1.1.7
 South==0.8.4
 argparse==1.2.1
 wsgiref==0.1.2
+django-recaptcha==0.0.9

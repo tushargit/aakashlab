@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from ac.models import Contact
 from ac.models import Coordinator, AakashCentre, User
 from ac.models import Project, TeamMember, Mentor
+from captcha.fields import ReCaptchaField
 
 
 class ContactForm(forms.ModelForm):
@@ -21,10 +22,11 @@ class ContactForm(forms.ModelForm):
                                      'placeholder': 'Please write your message*.',
                                      'rows': 4}), 
         help_text="Please write your message.", required=True)
+    captcha = ReCaptchaField(attrs={'theme': 'clean'})
     
     class Meta:
         model = Contact
-        fields = ['name', 'email', 'message']
+        fields = ['name', 'email', 'message', 'captcha']
 
 
 class AakashCentreForm(forms.ModelForm):
