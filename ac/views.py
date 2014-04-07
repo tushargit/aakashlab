@@ -736,5 +736,17 @@ def user_profile(request):
     """User profile."""
     context = RequestContext(request)
     return render_to_response('profile.html', context)
-    
-    
+
+
+@login_required
+def user_profile_edit(request):
+    """Edit user's profile."""
+    context = RequestContext(request)
+    coordinator = get_object_or_404(Coordinator, user=request.user)
+    print coordinator.user.first_name
+    print coordinator.user.last_name
+    print coordinator.picture
+    print coordinator.contact
+    c = CoordinatorForm(request.POST, instance=coordinator)
+    context_dict = {'c': c,}
+    return render_to_response('profile_edit.html', context_dict, context)

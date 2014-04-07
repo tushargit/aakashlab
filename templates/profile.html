@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-- {{user}} - Profile
+- Profile: {{user}}
 {% endblock title %}
 
 {% block body_block %}
@@ -19,6 +19,7 @@
   {% if user.is_staff %}
   <p><a href="/ac/register/">Register an Aakash Center</a></p>
   {% endif %}
+  <p><a href="/user/profile/edit/">Edit profile</a></p>
   <p><a href="/ac/project/add/">Add new project</a></p>
   <p><a class="text-danger" href="/user/password/change/">
       Change password

@@ -265,6 +265,6 @@ class Agreement(forms.Form):
     agree = forms.BooleanField(
         widget=forms.CheckboxInput(),
         label="This Project will be always be licensed \
-        under GNU GPL v3 or greater ",
+        under GNU GPL v3 or later",
         required=True,
         error_messages={'required': 'You must agree to terms and conditions.'},)

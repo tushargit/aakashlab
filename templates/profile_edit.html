@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+- Edit profile: {{user}}
+{% endblock title %}
+
+{% block body_block %}
+<div class="container" style="padding-top:1.5cm;">
+  <div class="page-header">
+      <h1><i class="fa fa-pagelines"></i> Edit profile
+	<small>
+	  | {{user.first_name|capfirst}}
+	  {{user.last_name|capfirst}}(<strong>{{user.username}}</strong>)
+	</small>
+      </h1>
+  </div>
+
+  {{c.as_p}}
+</div>
+{% endblock body_block %}

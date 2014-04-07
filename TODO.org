@@ -15,4 +15,4 @@
 ** TODO Edit existing project details(for respective coordinator)
 ** TODO Edit existing Aakash Centre(for respective coordinator)
 ** TODO Add sitemap.xml(using Django)
-
+** This list is not up-to-date, see issues
