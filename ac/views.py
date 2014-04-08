@@ -740,13 +740,61 @@ def user_profile(request):
 
 @login_required
 def user_profile_edit(request):
-    """Edit user's profile."""
+    """Edit user's/Coordinators profile.
+
+    Arguments:
+    - `request`:
+    """
     context = RequestContext(request)
+    print request.user
+    user = get_object_or_404(User, username=request.user)
+    print user.first_name
+
     coordinator = get_object_or_404(Coordinator, user=request.user)
-    print coordinator.user.first_name
-    print coordinator.user.last_name
-    print coordinator.picture
     print coordinator.contact
-    c = CoordinatorForm(request.POST, instance=coordinator)
-    context_dict = {'c': c,}
+    print coordinator.picture
+
+    aakashcentre = get_object_or_404(AakashCentre, coordinator=coordinator)
+    print aakashcentre.name
+
+    if request.method == 'POST':
+        print "We've a request to register"
+        #aakashcentreform = AakashCentreForm(data=request.POST)
+        coordinatorform = CoordinatorForm(data=request.POST, instance=coordinator)
+        userform = UserForm(data=request.POST, instance=user)
+
+        if coordinatorform.is_valid() and userform.is_valid():
+            print "Forms are Valid"
+            user = userform.save(commit=False)
+            print user.username
+            print user.first_name
+            print user.last_name
+            user.set_password(user.password)
+            user.save()
+
+            coordinator = coordinatorform.save(commit=False)
+            print coordinator.contact
+            if 'picture' in request.FILES:
+                coordinator.picture = request.FILES['picture']
+            coordinator.user = User.objects.get(username=user.username)
+            coordinator.save()
+
+            # Save Aakash Centre details with the new Coordinator's profile.
+            # aakashcentre = aakashcentreform.save(commit=False)
+            aakashcentre.coordinator = Coordinator.objects.get(user=coordinator.user)
+            aakashcentre.save()
+            print aakashcentre.ac_id
+
+            messages.success(request, "Profile updated successfully.")
+            return HttpResponseRedirect('/user/profile/')
+        else:
+            if coordinatorform.errors or userform.errors:
+                print coordinatorform.errors, userform.errors
+    else:
+        # aakashcentreform = AakashCentreForm(instance=aakashcentre)
+        coordinatorform = CoordinatorForm(instance=coordinator)
+        userform = UserForm(instance=user)
+
+    context_dict = {'coordinatorform': coordinatorform,
+                    'userform': userform}
     return render_to_response('profile_edit.html', context_dict, context)

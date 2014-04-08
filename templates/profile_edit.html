@@ -2,20 +2,38 @@
 {% load static %}
 
 {% block title %}
-- Edit profile: {{user}}
+- Update/Edit profile: {{user}}
 {% endblock title %}
 
 {% block body_block %}
-<div class="container" style="padding-top:1.5cm;">
+<div class="container" style="padding-top:1.5cm;padding-bottom:3.5cm;">
   <div class="page-header">
-      <h1><i class="fa fa-pagelines"></i> Edit profile
-	<small>
-	  | {{user.first_name|capfirst}}
-	  {{user.last_name|capfirst}}(<strong>{{user.username}}</strong>)
-	</small>
-      </h1>
+    <h1><i class="fa fa-pagelines"></i> Update/Edit profile
+      <small>
+	for {{user.first_name|capfirst}}
+	{{user.last_name|capfirst}}(<strong>{{user.username}}</strong>)
+      </small>
+    </h1>
   </div>
+  <div class="row">
+    <div class="col-xs-2">
+      </div>
+    <div class="col-xs-8">
+      <form role="form" id="edit-profile" method="post" action=""
+	    enctype="multipart/form-data">
+	{% csrf_token %}
+	<!-- {{aakashcentreform.as_p}} -->
+	{{userform.as_p}}
+	{{coordinatorform.as_p}}
 
-  {{c.as_p}}
+	<div align="center">
+	  <a href="/user/profile" class="btn btn-primary">Go back</a>
+	  <input class="btn btn-success" type="submit" name="submit" value="Save changes" />
+	</div>
+      </form>
+    </div> <!-- col-lg -->
+    <div class="col-xs-2">
+    </div>
+  </div> <!-- row -->
 </div>
 {% endblock body_block %}
