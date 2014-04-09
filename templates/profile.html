@@ -11,7 +11,8 @@
       <h1><i class="fa fa-pagelines"></i> Profile
 	<small>
 	  | Welcome {{user.first_name|capfirst}}
-	  {{user.last_name|capfirst}}(<strong>{{user.username}}</strong>) !
+	  {{user.last_name|capfirst}}(<strong>{{user.username}}</strong>)
+	  | <a href="/user/profile/edit/"><em class="text-info">Update/Edit profile</em></a>
 	</small>
       </h1>
   </div>
@@ -19,7 +20,6 @@
   {% if user.is_staff %}
   <p><a href="/ac/register/">Register an Aakash Center</a></p>
   {% endif %}
-  <p><a href="/user/profile/edit/">Update/Edit profile</a></p>
   <p><a href="/ac/project/add/">Add new project</a></p>
   <p><a class="text-danger" href="/user/password/change/">
       Change password

@@ -17,8 +17,19 @@
   </div>
   <div class="row">
     <div class="col-xs-2">
-      </div>
+    </div>
     <div class="col-xs-8">
+      	<!-- Success/Error messages -->
+	{% if messages %}
+	{% for message in messages %}
+	{% if message.tags == "success" %}
+	<p class="text-info" align="center"><strong>{{ message }}</strong></p>
+	{% else %}
+	<p class="text-danger" align="center"><strong>{{ message }}</strong></p>
+	{% endif %}
+	{% endfor %}
+	{% endif %} 
+	<!-- Success/Error messages ends here -->
       <form role="form" id="edit-profile" method="post" action=""
 	    enctype="multipart/form-data">
 	{% csrf_token %}

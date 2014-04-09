@@ -748,7 +748,9 @@ def user_profile_edit(request):
     context = RequestContext(request)
     print request.user
     user = get_object_or_404(User, username=request.user)
+    old_username = user.username
     print user.first_name
+    print user.last_name
 
     coordinator = get_object_or_404(Coordinator, user=request.user)
     print coordinator.contact
@@ -766,14 +768,21 @@ def user_profile_edit(request):
         if coordinatorform.is_valid() and userform.is_valid():
             print "Forms are Valid"
             user = userform.save(commit=False)
-            print user.username
-            print user.first_name
-            print user.last_name
+            if old_username == user.username:
+                print "Username unchanged"
+            else:
+                print "Username changed!. Deactivating old user."
+                old_username = get_object_or_404(User, username=old_username)
+                old_username.is_active = False
+                old_username.save()
+            # print user.username
+            # print user.first_name
+            # print user.last_name
             user.set_password(user.password)
             user.save()
 
             coordinator = coordinatorform.save(commit=False)
-            print coordinator.contact
+            # print coordinator.contact
             if 'picture' in request.FILES:
                 coordinator.picture = request.FILES['picture']
             coordinator.user = User.objects.get(username=user.username)
@@ -786,7 +795,7 @@ def user_profile_edit(request):
             print aakashcentre.ac_id
 
             messages.success(request, "Profile updated successfully.")
-            return HttpResponseRedirect('/user/profile/')
+            # return HttpResponseRedirect('/user/profile/')
         else:
             if coordinatorform.errors or userform.errors:
                 print coordinatorform.errors, userform.errors
