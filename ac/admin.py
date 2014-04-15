@@ -7,6 +7,7 @@ from ac.models import Contact, Faq, Pub
 class ProjectAdmin(admin.ModelAdmin):
     """Modify admin's Project page."""
     list_display = ('name', 'ac', 'approve')
+    search_fields = ('name',)
 
 
 class AcAdmin(admin.ModelAdmin):
@@ -18,6 +19,10 @@ class AcAdmin(admin.ModelAdmin):
 class CoordinatorAdmin(admin.ModelAdmin):
     """Coordinator page."""
     list_display = ('user', 'contact')
+    search_fields = ('user__username',) # user__fieldname, else it
+                                        # throws error: Related Field
+                                        # has invalid lookup:
+                                        # icontains
 
 
 admin.site.register(AakashCentre, AcAdmin)
