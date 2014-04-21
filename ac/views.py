@@ -587,7 +587,6 @@ New Project has been added.
 
 Details:
 Name: """ + projectform.name + """
-AC_ID: """ + projectform.ac.ac_id + """
 Aakash Centre: """ + projectform.ac.name + """
 
 Waiting for your approval"""
