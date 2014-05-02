@@ -21,7 +21,7 @@
   <span class="glyphicon glyphicon-hand-right">
   </span>
   <pre class="pre-scrollable">
-    {{faq.answer}}
+    {{faq.answer|safe|linebreaks}}
   </pre>
   <hr>
   {% endfor %}

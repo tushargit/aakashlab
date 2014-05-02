@@ -52,7 +52,7 @@
 	  
 	  <div  class="col-md-9 well" >
 	    <strong class="text-info">Summary:</strong>
-	    <p align="justify">{{project.summary}}</p>
+	    <p align="justify">{{project.summary|safe|linebreaks}}</p>
 
 	    <strong class="text-info">Documentation:
 	      {% if project.doc_file %}
