@@ -17,6 +17,9 @@
       </h1>
   </div>
 
+  {% if user.is_superuser %}
+  <p><a href="/admin/">Django Admin interface</a></p>
+  {% endif %}
   {% if user.is_staff %}
   <p><a href="/ac/register/">Register an Aakash Center</a></p>
   {% endif %}

@@ -16,7 +16,7 @@
   {% if pubs %}
   {% for pub in pubs %}
   <h4><p class="lead text-default">
-      {{forloop.counter}}.&nbsp
+      <strong>{{forloop.counter}}</strong>.&nbsp
       <strong>{{pub.title|capfirst}}</strong>
       {% if pub.attachment %}
       | <a href="/media/{{pub.attachment}}"><i class="fa fa-file-text"> File</i></a>
