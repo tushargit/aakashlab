@@ -157,13 +157,14 @@ def contact(request):
         contactform = ContactForm(data=request.POST)
         if contactform.is_valid():
             contactform = contactform.save(commit=True)
-            email_subject = "[Contact Us] aakashlabs.org"
+            email_subject = "[aakashlabs.org] Contact Us"
             email_message = "Sender Name: " + contactform.name + "\n\n" + contactform.message
             send_mail(email_subject, email_message,
                       contactform.email,
                       [
                           'iclcoolster@gmail.com',
                           'Aakashprojects.iitb@gmail.com',
+                          'aakashmhrd@gmail.com',
                       ],
                       fail_silently=False)
             messages.success(request, "Thank you for your reply. We\
@@ -581,7 +582,7 @@ def project_add(request):
                     mentorform.mentor_project = projectform
                     mentorform.save()
 
-            email_subject="New Project has been added."
+            email_subject="[aakashlabs.org] New Project has been added."
             email_message="""
 New Project has been added.
 
@@ -595,6 +596,7 @@ Waiting for your approval"""
                       [
                           'iclcoolster@gmail.com',
                           'Aakashprojects.iitb@gmail.com',
+                          'aakashmhrd@gmail.com',
                       ],
                       fail_silently=False)
             messages.success(request, "Project successfully submitted. Waiting for approval.")
@@ -652,7 +654,7 @@ def register(request):
             aakashcentre.coordinator = Coordinator.objects.get(user=coordinator.user)
             aakashcentre.save()
             print aakashcentre.ac_id
-            email_subject="New Aakash Center has been registered."
+            email_subject="[aakashlabs.org] New Aakash Center has been registered."
             email_message="""
 New Aakash Center has been registered.
 
@@ -668,6 +670,7 @@ Waiting for you approval"""
                       [
                           'iclcoolster@gmail.com',
                           'Aakashprojects.iitb@gmail.com',
+                          'aakashmhrd@gmail.com',
                       ],
                       fail_silently=False)
             messages.success(request, "Form successfully submitted. Waiting for\
