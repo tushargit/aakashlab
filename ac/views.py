@@ -662,7 +662,7 @@ Details:
 Name: """ + aakashcentre.name + """
 City: """ + aakashcentre.city + """
 State: """ + aakashcentre.state + """
-Coordinator's Name: """ + coordinator.name.first_name + coordinator.name.last_name + """
+Coordinator's Name: """ + coordinator.user.first_name + coordinator.user.last_name + """
 
 Waiting for you approval"""
             send_mail(email_subject, email_message,
