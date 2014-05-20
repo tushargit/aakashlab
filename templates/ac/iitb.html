@@ -25,40 +25,39 @@
 	  <td align="left"><strong>Project name</strong></td>
 	  <td align="center"><strong>Download</strong></td>	      
 	</tr>
-	<form id="download_project_form" method="post">
-	  {% csrf_token %}
-	  {% for project in projects %}
-	  <tr>
-	    <td align="left">
-	      {% if project.logo %}
-	      <img src="media/{{project.logo}}" height="60" width="60"
-		   class="img-rounded img-responsive">
-	      {% else %}
-	      <i class="fa fa-android fa-3x"></i>
-	      {% endif %}
-      <!-- {{forloop.counter}}.  -->
-	    </td>
-	    <td align="left">
-	      <strong><a href="/ac/project/{{project.id}}">{{project.name}}</a></strong>
-	    </td>
-	    <td align="center">
-	      <!-- {{project.id}} -->
-	      <button name="download" value={{project.id}} class="btn btn-primary btn-sm">
-		<i class="glyphicon glyphicon-download-alt"></i>
-		{{project.download_count}} download{{project.download_count|pluralize}}
-	      </button>
-	    </td>
-	  </tr>
-	  {% endfor %}
-	</form>
+	{% for project in projects %}
+	<tr>
+	  <td align="left">
+	    {% if project.logo %}
+	    <img src="media/{{project.logo}}" height="60" width="60"
+		 class="img-rounded img-responsive">
+	    {% else %}
+	    <i class="fa fa-android fa-3x"></i>
+	    {% endif %}
+	    <!-- {{forloop.counter}}.  -->
+	  </td>
+	  <td align="left">
+	    <strong><a href="/ac/project/{{project.id}}">{{project.name}}</a></strong>
+	  </td>
+	  <td align="center">
+	    <!-- {{project.id}} -->
+	    <a href="/ac/iitb/?id={{project.id}}"
+	       class="btn btn-primary btn-mini">
+	      <i class="glyphicon glyphicon-download-alt"></i>
+	      {{project.download_count}}
+	      download{{project.download_count|pluralize}}
+	    </a>
+	  </td>
+	</tr>
+	{% endfor %}
       </table>
       {% else %}
       <div align="center">
 	<p>No projects at IITB.</p>
       </div>
       {% endif %}
-      </div>
-    </div> <!-- row -->
-  </div>	 <!-- container -->
-  {% endblock body_block %}
-  
+    </div>
+  </div> <!-- row -->
+</div>	 <!-- container -->
+{% endblock body_block %}
+

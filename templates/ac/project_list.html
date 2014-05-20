@@ -38,13 +38,12 @@
     </td>
     
     <td>
-      <form id="download_project_form" method="post">
-	{% csrf_token %}
-	<button name="download" value={{i.id}} class="btn btn-primary btn-sm">
-	  <i class="glyphicon glyphicon-download-alt"></i>
-	  {{i.download_count}} download{{i.download_count|pluralize}}
-	</button>
-      </form>
+      <a href="/ac/projects/?id={{i.id}}"
+	 class="btn btn-primary btn-mini">
+	<i class="glyphicon glyphicon-download-alt"></i>
+	{{i.download_count}}
+	download{{i.download_count|pluralize}}
+      </a>
     </td>         
   </tr>
   {% endfor %}
