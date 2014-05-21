@@ -1,6 +1,8 @@
 # Django settings for aakashlabs project.
 import os
 
+import secret
+
 SETTINGS_DIR = os.path.dirname(__file__)
 PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
 PROJECT_PATH = os.path.abspath(PROJECT_PATH)
@@ -10,7 +12,7 @@ TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 # static PATH
 STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 
-DEBUG = True
+DEBUG = secret.DEBUG_VALUE
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -21,25 +23,25 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'ac.db',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'ac',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'USER': secret.DB_USER,
+        'PASSWORD': secret.DB_PASSWORD,
+        'HOST': secret.DB_HOST,                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': secret.DB_PORT,                      # Set to empty string for default.
     }
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = secret.ALLOWED_HOSTS_VALUE
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Asia/Kolkata'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -60,7 +62,8 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media') # Absolute path to the media.
+#MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media') # Absolute path to the media.
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media/') # Absolute path to the media.
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -139,7 +142,15 @@ INSTALLED_APPS = (
     # South
     #'south',
     'ac',                       # ac => aakash centres
+    'captcha',
+    'taggit',
+    'forum',
 )
+
+# django-recaptcha settings
+RECAPTCHA_PUBLIC_KEY=secret.RECAPTCHA_PUBLIC_KEY_VALUE
+RECAPTCHA_PRIVATE_KEY=secret.RECAPTCHA_PRIVATE_KEY_VALUE
+# ----
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
