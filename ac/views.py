@@ -369,25 +369,6 @@ def suggest_project_name(request):
                               context_dict, context)
 
 
-def download_apk(project_id):
-    """Download APK.
-    
-    Arguments:
-    - `project_id`:
-    """
-    project = get_object_or_404(Project, id=project_id)
-    file_path = project.apk
-    response = HttpResponse(
-        file_path,
-        mimetype="application/vnd.android.package-archive")
-    response['Content-Disposition'] = 'attachment; filename=%s' % project.apk
-
-    # increment download count
-    count = project.download_count + 1
-    project.download_count = count
-    project.save()
-    
-    
 def ac(request, id):
     context = RequestContext(request)
 
