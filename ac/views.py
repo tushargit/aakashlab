@@ -391,22 +391,12 @@ def download_apk(project_id):
 def ac(request, id):
     context = RequestContext(request)
 
-    # download APK 
-    if request.POST and request.POST['download']:
-        project = get_object_or_404(Project, id=request.POST['download'])
-        file_path = project.apk
-        response = HttpResponse(
-            file_path,
-            mimetype="application/vnd.android.package-archive")
-        response['Content-Disposition'] = 'attachment; filename=%s' % project.apk
-
+    # Download APK
+    if request.GET:
+        project = get_object_or_404(Project, id=request.GET['id'])
         # increment download count
-        count = project.download_count + 1
-        project.download_count = count
-        project.save()
-
-        # Server apk for download
-        return response
+        project.increment_download_count()
+        return HttpResponseRedirect('/media/%s' % project.apk)
         
     aakashcentre = AakashCentre.objects.get(pk=id)
     # print id
@@ -434,9 +424,7 @@ def projects(request):
     if request.GET:
         project = get_object_or_404(Project, id=request.GET['id'])
         # increment download count
-        count = project.download_count + 1
-        project.download_count = count
-        project.save()
+        project.increment_download_count()
         return HttpResponseRedirect('/media/%s' % project.apk)
 
     projects = Project.objects.filter(approve=True).order_by('-download_count')
@@ -452,9 +440,7 @@ def iitb(request):
     if request.GET:
         project = get_object_or_404(Project, id=request.GET['id'])
         # increment download count
-        count = project.download_count + 1
-        project.download_count = count
-        project.save()
+        project.increment_download_count()
         return HttpResponseRedirect('/media/%s' % project.apk)
         
     try:
@@ -482,9 +468,7 @@ def project(request, id):
     if 'download' in request.GET:
         project = get_object_or_404(Project, id=id)
         # increment download count
-        count = project.download_count + 1
-        project.download_count = count
-        project.save()
+        project.increment_download_count()
         return HttpResponseRedirect('/media/%s' % project.apk)
         
     print id

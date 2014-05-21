@@ -48,6 +48,10 @@ class Project(models.Model):
     def __unicode__(self):
         return self.name        
 
+    def increment_download_count(self):
+        self.download_count += 1
+        self.save()
+
 
 class TeamMember(models.Model):
     member_name = models.CharField(max_length=200)

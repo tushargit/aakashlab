@@ -16,52 +16,50 @@
       </div>
       {% for c in coordinator %}
       <div class="col-md-8">
-	  <p><strong>Coordinator details:</strong></p>
-	  <table class="table table-responsive">
+	<p><strong>Coordinator details:</strong></p>
+	<table class="table table-responsive">
 	  <!-- {{c.id}} -->
 	  <tr>
-	  <td>Name:</td>
-	  <td>{{c.user.first_name|capfirst}} {{c.user.last_name|capfirst}}</td>
+	    <td>Name:</td>
+	    <td>{{c.user.first_name|capfirst}} {{c.user.last_name|capfirst}}</td>
 	  </tr>
-  {% if user.is_staff %}
+	  {% if user.is_staff %}
 	  <tr>
-	  <td>Contact:</td>
-	  <td>{{c.contact}}</td>
+	    <td>Contact:</td>
+	    <td>{{c.contact}}</td>
 	  <tr>
-	  <td>E-mail:</td>
-	  <td>{{c.user.email}}</td>
- {% endif %}
-	  </table>
+	    <td>E-mail:</td>
+	    <td>{{c.user.email}}</td>
+	    {% endif %}
+	</table>
       </div> <!-- col-md-8 -->
       <div class="col-md-4" align="center">
-	  {% if c.picture %}
-	  <a id="image_link" rel="imagezoom" href="media/{{c.picture}}" >	
-	    <img class="img-rounded img-responsive"
-		 src="media/{{c.picture}}" height="140" width="240">
-	  </a>
-	  {% else %}
-	  <div style="padding-top:20%;">
+	{% if c.picture %}
+	<a id="image_link" rel="imagezoom" href="media/{{c.picture}}" >	
+	  <img class="img-rounded img-responsive"
+	       src="media/{{c.picture}}" height="140" width="240">
+	</a>
+	{% else %}
+	<div style="padding-top:20%;">
 	  <i class="fa fa-user fa-5x fa-lg"></i>
-	  </div>
-	  {% endif %}
+	</div>
+	{% endif %}
       </div>   <!-- col-md-4 -->
       {% endfor %}
       <div class="col-md-12" align="center">
-	  {% if projects %}
-	  <p>&nbsp</p>
-	  <h3 align="center">
-	    <strong class="text-muted">List of project{{projects|pluralize}}
-	    </strong>
-	    <span class="badge badge-default">{{projects|length}}</span>
-	  </h3>
-	  <table class="table table-responsive table-striped">
-	    <tr>
-	      <td align="left"><strong>Icon</strong></td>
-	      <td align="left"><strong>Project name</strong></td>
-	      <td align="center"><strong>Download</strong></td>	      
-	    </tr>
-	    <form id="download_project_form" method="post">
-	      {% csrf_token %}
+	{% if projects %}
+	<p>&nbsp</p>
+	<h3 align="center">
+	  <strong class="text-muted">List of project{{projects|pluralize}}
+	  </strong>
+	  <span class="badge badge-default">{{projects|length}}</span>
+	</h3>
+	<table class="table table-responsive table-striped">
+	  <tr>
+	    <td align="left"><strong>Icon</strong></td>
+	    <td align="left"><strong>Project name</strong></td>
+	    <td align="center"><strong>Download</strong></td>
+	  </tr>
 	  {% for project in projects %}
 	  <tr>
 	    <td align="left">
@@ -78,18 +76,19 @@
 	    </td>
 	    <td align="center">
 	      <!-- {{project.id}} -->
-	      <button name="download" value={{project.id}} class="btn btn-primary btn-sm">
+	      <a href="/ac/{{project.id}}/?id={{project.id}}"
+		 class="btn btn-primary btn-mini">
 		<i class="glyphicon glyphicon-download-alt"></i>
-		{{project.download_count}} download{{project.download_count|pluralize}}
-	      </button>
+		{{project.download_count}}
+		download{{project.download_count|pluralize}}
+	      </a>	      
 	    </td>
 	  </tr>
 	  {% endfor %}
-	  </form>
-	  </table>
-	  {% else %}
-	  <strong>Projects coming soon...</strong>
-	  {% endif %}
+	</table>
+	{% else %}
+	<strong>Projects coming soon...</strong>
+	{% endif %}
       </div>
     </div> <!-- row -->
 
