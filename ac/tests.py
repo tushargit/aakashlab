@@ -7,8 +7,9 @@ Replace this with more appropriate tests for your application.
 
 from django.test import TestCase
 from django.http import HttpRequest
+from django.core.urlresolvers import resolve
 
-from ac.views import index
+from ac.views import index, about
 
 class SimpleTest(TestCase):
     def test_basic_addition(self):
@@ -25,5 +26,10 @@ class HomePageTest(TestCase):
         response = index(request)
         self.assertTrue(response.content.startswith('<!DOCTYPE html>'))
         self.assertIn('<title>Aakashlabs</title>', response.content)
-        #FIXME:Should be endswith
-        self.assertTrue(response.content.find('</html>'))
+        self.assertTrue(response.content.strip().endswith('</html>'))
+
+
+    def test_root_url_resolve_to_index(self):
+        root_url = resolve('/')
+        self.assertEquals(root_url.func, index)
+        
