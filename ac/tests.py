@@ -9,6 +9,7 @@ from django.test import TestCase
 from django.http import HttpRequest
 from django.core.urlresolvers import resolve
 from django.template.loader import render_to_string
+from django.contrib.auth.models import User
 
 from ac.views import index, about
 
@@ -52,5 +53,16 @@ class AcModelTest(TestCase):
     """Check models in 'ac' app."""
 
     def test_coordinator_model(self):
-        coordinator = Coordinator()
-        coordinator.user = "admin"
+        john = User.objects.create_user(username='john',
+                                     first_name='john',
+                                     last_name='doe',
+                                     email='john@example.com',
+                                     password='j0h62@dfig')
+        john.save()
+
+        users = User.objects.all()
+        self.assertEqual(users.count(), 1) # Number of users.
+
+        john_as_coordinator = Coordinator.objects.create(user=john)
+        john_as_coordinator.save()
+        self.assertEqual(john_as_coordinator.user.username, "john")

@@ -143,8 +143,8 @@ INSTALLED_APPS = (
     #'south',
     'ac',                       # ac => aakash centres
     'captcha',
-    'taggit',
-    'forum',
+    # 'taggit',
+    # 'forum',
 )
 
 # django-recaptcha settings
