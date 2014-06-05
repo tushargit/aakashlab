@@ -77,7 +77,7 @@ class Contact(models.Model):
     message = models.TextField(max_length=500)
 
     def __unicode__(self):
-        return self.email
+        return "%s, %s" % (self.name, self.email)
 
 
 class Faq(models.Model):
