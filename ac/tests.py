@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 
 from ac.views import index, about
 
-from ac.models import Coordinator
+from ac.models import Coordinator, AakashCentre
 
 
 class SimpleTest(TestCase):
@@ -53,6 +53,7 @@ class AcModelTest(TestCase):
     """Check models in 'ac' app."""
 
     def test_coordinator_model(self):
+        """Aakash Coordinators."""
         john = User.objects.create_user(username='john',
                                      first_name='john',
                                      last_name='doe',
@@ -66,3 +67,18 @@ class AcModelTest(TestCase):
         john_as_coordinator = Coordinator.objects.create(user=john)
         john_as_coordinator.save()
         self.assertEqual(john_as_coordinator.user.username, "john")
+        return john_as_coordinator
+
+    def test_aakashcentre_model(self):
+        """AakashCentre."""
+        john = self.test_coordinator_model()
+
+        iitb = AakashCentre.objects.create(ac_id=1000,
+                                           quantity=100000,
+                                           name="Indian Institute of Technology Bombay",
+                                           city="Mumbai",
+                                           state="Maharashtra",
+                                           coordinator=john,
+                                           active=True)
+        iitb.save()
+        return iitb
