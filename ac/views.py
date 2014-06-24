@@ -25,6 +25,15 @@ from get_list import get_ac_name_list, get_ac_state_list
 from get_list import get_project_list
 
 
+# List of email addresses
+email_list = [
+    'iclcoolster@gmail.com',
+    'aakashprojects.iitb@gmail.com',
+    'aakashlab@cse.iitb.ac.in',
+    'aakashmhrd@gmail.com',
+]
+
+
 def index(request):
     """Index page.
 
@@ -161,11 +170,7 @@ def contact(request):
             email_message = "Sender Name: " + contactform.name + "\n\n" + contactform.message
             send_mail(email_subject, email_message,
                       contactform.email,
-                      [
-                          'iclcoolster@gmail.com',
-                          'Aakashprojects.iitb@gmail.com',
-                          'aakashmhrd@gmail.com',
-                      ],
+                      email_list,
                       fail_silently=False)
             messages.success(request, "Thank you for your reply. We\
             will get back to you soon.")
@@ -181,7 +186,7 @@ def contact(request):
 
 def gnu(request):
     """
-    
+
     Arguments:
     - `request`:
     """
@@ -191,7 +196,7 @@ def gnu(request):
 
 def faq(request):
     """Display FAQs.
-    
+
     Arguments:
     - `request`:
     """
@@ -204,7 +209,7 @@ def faq(request):
 
 def pubs(request):
     """Publications and Articles/links related to Aakash.
-    
+
     Arguments:
     - `request`:
     """
@@ -212,51 +217,56 @@ def pubs(request):
 
     pubs = Pub.objects.all()
     context_dict = {'pubs': pubs}
-    return render_to_response('pubs.html', context_dict, context)    
+    return render_to_response('pubs.html', context_dict, context)
+
 
 def activities(request):
-    """links of all the activites by IITB related to Aakash.
-    
+    """Links of all the activites by IITB related to Aakash.
+
     Arguments:
     - `request`:
     """
-    context = RequestContext(request)    
+    context = RequestContext(request)
     return render_to_response('activities.html', context)
+
 
 def tutorials(request):
     """Tutorial page
-    
+
     Arguments:
     - `request`:
     """
-    context = RequestContext(request)    
+    context = RequestContext(request)
     return render_to_response('tutorials.html', context)
+
 
 def news(request):
     """news page.
-    
+
     Arguments:
     - `request`:
     """
-    context = RequestContext(request)    
+    context = RequestContext(request)
     return render_to_response('news.html', context)
+
 
 def sitemap(request):
     """sitemap page.
-    
+
     Arguments:
     - `request`:
     """
-    context = RequestContext(request)    
+    context = RequestContext(request)
     return render_to_response('sitemap.html', context)
+
 
 def others(request):
     """links of all the activites by others related to Aakash.
-    
+
     Arguments:
     - `request`:
     """
-    context = RequestContext(request)    
+    context = RequestContext(request)
     return render_to_response('other_activities.html', context)
 
 
@@ -283,7 +293,7 @@ def suggest_ac_id(request):
         starts_with = request.POST['suggest_ac_id']
 
     ac_id_list = get_ac_id_list(10, starts_with)
-    
+
     context_dict = {'aakashcentres': ac_id_list}
 
     return render_to_response('ac/ac_list.html',
@@ -302,12 +312,13 @@ def suggest_ac_name(request):
         starts_with = request.POST['suggest_ac_name']
 
     ac_name_list = get_ac_name_list(10, starts_with)
-    
+
     context_dict = {'aakashcentres': ac_name_list}
 
     return render_to_response('ac/ac_list.html',
                               context_dict, context)
-    
+
+
 def suggest_ac_city(request):
     context = RequestContext(request)
     starts_with = ''
@@ -320,7 +331,7 @@ def suggest_ac_city(request):
         starts_with = request.POST['suggest_ac_city']
 
     ac_city_list = get_ac_city_list(10, starts_with)
-    
+
     context_dict = {'aakashcentres': ac_city_list}
 
     return render_to_response('ac/ac_list.html',
@@ -338,7 +349,7 @@ def suggest_ac_state(request):
         starts_with = request.POST['suggest_ac_state']
 
     ac_state_list = get_ac_state_list(10, starts_with)
-    
+
     context_dict = {'aakashcentres': ac_state_list}
 
     return render_to_response('ac/ac_list.html',
@@ -347,13 +358,13 @@ def suggest_ac_state(request):
 
 def suggest_project_name(request):
     """Suggest project name on '/ac/projects/' | project_list.html page.
-    
+
     Arguments:
     - `request`:
 
     """
     context = RequestContext(request)
-    
+
     if request.method == 'GET':
         starts_with = request.GET['suggest_project_name']
         print "GET: suggestion"
@@ -363,7 +374,7 @@ def suggest_project_name(request):
         starts_with = request.POST['suggest_project_name']
 
     project_list = get_project_list(10, starts_with)
-    
+
     context_dict = {'projects': project_list}
     return render_to_response('ac/project_list.html',
                               context_dict, context)
@@ -378,7 +389,7 @@ def ac(request, id):
         # increment download count
         project.increment_download_count()
         return HttpResponseRedirect('/media/%s' % project.apk)
-        
+
     aakashcentre = AakashCentre.objects.get(pk=id)
     # print id
     # print aakashcentre.ac_id
@@ -390,7 +401,7 @@ def ac(request, id):
     # print coordinator_detail.first_name
 
     projects = Project.objects.filter(approve=True, ac=id).order_by('-download_count')
-    
+
     context_dict = {'aakashcentre': aakashcentre,
                     'coordinator': coordinator,
                     'projects': projects}
@@ -412,6 +423,7 @@ def projects(request):
     context_dict = {'projects': projects}
     return render_to_response('ac/projects.html', context_dict, context)
 
+
 def iitb(request):
     """List all projects at iitb.
     IITB has RC_ID=1000."""
@@ -423,7 +435,7 @@ def iitb(request):
         # increment download count
         project.increment_download_count()
         return HttpResponseRedirect('/media/%s' % project.apk)
-        
+
     try:
         iitb = AakashCentre.objects.get(ac_id=1000)
         coordinator = iitb.coordinator
@@ -433,11 +445,12 @@ def iitb(request):
         iitb = None
         coordinator = None
         projects = None
-    
+
     context_dict = {'iitb': iitb,
                     'coordinator': coordinator,
                     'projects': projects}
     return render_to_response('ac/iitb.html', context_dict, context)
+
 
 def project(request, id):
     """Individual project page.
@@ -451,7 +464,7 @@ def project(request, id):
         # increment download count
         project.increment_download_count()
         return HttpResponseRedirect('/media/%s' % project.apk)
-        
+
     print id
     try:
         project = Project.objects.get(pk=id)
@@ -463,23 +476,23 @@ def project(request, id):
         project = None
         members = None
         mentors = None
-    
+
     context_dict = {'project': project,
                     'members': members,
                     'mentors': mentors}
     return render_to_response('ac/project.html', context_dict, context)
 
 
-@login_required    
+@login_required
 def project_add(request):
     """Add new project.
-    
+
     Arguments:
     - `request`:
     """
     context = RequestContext(request)
     print request.user
-    
+
     try:
         coordinator = Coordinator.objects.get(user=request.user)
         ac = AakashCentre.objects.get(coordinator=coordinator)
@@ -518,7 +531,7 @@ def project_add(request):
                     memberform = form.save(commit=False)
                     memberform.member_project = projectform
                     memberform.save()
-	    
+
             for form in mentorformset.forms:
                 if form.has_changed(): # Don't store empty values
                     mentorform = form.save(commit=False)
@@ -536,11 +549,7 @@ Aakash Centre: """ + projectform.ac.name + """
 Waiting for your approval"""
             send_mail(email_subject, email_message,
                       'support@aakashlabs.org',
-                      [
-                          'iclcoolster@gmail.com',
-                          'Aakashprojects.iitb@gmail.com',
-                          'aakashmhrd@gmail.com',
-                      ],
+                      email_list,
                       fail_silently=False)
             messages.success(request, "Project successfully submitted. Waiting for approval.")
             return HttpResponseRedirect('/ac/project/add/')
@@ -551,7 +560,7 @@ Waiting for your approval"""
         # Centre name will be selected by default for Coordinators.
         if ac:
             projectform.fields['ac'].queryset = AakashCentre.objects.filter(ac_id=ac.ac_id)
-            
+
         agreement = Agreement()
         memberformset = MemberFormset(prefix="member")
         mentorformset = MentorFormset(prefix="mentor")
@@ -565,13 +574,13 @@ Waiting for your approval"""
 
 @login_required
 def register(request):
-    """Registeration Form.
-    
+    """Registration Form.
+
     Arguments:
     - `request`:
     """
     context = RequestContext(request)
-    
+
     if request.method == 'POST':
         print "We've a request to register"
         aakashcentreform = AakashCentreForm(data=request.POST)
@@ -592,7 +601,7 @@ def register(request):
                 coordinator.picture = request.FILES['picture']
             coordinator.user = User.objects.get(username=user.username)
             coordinator.save()
-            
+
             aakashcentre = aakashcentreform.save(commit=False)
             aakashcentre.coordinator = Coordinator.objects.get(user=coordinator.user)
             aakashcentre.save()
@@ -610,11 +619,7 @@ Coordinator's Name: """ + coordinator.user.first_name + coordinator.user.last_na
 Waiting for you approval"""
             send_mail(email_subject, email_message,
                       'support@aakashlabs.org',
-                      [
-                          'iclcoolster@gmail.com',
-                          'Aakashprojects.iitb@gmail.com',
-                          'aakashmhrd@gmail.com',
-                      ],
+                      email_list,
                       fail_silently=False)
             messages.success(request, "Form successfully submitted. Waiting for\
             activation from admin.")
@@ -626,16 +631,16 @@ Waiting for you approval"""
         aakashcentreform = AakashCentreForm()
         coordinatorform = CoordinatorForm()
         userform = UserForm()
-        
+
     context_dict = {'aakashcentreform': aakashcentreform,
                     'coordinatorform': coordinatorform,
                     'userform': userform}
     return render_to_response('ac/register.html', context_dict, context)
 
-    
+
 def user_login(request):
     """Login form.
-    
+
     Arguments:
     - `request`:
     """
@@ -667,14 +672,14 @@ def user_login(request):
 @login_required
 def user_logout(request):
     """Logout user.
-    
+
     Arguments:
     - `request`:
     """
     context = RequestContext(request)
     logout(request)
-    return HttpResponseRedirect('/')    
-    
+    return HttpResponseRedirect('/')
+
 
 @login_required
 def user_profile(request):
