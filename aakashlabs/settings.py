@@ -154,6 +154,7 @@ RECAPTCHA_PRIVATE_KEY=secret.RECAPTCHA_PRIVATE_KEY_VALUE
 
 # Max file upload size
 FILE_UPLOAD_MAX_MEMORY_SIZE=62914560 # 60 MB
+FILE_UPLOAD_TEMP_DIR='/tmp'
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
