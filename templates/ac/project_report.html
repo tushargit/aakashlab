@@ -1,0 +1,67 @@
+<style>
+    #one-column-emphasis {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+        font-size: 12px;
+        width: 100%;
+        text-align: left;
+        border-collapse: collapse;
+        margin: 20px;
+        margin-left: 0px;
+    }
+    #one-column-emphasis th {
+        font-size: 14px;
+        font-weight: normal;
+        color: #039;
+        padding: 12px 15px;
+        font-weight: bold;
+    }
+    #one-column-emphasis td {
+        color: #669;
+        border-top: 1px solid #e8edff;
+        padding: 10px 15px;
+    }
+    #one-column-emphasis tr:hover td {
+        color: #339;
+        background: #eff2ff;
+    }
+    colgroup {
+        display: table-column-group;
+    }
+</style>
+
+{% if mentors %}
+<table id="one-column-emphasis">
+<colgroup><col>
+</colgroup>
+<thead>
+  <tr>
+    <th>RCID</th>
+    <th>Center name</th>
+    <th>Address</th>
+    <th>Project</th>
+    <th>Mentor</th>
+    <th>Mentor e-mail</th>
+    <!-- <td>Coordinator</td> -->
+  </tr>
+</thead>
+  <p class="text-info">Found {{projects|length}} centre{{projects|length|pluralize}}.</p>
+  {% for mentor in mentors %}
+  <tr>
+    <td align="left">{{mentor.mentor_project.ac.ac_id}}</td>
+    <td align="left">{{mentor.mentor_project.ac}}</td>
+    <td align="left">{{mentor.mentor_project.ac.city}}<br \>
+      {{mentor.mentor_project.ac.state}}</td>
+    <td align="left">{{mentor.mentor_project}}</td>
+    <td align="left">{{mentor}}</td>
+    <td align="left">{{mentor.mentor_email}}</td>
+    <td align="left">{{ac.coordinator.user.first_name}} {{ac.coordinator.user.last_name}}</td>
+    <td align="left">{{ac.coordinator.contact}}</td>
+    <td align="left">{{ac.coordinator.user.email}}</td>
+    <!-- <td>{{ac.coordinator.id}}</td> -->
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="text-muted">Sorry, nothing found.</p>
+{% endif %}
+

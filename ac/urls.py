@@ -18,5 +18,9 @@ urlpatterns = patterns(
     url(r'^project/(?P<id>\d+)/$', views.project, name='project'),
     url(r'^project/add/$', views.project_add, name='project_add'),
     url(r'^register/$', 'ac.views.register', name='register'),
+
+    # Report
+    url(r'^report/ac/$', 'ac.views.ac_report', name='ac_report'),
+    url(r'^report/project/$', 'ac.views.project_report', name='project_report'),
 )
 

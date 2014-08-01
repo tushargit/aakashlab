@@ -757,3 +757,39 @@ def user_profile_edit(request):
     context_dict = {'coordinatorform': coordinatorform,
                     'userform': userform}
     return render_to_response('profile_edit.html', context_dict, context)
+
+
+@login_required
+def ac_report(request):
+    """Display Aakash Centre report
+
+    Arguments:
+    - `request`: Request from client.
+    """
+    context = RequestContext(request)
+    aakashcentres = AakashCentre.objects.all()
+
+    context_dict = {
+        'aakashcentres': aakashcentres,
+    }
+
+    return render_to_response('ac/ac_report.html', context_dict, context)
+
+
+@login_required
+def project_report(request):
+    """Display project report
+
+    Arguments:
+    - `request`: Request from client.
+    """
+    context = RequestContext(request)
+    projects = Project.objects.filter(approve=True)
+    mentors = Mentor.objects.filter().distinct()
+
+    context_dict = {
+        'projects': projects,
+        'mentors': mentors,
+    }
+
+    return render_to_response('ac/project_report.html', context_dict, context)
