@@ -1,3 +1,7 @@
+<title>
+Aakashlabs - List of all Projects
+</title>
+
 <style>
     #one-column-emphasis {
         font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -44,7 +48,7 @@
     <!-- <td>Coordinator</td> -->
   </tr>
 </thead>
-  <p class="text-info">Found {{projects|length}} centre{{projects|length|pluralize}}.</p>
+  <p align="center">Found {{projects|length}} entr{{projects|length|pluralize:"y,ies"}}.</p>
   {% for mentor in mentors %}
   <tr>
     <td align="left">{{mentor.mentor_project.ac.ac_id}}</td>

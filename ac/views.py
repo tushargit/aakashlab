@@ -767,7 +767,7 @@ def ac_report(request):
     - `request`: Request from client.
     """
     context = RequestContext(request)
-    aakashcentres = AakashCentre.objects.all()
+    aakashcentres = AakashCentre.objects.all().order_by('ac_id')
 
     context_dict = {
         'aakashcentres': aakashcentres,
