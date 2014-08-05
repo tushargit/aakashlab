@@ -816,7 +816,7 @@ def csv_ac_report(request):
                      'Address',
                      'Coordinator',
                      'Coordinator contact',
-                     'Coordinator E-mail'])
+                     'Coordinator\'s E-mail'])
 
     for ac in aakashcentres:
         writer.writerow([ac.ac_id,
@@ -825,5 +825,36 @@ def csv_ac_report(request):
                          ac.coordinator.user.first_name + " " + ac.coordinator.user.last_name,
                          ac.coordinator.contact,
                          ac.coordinator.user.email])
+
+    return response
+
+
+@login_required
+def csv_project_report(request):
+    """Display project report in CSV
+
+    Arguments:
+    - `request`: Request from client.
+    """
+    mentors = Mentor.objects.filter().distinct()
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="project_report.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['RCID',
+                     'Centre Name',
+                     'Address',
+                     'Project',
+                     'Mentor',
+                     'Mentor\'s E-mail'])
+
+    for mentor in mentors:
+        writer.writerow([mentor.mentor_project.ac.ac_id,
+                         mentor.mentor_project.ac,
+                         mentor.mentor_project.ac.city + ",\n" + mentor.mentor_project.ac.state,
+                         mentor.mentor_project,
+                         mentor,
+                         mentor.mentor_email])
 
     return response

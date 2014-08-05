@@ -44,11 +44,12 @@ Aakashlabs - List of all Projects
     <th>Address</th>
     <th>Project</th>
     <th>Mentor</th>
-    <th>Mentor e-mail</th>
+    <th>Mentor's E-mail</th>
     <!-- <td>Coordinator</td> -->
   </tr>
 </thead>
-  <p align="center">Found {{projects|length}} entr{{projects|length|pluralize:"y,ies"}}.</p>
+<p align="center">Found {{projects|length}}
+  entr{{projects|length|pluralize:"y,ies"}} <a href="/ac/report/project/csv/">(Import in CSV format)</a></p>
   {% for mentor in mentors %}
   <tr>
     <td align="left">{{mentor.mentor_project.ac.ac_id}}</td>
@@ -58,10 +59,6 @@ Aakashlabs - List of all Projects
     <td align="left">{{mentor.mentor_project}}</td>
     <td align="left">{{mentor}}</td>
     <td align="left">{{mentor.mentor_email}}</td>
-    <td align="left">{{ac.coordinator.user.first_name}} {{ac.coordinator.user.last_name}}</td>
-    <td align="left">{{ac.coordinator.contact}}</td>
-    <td align="left">{{ac.coordinator.user.email}}</td>
-    <!-- <td>{{ac.coordinator.id}}</td> -->
   </tr>
   {% endfor %}
 </table>

@@ -48,7 +48,8 @@ Aakashlabs - List of all Aakash Centres
     <!-- <td>Coordinator</td> -->
   </tr>
 </thead>
-  <p align="center">Found {{aakashcentres|length}} centre{{aakashcentres|length|pluralize}}.</p>
+  <p align="center">Found {{aakashcentres|length}}
+  centre{{aakashcentres|length|pluralize}} <a href="/ac/report/ac/csv/">(Import in CSV format)</a></p>
   {% for ac in aakashcentres %}
   <tr>
     <td align="left">{{ac.ac_id}}</td>
