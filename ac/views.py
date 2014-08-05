@@ -800,7 +800,7 @@ def project_report(request):
 
 @login_required
 def csv_ac_report(request):
-    """Display Aakash Centre report in CSV
+    """Display Aakash Centre report in CSV.
 
     Arguments:
     - `request`: Request from client.
@@ -831,12 +831,14 @@ def csv_ac_report(request):
 
 @login_required
 def csv_project_report(request):
-    """Display project report in CSV
+    """Display project report in CSV.
 
     Arguments:
     - `request`: Request from client.
     """
-    mentors = Mentor.objects.filter().distinct()
+    projects = Project.objects.filter(approve=True)
+    mentors = Mentor.objects.all()
+    # print len(projects)
 
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="project_report.csv"'
@@ -849,12 +851,13 @@ def csv_project_report(request):
                      'Mentor',
                      'Mentor\'s E-mail'])
 
-    for mentor in mentors:
-        writer.writerow([mentor.mentor_project.ac.ac_id,
-                         mentor.mentor_project.ac,
-                         mentor.mentor_project.ac.city + ",\n" + mentor.mentor_project.ac.state,
-                         mentor.mentor_project,
-                         mentor,
-                         mentor.mentor_email])
+    for project in projects:
+        writer.writerow([project.ac.ac_id,
+                         project.ac,
+                         project.ac.city + ",\n" + project.ac.state,
+                         project.name,
+                         [str(mentor.mentor_name) for mentor in Mentor.objects.filter(mentor_project=project) if mentor],
+                         [str(mentor.mentor_email) for mentor in Mentor.objects.filter(mentor_project=project) if mentor]
+                         ])
 
     return response
