@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.forms.formsets import formset_factory
 from django.core.mail import send_mail
 
+# Other libs
+import csv
+
 # Models
 from ac.models import AakashCentre, Coordinator
 from ac.models import Project, Mentor, TeamMember
@@ -25,7 +28,7 @@ from get_list import get_ac_name_list, get_ac_state_list
 from get_list import get_project_list
 
 
-# List of email addresses
+# List of email addresses to be notified
 email_list = [
     'iclcoolster@gmail.com',
     'aakashprojects.iitb@gmail.com',
@@ -793,3 +796,34 @@ def project_report(request):
     }
 
     return render_to_response('ac/project_report.html', context_dict, context)
+
+
+@login_required
+def csv_ac_report(request):
+    """Display Aakash Centre report in CSV
+
+    Arguments:
+    - `request`: Request from client.
+    """
+    aakashcentres = AakashCentre.objects.all().order_by('ac_id')
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="ac_report.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['RCID',
+                     'Centre Name',
+                     'Address',
+                     'Coordinator',
+                     'Coordinator contact',
+                     'Coordinator E-mail'])
+
+    for ac in aakashcentres:
+        writer.writerow([ac.ac_id,
+                         ac.name,
+                         ac.city + ",\n" + ac.state,
+                         ac.coordinator.user.first_name + " " + ac.coordinator.user.last_name,
+                         ac.coordinator.contact,
+                         ac.coordinator.user.email])
+
+    return response

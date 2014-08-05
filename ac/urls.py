@@ -19,8 +19,13 @@ urlpatterns = patterns(
     url(r'^project/add/$', views.project_add, name='project_add'),
     url(r'^register/$', 'ac.views.register', name='register'),
 
-    # Report
+    # Report in HTML
     url(r'^report/ac/$', 'ac.views.ac_report', name='ac_report'),
     url(r'^report/project/$', 'ac.views.project_report', name='project_report'),
+    # Report in CSV
+    url(r'^report/ac/csv/$', 'ac.views.csv_ac_report', name='csv_ac_report'),
+    url(r'^report/project/csv/$', 'ac.views.csv_project_report',
+        name='csv_project_report'),
+
 )
 
