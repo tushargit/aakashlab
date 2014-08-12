@@ -21,9 +21,9 @@ def hr_size(num, system=si):
         if num >= factor:
             break
     amount = round(num/factor, 1)
-    # '{:g}'.format(amount) will discard the decimal places if amount
+    # '{0:g}'.format(amount) will discard the decimal places if amount
     # ends with .0
-    return str('{:g}'.format(amount)) + suffix
+    return str('{0:g}'.format(amount)) + suffix
 
 # print hr_size(5232)
 
