@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# Local imports
+from human_readable_size import hr_size
+
 # Create your models here.
 class Coordinator(models.Model):
     """Aakash Coordinators.
@@ -25,11 +28,11 @@ class AakashCentre(models.Model):
     state = models.CharField(max_length=200, blank=True)
     coordinator = models.OneToOneField(Coordinator)
     active = models.BooleanField(default=False)
-    
+
     def __unicode__(self):
         return self.name
 
-        
+
 class Project(models.Model):
     name = models.CharField(max_length=200, unique=True)
     ac = models.ForeignKey(AakashCentre)
@@ -44,13 +47,20 @@ class Project(models.Model):
     date_uploaded = models.DateField(auto_now=True)
     rating = models.IntegerField(default=0)
     approve = models.BooleanField(default=False)
-    
+
     def __unicode__(self):
-        return self.name        
+        return self.name
 
     def increment_download_count(self):
+        """Increment download count.
+        """
         self.download_count += 1
         self.save()
+
+    def human_readable_download_count(self):
+        """Convert download_count to human readable form.
+        """
+        return hr_size(self.download_count)
 
 
 class TeamMember(models.Model):
