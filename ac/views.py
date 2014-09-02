@@ -34,6 +34,8 @@ email_list = [
     'aakashprojects.iitb@gmail.com',
     'aakashlab@cse.iitb.ac.in',
     'aakashmhrd@gmail.com',
+    'gautamk@cse.iitb.ac.in',
+    'nileshs@cse.iitb.ac.in',
 ]
 
 

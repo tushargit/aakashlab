@@ -14,6 +14,8 @@ STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 
 DEBUG = secret.DEBUG_VALUE
 TEMPLATE_DEBUG = DEBUG
+SEND_BROKEN_LINK_EMAILS = True
+SERVER_EMAIL = 'support@aakashlabs.org'
 
 ADMINS = (
     ('sachin', 'isachin@iitb.ac.in'),
