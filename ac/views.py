@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.forms.formsets import formset_factory
 from django.core.mail import send_mail
 
@@ -765,6 +765,7 @@ def user_profile_edit(request):
 
 
 @login_required
+@permission_required('User.objects.create_user')
 def ac_report(request):
     """Display Aakash Centre report
 
@@ -782,6 +783,7 @@ def ac_report(request):
 
 
 @login_required
+@permission_required('User.objects.create_user') # restrict normal users
 def project_report(request):
     """Display project report
 
@@ -801,6 +803,7 @@ def project_report(request):
 
 
 @login_required
+@permission_required('User.objects.create_user')
 def csv_ac_report(request):
     """Display Aakash Centre report in CSV.
 
@@ -832,6 +835,7 @@ def csv_ac_report(request):
 
 
 @login_required
+@permission_required('User.objects.create_user')
 def csv_project_report(request):
     """Display project report in CSV.
 
