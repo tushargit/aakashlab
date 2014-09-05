@@ -202,7 +202,7 @@ class ProjectForm(forms.ModelForm):
         """Limit APK upload size."""
         if self.cleaned_data['apk']:
             apk = self.cleaned_data['apk']
-            if apk.content_type.split('/')[1] == "vnd.android.package-archive":
+            if apk:
                 if apk._size/(1024*1024) <= 12: # < 5MB
                     return apk
                 else:
