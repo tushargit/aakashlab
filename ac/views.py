@@ -32,10 +32,10 @@ from get_list import get_project_list
 email_list = [
     'iclcoolster@gmail.com',
     'aakashprojects.iitb@gmail.com',
-    'aakashlab@cse.iitb.ac.in',
     'aakashmhrd@gmail.com',
-    'gautamk@cse.iitb.ac.in',
     'nileshs@cse.iitb.ac.in',
+    'parag2you@gmail.com',
+    'aakashlab@cse.iitb.ac.in',
 ]
 
 
