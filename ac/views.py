@@ -535,10 +535,12 @@ def project_add(request):
             projectform.ac = AakashCentre.objects.get(pk=projectform.ac_id)
             print projectform.name
             projectform.save()
-
+            
             # FIXME: If TeamMember &/OR Mentor values are NULL, don't
             # save it.  I'm not sure about 'empty_permitted'
             # attribute. Till then let 'has_changed' do the work.
+
+            # added code to fetch manager detail from database and form
             for form in memberformset.forms:
                 if form.has_changed(): # Don't store empty values
                     memberform = form.save(commit=False)

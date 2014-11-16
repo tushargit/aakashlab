@@ -81,6 +81,7 @@
 	  </p>
 
 	  <hr>
+<!--added manager detail-->
           <hr>
 	  <h4 class="text-muted">Project Manager detail.</h4>	  
 	  {{managerformset.management_form }}

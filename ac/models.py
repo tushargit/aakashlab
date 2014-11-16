@@ -79,7 +79,7 @@ class Mentor(models.Model):
     
     def __unicode__(self):
         return self.mentor_name
-
+#added manager class to create table for manager detail
 class Manager(models.Model):
     manager_name = models.CharField(max_length=200)
     manager_email = models.EmailField(blank=True)

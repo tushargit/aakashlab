@@ -257,7 +257,7 @@ class MentorForm(forms.ModelForm):
     class Meta:
         model = Mentor
         fields = ['mentor_name', 'mentor_email']
-
+#created manager form
 
 class ManagerForm(forms.ModelForm):
     """Project manager form.

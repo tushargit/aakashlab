@@ -1,6 +1,6 @@
 from django.contrib import admin
 from ac.models import AakashCentre, Coordinator
-from ac.models import Project, TeamMember, Mentor,Manager
+from ac.models import Project, TeamMember, Mentor,Manager # included manager field also
 from ac.models import Contact, Faq, Pub
 
 
@@ -31,7 +31,7 @@ admin.site.register(Coordinator, CoordinatorAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(TeamMember)
 admin.site.register(Mentor)
-admin.site.register(Manager)
+admin.site.register(Manager)  # included manager field also
 admin.site.register(Contact)
 admin.site.register(Faq)
 admin.site.register(Pub)
